@@ -7,7 +7,7 @@ completing your own End-to-End Machine Learning Projects. You will gain practica
 with applied ML techniques and an intuitive understanding of what can be achieved through ML and what its
 limitations are.
 
-**Hearty thanks to our authors**: @honzaMaly, <mark>TODO: add your profiles</mark>
+**Hearty thanks to our authors**: @github/honzaMaly, <mark>TODO: add your profiles</mark>
 
 ## Setup
 
@@ -58,7 +58,6 @@ jupyter notebook
 ```
 
 Other alternative ways of executing stuff located in this repository are covered in the handbook <mark>TODO: link</mark>
-.
 
 ## Creating Handbook
 
