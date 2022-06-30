@@ -3,7 +3,9 @@
 
 title: My sample book
 author: The Jupyter Book Community
-logo: logo.png
+logo: static/images/logo.png
+# Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+exclude_patterns: [ _build, Thumbs.db, .DS_Store, environment.yml, README.md, LICENSE ]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

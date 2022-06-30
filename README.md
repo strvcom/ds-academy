@@ -85,7 +85,7 @@ This is a quick guide describing the process of turning this repository into a h
 Do so by running the following command:
 
 ```console
-jupyter-book build --all handbook/
+jupyter-book build --all ./
 ```
 
 This will generate a fully-functioning HTML site using a static site generator. The site will be placed in
@@ -101,7 +101,7 @@ To find additional information, consult the [official guide](https://jupyterbook
 Do so by running the following command:
 
 ```console
-ghp-import -n -p -f handbook/_build/html
+ghp-import -n -p -f ./_build/html
 ```
 
 The command uploads generated content to `gh-pages` branch. The branch is already registered with GitHub Pages. Vist the

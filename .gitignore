@@ -133,4 +133,4 @@ out/
 /.idea/**
 
 # Igonre generated files for the handbook
-handbook/_build
+_build
