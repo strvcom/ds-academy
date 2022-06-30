@@ -131,3 +131,6 @@ dmypy.json
 # IntelliJ
 out/
 /.idea/**
+
+# Igonre generated files for the handbook
+handbook/_build
