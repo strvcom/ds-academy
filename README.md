@@ -1,4 +1,13 @@
-# Data Science Academy
+# STRV Data Science Academy
+
+STRV is pleased to offer this 7-week intensive course as part of
+our [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv).
+During the course, you will learn to apply plenty of practical and theoretical skills needed for developing and
+completing your own End-to-End Machine Learning Projects. You will gain practical knowledge and hands-on experience
+with applied ML techniques and an intuitive understanding of what can be achieved through ML and what its
+limitations are.
+
+**Hearty thanks to our authors**: @honzaMaly, <mark>TODO: add your profiles</mark>
 
 ## Setup
 
