@@ -1,4 +1,4 @@
-name: academy-handbook
+name: ds-academy
 channels:
   - conda-forge
   - defaults
