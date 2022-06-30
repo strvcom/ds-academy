@@ -22,6 +22,9 @@ jupyter-book build --all handbook/
 This will generate a fully-functioning HTML site using a static site generator. The site will be placed in
 the `_build/html` folder. The outputs should not be tracked in the main repository.
 
+To preview your book, you can open the generated HTML files in your browser. Double-click the html file in your
+local folder.
+
 To find additional information, consult the [official guide](https://jupyterbook.org/en/stable/start/build.html).
 
 ### Publish handbook to GitHub Pages
