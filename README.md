@@ -1,5 +1,7 @@
 # STRV Data Science Academy
 
+> **NOTE:** The repository contains materials used during the STRV Data Science Academy
+
 STRV is pleased to offer this 7-week intensive course as part of
 our [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv).
 During the course, you will learn to apply plenty of practical and theoretical skills needed for developing and
@@ -9,7 +11,20 @@ limitations are.
 
 **Hearty thanks to our authors**: [Jan Maly](https://github.com/honzaMaly), <mark>TODO: add your profiles</mark>
 
-## Setup
+## Getting Started
+
+### Handbook
+
+The handbook for this course can be found [here](https://strvcom.github.io/ds-academy/intro.html). 
+
+### How to Use this Course
+
+- Learn more about [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv)
+- All essential materials and information (such as code, theory, guides, and links to resources) are distributed in the
+  form of a [handbook](https://strvcom.github.io/ds-academy/intro.html)
+- Follow the [Setup](#setup) to be able to create an environment for code execution
+
+### Setup
 
 The code was tested with [conda](https://docs.conda.io/en/latest/) running on Mackbook M1 (ARM-based CPU). It is
 generally harder to get Python things running on M1, so the experience on Linux-like and Windows systems should be
