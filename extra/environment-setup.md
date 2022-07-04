@@ -1,8 +1,19 @@
 # Setup Environment
 
-The code was tested with [conda](https://docs.conda.io/en/latest/) running on Mackbook M1 (ARM-based CPU). It is
-generally harder to get Python things running on M1, so the experience on Linux-like and Windows systems should be
-smooth.
+## Intro
+
+The project uses [conda](https://docs.conda.io/en/latest/) to manage its environment and packages. Conda is an
+open-source package management system and environment management system that runs on Windows, macOS, and Linux. You
+should have a relatively smooth experience running the project with any of those platforms.
+
+> **NOTE:**  We test the project running on Linux based system (ML workstations) and MacBook M1 laptops (ARM-based CPU).
+> It is
+> generally harder to get Python things running on M1. However, we do not test the implementation under Windows.
+
+Well, this guide is not intended as an extensive intro to conda. To get more insight, we recommend reading
+{cite}`conda_guide_1` or {cite}`conda_guide_2`.
+
+## Setup
 
 Before installing the environment,
 follow [official instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for
@@ -28,22 +39,31 @@ If you have installed Mamba. If not, run:
 conda env create -f environment.yml
 ```
 
-You can delete the environment at any time with the command:
-
-```console
-conda remove --name ds-academy --all
-```
-
 To start using the environment, run:
 
 ```console
 conda activate ds-academy
 ```
 
-Once active, you might want to run Jupyter Notebook Server by executing:
+Once active, you might want to run **Jupyter Notebook Server** by executing:
 
 ```console
 jupyter notebook
 ```
 
-Other alternative ways of executing stuff located in this repository are covered in the handbook <mark>TODO: link</mark>
+Another alternative way to execute notebooks is using [IDEs](ide-overview.md). To start with notebooks, check out the
+guide on [notebooks](notebooks.ipynb).
+
+## Tips
+
+You can delete the environment and start over at any time with the command:
+
+```console
+conda remove --name ds-academy --all
+```
+
+## Resources
+
+```{bibliography}
+:filter: docname in docnames
+```
