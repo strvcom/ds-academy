@@ -1,55 +1,74 @@
-# Markdown Files
+# Git and GitHub
 
-Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
-in regular markdown files (`.md`), you'll write in the same flavor of markdown
-called **MyST Markdown**.
-This is a simple file to help you get started and show off some syntax.
+## Intro
 
-## What is MyST?
+Basic knowledge of [Git](https://git-scm.com/) and [GitHub](https://github.com/) is essential for the course.
+Although **we expect some working knowledge of those**, it is good to refresh some basics or review some best
+practices before the class.
 
-MyST stands for "Markedly Structured Text". It
-is a slight variation on a flavor of markdown called "CommonMark" markdown,
-with small syntax extensions to allow you to write **roles** and **directives**
-in the Sphinx ecosystem.
+We expect you to fork the repository periodically to experiment with the code during the course. You will also implement
+your end2end ML project that should be hosted on GitHub, so you will have a way to version and share your code with us.
 
-For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
+## Git
 
-## Sample Roles and Directives
+### Git Cheat Sheet
 
-Roles and directives are two of the most powerful tools in Jupyter Book. They
-are kind of like functions, but written in a markup language. They both
-serve a similar purpose, but **roles are written in one line**, whereas
-**directives span many lines**. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.
+List of the useful commands and conventions that should be followed when using git. This section is heavily inspired by
+{cite}`git_cheat_sheet`.
 
-Here is a "note" directive:
+#### Basic commands
 
-```{note}
-Here is a note
-```
+| Command                                             | Description                                                                                         |
+|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `git clone <link> <repo name in local file system>` | clone repository into local file system                                                             |
+| `git status`                                        | check current branch, changes and overall repo status                                               |
+| `git log`                                           | list all commits on local active branch (can differ from origin branch when changes are not pulled) |
+| `git pull`                                          | update local branch by `origin master` branch                                                       |
 
-It will be rendered in a special box when you build your book.
+#### Branch commands
 
-Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
+| Command                         | Description                                        |
+|---------------------------------|----------------------------------------------------|
+| `git branch`                    | list all repo branches (active one is highlighted) |
+| `git checkout <branch name>`    | switch into branch                                 |
+| `git checkout -b <branch name>` | create branch and switch into new created branch   |
+| `git branch -d <branch name>`   | delete branch                                      |
+| `git remote prune origin`       | delete unused remote branches from local machine   |
 
+#### Branch naming conventions
 
-## Citations
+- `prefix/name-in-lowercase-kebab-case`
+- prefix options:
+    - `feat/` - feature development
+    - `fix/` - bug fix
+    - `refactor/` - refactoring
+    - `docs/` - documentation
+    - `test/` - tests
+    - `chore/` - grunt tasks (no production code change)
+    - `style/` - code style change
 
-You can also cite references that are stored in a `bibtex` file. For example,
-the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
-this: {cite}`holdgraf_evidence_2014`.
+#### Commit commands
 
-Moreover, you can insert a bibliography into your page with this syntax:
-The `{bibliography}` directive must be used for all the `{cite}` roles to
-render properly.
-For example, if the references for your book are stored in `references.bib`,
-then the bibliography is inserted with:
+| Command                                 | Description                                                                                      |
+|-----------------------------------------|--------------------------------------------------------------------------------------------------|
+| `git add .`                             | add all changed files into commit                                                                |
+| `git add <file>`                        | add changed file into commit                                                                     |
+| `git commit -m "<message>"`             | create commit with message                                                                       |
+| `git commit -m "<message>" -m "<body>"` | create commit with message and body                                                              |
+| `git push origin <branch>`              | push commit into branch on public git server                                                     |
+| `git commit --amend`                    | add current commit to previous commit (default editor pops up and commit message can be changed) |
+| `git push -f origin <branch>`           | force push commit into branch on public git server (aplicable when using `commit --amend`)       |
+| `git commit --fixup <commit id>`        | use when fixing commit during code review                                                        |
+
+#### Commit message conventions
+
+- `type(optional scope): write short message in lower case and imperative`
+- type options are the same as branch prefix options
+
+## GitHub
+
+## Resources
 
 ```{bibliography}
+:filter: docname in docnames
 ```
-
-## Learn more
-
-This is just a simple starter to get you started.
-You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
