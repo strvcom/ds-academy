@@ -8,7 +8,7 @@ parts:
     chapters:
       - file: extra/intro
         sections:
-          - file: extra/github
+          - file: extra/git
           - file: extra/environment-setup
           - file: extra/notebooks
           - file: extra/ide-overview

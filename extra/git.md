@@ -1,7 +1,5 @@
 # Git and GitHub
 
-## Intro
-
 Basic knowledge of [Git](https://git-scm.com/) and [GitHub](https://github.com/) is essential for the course.
 Although **we expect some working knowledge of those**, it is good to refresh some basics or review some best
 practices before the class.

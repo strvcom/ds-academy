@@ -1,7 +1,5 @@
 # Setup Environment
 
-## Intro
-
 The project uses [conda](https://docs.conda.io/en/latest/) to manage its environment and packages. Conda is an
 open-source package management system and environment management system that runs on Windows, macOS, and Linux. You
 should have a relatively smooth experience running the project with any of those platforms. **Conda handles library
