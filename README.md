@@ -31,6 +31,10 @@ The code was tested with [conda](https://docs.conda.io/en/latest/) running on Ma
 generally harder to get Python things running on M1, so the experience on Linux-like and Windows systems should be
 smoother.
 
+To get your environment up and running for this course, we prepared
+a [guide](https://strvcom.github.io/ds-academy/extra/environment-setup.html) describing all the necessary steps to
+replicate our environment.
+
 ## Creating Handbook
 
 This is a quick guide describing the process of turning this repository into a handbook hosted on GitHub Pages.
