@@ -11,12 +11,18 @@ your end2end ML project that should be hosted on GitHub, so you will have a way 
 
 ## Git
 
-### Git Cheat Sheet
+**Git** is a free and open-source distributed **version control system** designed to handle projects with speed and
+efficiency. It is the most widely used modern version control system in the world today.
 
-List of the useful commands and conventions that should be followed when using git. This section is heavily inspired by
-{cite}`git_cheat_sheet`.
+> ✏️ You might find {cite}`learn_git` nad {cite}`git_cheat_sheet` helpful when working with Git.
 
-#### Basic commands
+To start using Git on your system, we recommend the following guides based on your platform:
+
+- [Install Git on Mac OS X](https://www.atlassian.com/git/tutorials/install-git#mac-os-x)
+- [Install Git on Windows](https://www.atlassian.com/git/tutorials/install-git#windows)
+- [Install Git on Linux](https://www.atlassian.com/git/tutorials/install-git#linux)
+
+### Basic commands
 
 | Command                                             | Description                                                                                         |
 |-----------------------------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -25,7 +31,7 @@ List of the useful commands and conventions that should be followed when using g
 | `git log`                                           | list all commits on local active branch (can differ from origin branch when changes are not pulled) |
 | `git pull`                                          | update local branch by `origin master` branch                                                       |
 
-#### Branch commands
+### Branch commands
 
 | Command                         | Description                                        |
 |---------------------------------|----------------------------------------------------|
@@ -35,7 +41,7 @@ List of the useful commands and conventions that should be followed when using g
 | `git branch -d <branch name>`   | delete branch                                      |
 | `git remote prune origin`       | delete unused remote branches from local machine   |
 
-#### Branch naming conventions
+### Branch naming conventions
 
 - `prefix/name-in-lowercase-kebab-case`
 - prefix options:
@@ -47,7 +53,7 @@ List of the useful commands and conventions that should be followed when using g
     - `chore/` - grunt tasks (no production code change)
     - `style/` - code style change
 
-#### Commit commands
+### Commit commands
 
 | Command                                 | Description                                                                                      |
 |-----------------------------------------|--------------------------------------------------------------------------------------------------|
@@ -60,12 +66,27 @@ List of the useful commands and conventions that should be followed when using g
 | `git push -f origin <branch>`           | force push commit into branch on public git server (aplicable when using `commit --amend`)       |
 | `git commit --fixup <commit id>`        | use when fixing commit during code review                                                        |
 
-#### Commit message conventions
+### Commit message conventions
 
 - `type(optional scope): write short message in lower case and imperative`
 - type options are the same as branch prefix options
 
 ## GitHub
+
+GitHub is a cloud-based hosting service that lets you manage Git repositories.
+
+To get started working with Git, we recommend reviewing the following:
+
+- [Hello World exercise](https://docs.github.com/en/get-started/quickstart/hello-world) to create a repository (for more
+  detail, visit the [link](https://docs.github.com/en/get-started/quickstart/create-a-repo)), create a branch (can be
+  handled with Git as well), and contribute to a repository.
+- [Fork a repo guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to learn how to copy a repository
+  to experiment with it. This is the preferred way of getting a copy of the course exercises.
+- Once you fork a repo, you might want
+  to [keep it synced with the upstream repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
+  . This is recommended way to keep your course copy up to date.
+
+For additional information visit {cite}`learn_github`.
 
 ## Resources
 
