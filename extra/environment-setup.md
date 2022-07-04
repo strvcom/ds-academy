@@ -1,55 +1,49 @@
-# Markdown Files
+# Setup Environment
 
-Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
-in regular markdown files (`.md`), you'll write in the same flavor of markdown
-called **MyST Markdown**.
-This is a simple file to help you get started and show off some syntax.
+The code was tested with [conda](https://docs.conda.io/en/latest/) running on Mackbook M1 (ARM-based CPU). It is
+generally harder to get Python things running on M1, so the experience on Linux-like and Windows systems should be
+smooth.
 
-## What is MyST?
+Before installing the environment,
+follow [official instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for
+installing conda on your target platform. We recommend installing the minimal version of **Anaconda** called
+**Miniconda**. The minimalistic version includes only conda and its dependencies.
 
-MyST stands for "Markedly Structured Text". It
-is a slight variation on a flavor of markdown called "CommonMark" markdown,
-with small syntax extensions to allow you to write **roles** and **directives**
-in the Sphinx ecosystem.
+> **NOTE:**  To speed up the installation of any conda environment, install [Mamba](https://github.com/mamba-org/mamba)
+> to the base conda environment with the following:
+>
+> ```console
+> conda install mamba -n base -c conda-forge
+> ```
 
-For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
+Once installed, run the following command to replicate the environment that is being used for lectures and exercises:
 
-## Sample Roles and Directives
-
-Roles and directives are two of the most powerful tools in Jupyter Book. They
-are kind of like functions, but written in a markup language. They both
-serve a similar purpose, but **roles are written in one line**, whereas
-**directives span many lines**. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.
-
-Here is a "note" directive:
-
-```{note}
-Here is a note
+```console
+mamba env create -f environment.yml
 ```
 
-It will be rendered in a special box when you build your book.
+If you have installed Mamba. If not, run:
 
-Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
-
-
-## Citations
-
-You can also cite references that are stored in a `bibtex` file. For example,
-the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
-this: {cite}`holdgraf_evidence_2014`.
-
-Moreover, you can insert a bibliography into your page with this syntax:
-The `{bibliography}` directive must be used for all the `{cite}` roles to
-render properly.
-For example, if the references for your book are stored in `references.bib`,
-then the bibliography is inserted with:
-
-```{bibliography}
+```console
+conda env create -f environment.yml
 ```
 
-## Learn more
+You can delete the environment at any time with the command:
 
-This is just a simple starter to get you started.
-You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
+```console
+conda remove --name ds-academy --all
+```
+
+To start using the environment, run:
+
+```console
+conda activate ds-academy
+```
+
+Once active, you might want to run Jupyter Notebook Server by executing:
+
+```console
+jupyter notebook
+```
+
+Other alternative ways of executing stuff located in this repository are covered in the handbook <mark>TODO: link</mark>

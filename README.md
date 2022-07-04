@@ -15,11 +15,12 @@ limitations are.
 
 ### Handbook
 
-The handbook for this course can be found [here](https://strvcom.github.io/ds-academy/intro.html). 
+The handbook for this course can be found [here](https://strvcom.github.io/ds-academy/intro.html).
 
 ### How to Use this Course
 
-- Learn more about [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv)
+- Learn more
+  about [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv)
 - All essential materials and information (such as code, theory, guides, and links to resources) are distributed in the
   form of a [handbook](https://strvcom.github.io/ds-academy/intro.html)
 - Follow the [Setup](#setup) to be able to create an environment for code execution
@@ -28,51 +29,7 @@ The handbook for this course can be found [here](https://strvcom.github.io/ds-ac
 
 The code was tested with [conda](https://docs.conda.io/en/latest/) running on Mackbook M1 (ARM-based CPU). It is
 generally harder to get Python things running on M1, so the experience on Linux-like and Windows systems should be
-smooth.
-
-Before installing the environment,
-follow [official instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for
-installing conda on your target platform. We recommend installing the minimal version of **Anaconda** called
-**Miniconda**. The minimalistic version includes only conda and its dependencies.
-
-> **NOTE:**  To speed up the installation of any conda environment, install [Mamba](https://github.com/mamba-org/mamba)
-> to the base conda environment with the following:
->
-> ```console
-> conda install mamba -n base -c conda-forge
-> ```
-
-Once installed, run the following command to replicate the environment that is being used for lectures and exercises:
-
-```console
-mamba env create -f environment.yml
-```
-
-If you have installed Mamba. If not, run:
-
-```console
-conda env create -f environment.yml
-```
-
-You can delete the environment at any time with the command:
-
-```console
-conda remove --name ds-academy --all
-```
-
-To start using the environment, run:
-
-```console
-conda activate ds-academy
-```
-
-Once active, you might want to run Jupyter Notebook Server by executing:
-
-```console
-jupyter notebook
-```
-
-Other alternative ways of executing stuff located in this repository are covered in the handbook <mark>TODO: link</mark>
+smoother.
 
 ## Creating Handbook
 
