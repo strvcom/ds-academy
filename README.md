@@ -1,6 +1,6 @@
 # STRV Data Science Academy
 
-> **NOTE:** The repository contains materials used during the STRV Data Science Academy
+> 📖️ The repository contains materials used during the STRV Data Science Academy
 
 STRV is pleased to offer this 7-week intensive course as part of
 our [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv).

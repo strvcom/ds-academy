@@ -72,9 +72,9 @@ channels:
 dependencies:
   - python>=3.7,<=3.9  # version of Python, there are minimum requirements on version, we leave it up to conda
   - pip  # a package taken from conda repository
-  - jupyter-book
   - matplotlib
   - numpy
+  - notebook
   - pip:
       - see  # an example of package installed using pip as it is not available on conda
 ```
