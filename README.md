@@ -25,6 +25,9 @@ The handbook for this course can be found [here](https://strvcom.github.io/ds-ac
   form of a [handbook](https://strvcom.github.io/ds-academy/intro.html)
 - Follow the [Setup](#setup) to be able to create an environment for code execution
 
+> ⚠️ There might be some formatting issues when running notebooks. We use a special Markdown
+> to generate the handbook.
+
 ### Setup
 
 The code was tested with [conda](https://docs.conda.io/en/latest/) running on Mackbook M1 (ARM-based CPU). It is
@@ -39,7 +42,7 @@ replicate our environment.
 
 This is a quick guide describing the process of turning this repository into a handbook hosted on GitHub Pages.
 
-> **NOTE:**  Run all commands presented in this guide with the environment.
+> ✏️ Run all commands presented in this guide with the environment.
 
 ### Build handbook’s HTML
 
