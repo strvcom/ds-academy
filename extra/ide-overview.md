@@ -1,6 +1,6 @@
-# IDEs
+# Getting more done with IDEs
 
-Sadly, Jupyter Notebook has a lot of limitations. We prefer using IDEs (Integrated Development Environment) to interact
+Sadly, [Jupyter Notebook](notebooks.ipynb) has a lot of limitations. We prefer using IDEs (Integrated Development Environment) to interact
 with notebooks during our day-to-day work. IDEs are perfect when you need functionality such as auto-completion, go-to
 definition, syntax-highlighter, spelling checkers, etc.
 
