@@ -19,7 +19,7 @@ follow [official instructions](https://docs.conda.io/projects/conda/en/latest/us
 installing conda on your target platform. We recommend installing the minimal version of **Anaconda** called
 **Miniconda**. The minimalistic version includes only conda and its dependencies.
 
-> ✏️ To speed up the installation of any conda environment, install [Mamba](https://github.com/mamba-org/mamba)
+> ✏️ To speed up the installation of packages, install [Mamba](https://github.com/mamba-org/mamba)
 > to the base conda environment with the following:
 >
 > ```console
