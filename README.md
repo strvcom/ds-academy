@@ -35,7 +35,7 @@ generally harder to get Python things running on M1, so the experience on Linux-
 smoother.
 
 To get your environment up and running for this course, we prepared
-a [guide](https://strvcom.github.io/ds-academy/extra/environment-setup.html) describing all the necessary steps to
+a [guide](https://strvcom.github.io/ds-academy/lectures/00_start/environment-setup.html) describing all the necessary steps to
 replicate our environment.
 
 ## Development
