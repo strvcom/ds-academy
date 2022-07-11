@@ -4,6 +4,14 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Getting Started
+    chapters:
+      - file: lectures/00_start/intro
+        sections:
+          - file: lectures/00_start/git
+          - file: lectures/00_start/environment-setup
+          - file: lectures/00_start/notebooks
+          - file: lectures/00_start/ide-overview
   - caption: Introduction
     chapters:
       - file: lectures/01_intro/intro
