@@ -85,7 +85,7 @@ dependencies:
 
 ## Tips
 
-You can delete the environment and start over at any time with the command:
+You can delete the `ds-academy` environment and start over at any time with the command:
 
 ```console
 conda remove --name ds-academy --all
