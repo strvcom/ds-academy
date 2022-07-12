@@ -35,7 +35,23 @@ Follow the guidelines described [here](../README.md#suggesting-enhancements).
 
 ### Project structure
 
-TODO
+The repository consists of two parts - one covers the development and the second one is the actual course.
+
+#### The development part
+
+| File or directory  | Purpose                                                                                               |
+|--------------------|-------------------------------------------------------------------------------------------------------|
+| development folder | holds this README.md with guides, several templates and the development environment (environment.yml) |
+ | _config.yml        | defines the setting for the handbook and should be left (mostly) untouched                            |
+ | _toc.yml           | defines the content of the handbook                                                                   |
+ | references.bib     | lists all resources referenced in the course (handbook)                                               |
+
+#### The course part
+
+| File or directory | Purpose                                                                   |
+|-------------------|---------------------------------------------------------------------------|
+| lectures folder   | holds individual lectures (documents and notebooks) and the intro section |
+ | environment.yml   | the conda environment specification used by student during the course     |
 
 ### Creating Handbook
 
