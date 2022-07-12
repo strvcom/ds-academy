@@ -54,3 +54,7 @@ enhancement suggestions, please check open issues first, as you might find that 
 creating an enhancement suggestion, please include as many details as possible. Fill in
 the [template](development/feature_request.md), including the steps you imagine you would take if the feature you're
 requesting existed.
+
+## License
+
+[MIT](LICENSE)
