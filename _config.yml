@@ -6,7 +6,7 @@ author: STRV, Data Science Department
 logo: static/images/logo.png
 copyright: "2022"
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
-exclude_patterns: [ _build, Thumbs.db, .DS_Store, environment.yml, README.md, LICENSE ]
+exclude_patterns: [ _build, Thumbs.db, .DS_Store, environment.yml, README.md, LICENSE, development/*, pull_request_template.md ]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
