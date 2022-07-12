@@ -1,6 +1,11 @@
 # Contributing to STRV Data Science Academy
 
-TODO
+👍🎉 First off, thanks for taking the time to contribute! 🎉👍
+
+The following is a set of simple guidelines for contributing. These are mostly guidelines, not rules. Use your best
+judgment, and feel free to propose changes to this document in a pull request.
+
+> ✏️ If you are not sure, ask [Jan Maly](https://github.com/honzaMaly).
 
 ## Setup
 
@@ -18,6 +23,8 @@ The process described here has several goals:
   and the [project page](https://github.com/strvcom/ds-academy/projects/1)
 - Make sure that you **update both conda environments** when adding dependencies
 
+> ✏️ Do not forget to list your name in the [intro section](../README.md#strv-data-science-academy).
+
 ### Reporting Bugs
 
 Follow the guidelines described [here](../README.md#reporting-bugs).
@@ -26,11 +33,25 @@ Follow the guidelines described [here](../README.md#reporting-bugs).
 
 Follow the guidelines described [here](../README.md#suggesting-enhancements).
 
+### Project structure
+
+TODO
+
 ### Creating Handbook
 
-This is a quick guide describing the process of turning this repository into a handbook hosted on GitHub Pages.
+This is a quick guide describing the process of creating the handbook. Only the most essential steps are included,
+mainly the process of turning this repository into a handbook hosted on GitHub Pages. Check out
+the [Jupyter Book](https://jupyterbook.org/en/stable/intro.html) documentation to get started.
 
-> ✏️ Run all commands presented in this guide with the environment.
+> ✏️ Run all commands presented in this guide with the development environment.
+
+#### Adding new content
+
+TODO
+
+#### Adding References
+
+TODO
 
 #### Build handbook’s HTML
 
