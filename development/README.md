@@ -19,8 +19,9 @@ The process described here has several goals:
 
 - Maintain **STRV quality**
 - Follow the [STRV guides](https://github.com/strvcom/awesome-ds-docs/tree/master/guides)
-- Solve problems/tasks that are important to attendees, follow [issues](https://github.com/strvcom/ds-academy/issues)
-  and the [project page](https://github.com/strvcom/ds-academy/projects/1)
+- Solve problems/tasks that are important to attendees, follow [issues](https://github.com/strvcom/ds-academy/issues),
+  the [project page](https://github.com/strvcom/ds-academy/projects/1) and
+  the [main doc](https://docs.google.com/document/d/1y70tjwpTyntWU_-cbHKC4GGYapBZ6hHYOcWffInp2yw/)
 - Make sure that you **update both conda environments** when adding dependencies
 
 > ✏️ Do not forget to list your name in the [intro section](../README.md#strv-data-science-academy).
@@ -72,7 +73,8 @@ in the handbook.
 
 All references should be kept and tracked in the _references.bib_. Please,
 use [BibTeX format]( http://www.bibtex.org/Using/) for references. You can
-use [Citation Machine](https://www.citationmachine.net/) to generate references.
+use [Citation Machine](https://www.citationmachine.net/) to generate references. For additional information, follow
+the [official guide](https://jupyterbook.org/en/stable/tutorials/references.html).
 
 #### Build handbook’s HTML
 
