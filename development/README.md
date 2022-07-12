@@ -1,22 +1,35 @@
-# STRV Data Science Academy
+# Contributing to STRV Data Science Academy
 
 TODO
 
-## Getting Started
+## Setup
 
 TODO
 
-### Setup
+## How Can I Contribute?
 
-TODO
+The process described here has several goals:
 
-## Creating Handbook
+- Maintain **STRV quality**
+- Follow the [STRV guides](https://github.com/strvcom/awesome-ds-docs/tree/master/guides)
+- Solve problems/tasks that are important to attendees, follow [issues](https://github.com/strvcom/ds-academy/issues)
+  and the [project page](https://github.com/strvcom/ds-academy/projects/1)
+
+### Reporting Bugs
+
+Follow the guidelines described [here](../README.md#reporting-bugs).
+
+### Suggesting Enhancements
+
+Follow the guidelines described [here](../README.md#suggesting-enhancements).
+
+### Creating Handbook
 
 This is a quick guide describing the process of turning this repository into a handbook hosted on GitHub Pages.
 
 > ✏️ Run all commands presented in this guide with the environment.
 
-### Build handbook’s HTML
+#### Build handbook’s HTML
 
 Do so by running the following command:
 
@@ -32,7 +45,7 @@ local folder.
 
 To find additional information, consult the [official guide](https://jupyterbook.org/en/stable/start/build.html).
 
-### Publish handbook to GitHub Pages
+#### Publish handbook to GitHub Pages
 
 Do so by running the following command:
 
