@@ -42,17 +42,17 @@ The repository consists of two parts - one covers the development and the second
 | File or directory  | Purpose                                                                                               |
 |--------------------|-------------------------------------------------------------------------------------------------------|
 | development folder | holds this README.md with guides, several templates and the development environment (environment.yml) |
- | _config.yml        | defines the setting for the handbook and should be left (mostly) untouched                            |
- | _toc.yml           | defines the content of the handbook                                                                   |
- | references.bib     | lists all resources referenced in the course (handbook)                                               |
+| _config.yml        | defines the setting for the handbook and should be left (mostly) untouched                            |
+| _toc.yml           | defines the content of the handbook                                                                   |
+| references.bib     | lists all resources referenced in the course (handbook)                                               |
 
 #### The course part
 
 | File or directory | Purpose                                                                   |
 |-------------------|---------------------------------------------------------------------------|
 | lectures folder   | holds individual lectures (documents and notebooks) and the intro section |
- | environment.yml   | the conda environment specification used by students during the course    |
- | static            | holds static resources (for example, images)                              |
+| environment.yml   | the conda environment specification used by students during the course    |
+| static            | holds static resources (for example, images)                              |
 
 ### Creating Handbook
 
@@ -64,11 +64,15 @@ the [Jupyter Book](https://jupyterbook.org/en/stable/intro.html) documentation t
 
 #### Adding new content
 
-TODO
+When adding new content, please **respect the structure of the project**. Create a new folder `XX_name_of_the_lecture`
+in the _lectures_ folder and put all content there. Update the __toc.yml_ file with your implementation to see changes
+in the handbook.
 
 #### Adding References
 
-TODO
+All references should be kept and tracked in the _references.bib_. Please,
+use [BibTeX format]( http://www.bibtex.org/Using/) for references. You can
+use [Citation Machine](https://www.citationmachine.net/) to generate references.
 
 #### Build handbook’s HTML
 
@@ -87,6 +91,8 @@ local folder.
 To find additional information, consult the [official guide](https://jupyterbook.org/en/stable/start/build.html).
 
 #### Publish handbook to GitHub Pages
+
+> ⚠️ Publish your changes only when your code is merged to master.
 
 Do so by running the following command:
 
