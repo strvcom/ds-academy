@@ -10,7 +10,7 @@ dependencies outside the Python packages as well as the Python packages themselv
 > implementation under Windows.
 
 Well, this guide is not intended as an extensive intro to conda. To get more insight, we recommend reading
-{cite}`conda_guide_1` or {cite}`conda_guide_2`.
+{cite}`vatsal_2022` or {cite}`sarmiento_2020`.
 
 ## Setup
 
@@ -57,7 +57,7 @@ guide on [notebooks](notebooks.ipynb).
 
 It is convenient to create a separate environment for experimenting (and for the end2end ML project).
 The `environment.yml` located in the project can be used as an inspiration. Check out recommended resources
-{cite}`conda_guide_1` or {cite}`conda_guide_2` to get a better idea.
+{cite}`vatsal_2022` or {cite}`sarmiento_2020` to get a better idea.
 
 In general, we recommend installing as many packages as possible using Conda as it handles library dependencies outside
 of the Python packages as well as the Python packages themselves. Most of the packages are hosted
