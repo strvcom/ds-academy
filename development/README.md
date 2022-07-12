@@ -4,7 +4,9 @@ TODO
 
 ## Setup
 
-TODO
+The whole setup is described [here](../lectures/00_start/environment-setup.md#setup). However, ensure that you are
+installing the right [environment in the development folder](environment.yml). Additional dependencies are needed for
+the development (mainly to generate the handbook).
 
 ## How Can I Contribute?
 
@@ -14,6 +16,7 @@ The process described here has several goals:
 - Follow the [STRV guides](https://github.com/strvcom/awesome-ds-docs/tree/master/guides)
 - Solve problems/tasks that are important to attendees, follow [issues](https://github.com/strvcom/ds-academy/issues)
   and the [project page](https://github.com/strvcom/ds-academy/projects/1)
+- Make sure that you **update both conda environments** when adding dependencies
 
 ### Reporting Bugs
 
