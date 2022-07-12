@@ -51,7 +51,8 @@ The repository consists of two parts - one covers the development and the second
 | File or directory | Purpose                                                                   |
 |-------------------|---------------------------------------------------------------------------|
 | lectures folder   | holds individual lectures (documents and notebooks) and the intro section |
- | environment.yml   | the conda environment specification used by student during the course     |
+ | environment.yml   | the conda environment specification used by students during the course    |
+ | static            | holds static resources (for example, images)                              |
 
 ### Creating Handbook
 
