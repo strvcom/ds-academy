@@ -11,13 +11,7 @@ limitations are.
 
 **Hearty thanks to our authors**: [Jan Maly](https://github.com/honzaMaly), <mark>TODO: add your profiles</mark>
 
-## Getting Started
-
-### Handbook
-
-The handbook for this course can be found [here](https://strvcom.github.io/ds-academy/intro.html).
-
-### How to Use this Course
+## How to Use this Course
 
 - Learn more
   about [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv)
@@ -28,47 +22,39 @@ The handbook for this course can be found [here](https://strvcom.github.io/ds-ac
 > ⚠️ There might be some formatting issues when running notebooks. We use a special Markdown
 > to generate the handbook.
 
-### Setup
+## Setup
 
 The code was tested with [conda](https://docs.conda.io/en/latest/) running on Mackbook M1 (ARM-based CPU). It is
 generally harder to get Python things running on M1, so the experience on Linux-like and Windows systems should be
 smoother.
 
 To get your environment up and running for this course, we prepared
-a [guide](https://strvcom.github.io/ds-academy/extra/environment-setup.html) describing all the necessary steps to
+a [guide](https://strvcom.github.io/ds-academy/lectures/00_start/environment-setup.html) describing all the necessary
+steps to
 replicate our environment.
 
-## Creating Handbook
+## How Can I Contribute?
 
-This is a quick guide describing the process of turning this repository into a handbook hosted on GitHub Pages.
+First off, thanks for taking the time to contribute! 🎉👍 As a participant in the course, there are several things
+you can help us with.
 
-> ✏️ Run all commands presented in this guide with the environment.
+> ✏️ If you are an author, refer to the [development section](development/README.md).
 
-### Build handbook’s HTML
+### Reporting Bugs
 
-Do so by running the following command:
+Bugs are tracked as [GitHub issues](https://guides.github.com/features/issues/). Before creating bug reports, please
+check open issues first, as you might find that you don't need to create one. When creating a bug report, please
+include as many details as possible. Please fill out the [required template](development/bug_report.md); the information
+it asks for helps us resolve issues faster.
 
-```console
-jupyter-book build --all ./
-```
+### Suggesting Enhancements
 
-This will generate a fully-functioning HTML site using a static site generator. The site will be placed in
-the `_build/html` folder. The outputs should not be tracked in the main repository.
+Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com/features/issues/). Before creating
+enhancement suggestions, please check open issues first, as you might find that you don't need to create one. When
+creating an enhancement suggestion, please include as many details as possible. Fill in
+the [template](development/feature_request.md), including the steps you imagine you would take if the feature you're
+requesting existed.
 
-To preview your book, you can open the generated HTML files in your browser. Double-click the html file in your
-local folder.
+## License
 
-To find additional information, consult the [official guide](https://jupyterbook.org/en/stable/start/build.html).
-
-### Publish handbook to GitHub Pages
-
-Do so by running the following command:
-
-```console
-ghp-import -n -p -f ./_build/html
-```
-
-The command uploads generated content to `gh-pages` branch. The branch is already registered with GitHub Pages. Vist the
-[project's GitHub Page](https://strvcom.github.io/ds-academy/intro.html) to see final results.
-
-To find additional information, consult the [official guide](https://jupyterbook.org/en/stable/start/publish.html).
+[MIT](LICENSE)
