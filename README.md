@@ -16,7 +16,7 @@ limitations are.
 - Learn more
   about [STRV Academy](https://www.strv.com/blog/everything-you-need-to-know-about-the-strv-academy-inside-strv)
 - All essential materials and information (such as code, theory, guides, and links to resources) are distributed in the
-  form of a [handbook](https://strvcom.github.io/ds-academy/intro.html)
+  form of a [handbook](https://strvcom.github.io/ds-academy)
 - Follow the [Setup](#setup) to be able to create an environment for code execution
 
 > ⚠️ There might be some formatting issues when running notebooks. We use a special Markdown
