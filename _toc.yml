@@ -16,5 +16,5 @@ parts:
   chapters:
     - file: lectures/01_lecture/intro
       sections:
-        - file: lectures/01_lecture/motivational_example
         - file: lectures/01_lecture/python_basics
+        - file: lectures/01_lecture/motivational_example
