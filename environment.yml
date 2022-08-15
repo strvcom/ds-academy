@@ -12,4 +12,4 @@ dependencies:
   - seaborn
   - scikit-learn
   - pandas
-  - graphviz
+  - python-graphviz
