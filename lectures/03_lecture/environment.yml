@@ -1,0 +1,14 @@
+name: lecture03
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.7,<=3.9
+  - pip
+  - notebook
+  - numpy
+  - ipywidgets
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - pandas
