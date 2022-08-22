@@ -6,5 +6,10 @@ dependencies:
   - python>=3.7,<=3.9
   - pip
   - notebook
-  - matplotlib
   - numpy
+  - ipywidgets
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - pandas
+  - python-graphviz

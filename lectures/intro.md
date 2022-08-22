@@ -1,4 +1,4 @@
-# Welcome AI/ML enthusiast
+# Welcome, AI/ML enthusiast
 
 TODO
 
