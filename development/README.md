@@ -102,7 +102,7 @@ Do so by running the following command:
 ghp-import -n -p -f ./_build/html
 ```
 
-The command uploads generated content to `gh-pages` branch. The branch is already registered with GitHub Pages. Vist the
-[project's GitHub Page](https://strvcom.github.io/ds-academy/intro.html) to see final results.
+The command uploads generated content to `gh-pages` branch. The branch is already registered with GitHub Pages. Visit 
+the [project's GitHub Page](https://strvcom.github.io/ds-academy) to see final results.
 
 To find additional information, consult the [official guide](https://jupyterbook.org/en/stable/start/publish.html).
