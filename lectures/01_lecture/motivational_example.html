@@ -1,0 +1,1594 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Motivational Example &#8212; Data Science Academy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://strvcom.github.io/ds-academy/intro.html/lectures/01_lecture/motivational_example.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Python Basics" href="python_basics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Academy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome, AI/ML enthusiast
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../00_start/intro.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/git.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/environment-setup.html">
+     Setup Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/notebooks.html">
+     Getting started with Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/ide-overview.html">
+     Getting more done with IDEs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Your Hands Dirty with Basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Getting Your Hands Dirty with Basics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_basics.html">
+     Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Motivational Example
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/strvcom/ds-academy/master?urlpath=tree/lectures/01_lecture/motivational_example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/strvcom/ds-academy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/strvcom/ds-academy/issues/new?title=Issue%20on%20page%20%2Flectures/01_lecture/motivational_example.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/lectures/01_lecture/motivational_example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem">
+   The Problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-and-checking-data">
+   Loading and Checking Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-data-analysis">
+   Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-problem-with-machine-learning">
+   Solving the problem with Machine Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replace-the-decision-tree-algorithm-with-a-random-forest-classifier">
+     Replace the Decision Tree algorithm with a Random Forest classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deal-with-a-noisy-feature">
+     Deal with a noisy feature
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources">
+   Resources
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Motivational Example</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem">
+   The Problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-and-checking-data">
+   Loading and Checking Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-data-analysis">
+   Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-problem-with-machine-learning">
+   Solving the problem with Machine Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replace-the-decision-tree-algorithm-with-a-random-forest-classifier">
+     Replace the Decision Tree algorithm with a Random Forest classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deal-with-a-noisy-feature">
+     Deal with a noisy feature
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources">
+   Resources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="motivational-example">
+<h1>Motivational Example<a class="headerlink" href="#motivational-example" title="Permalink to this headline">#</a></h1>
+<p>Let”s start our course with a motivational example demonstrating a <strong>simple end-to-end Machine Learning project</strong> from start to finish to show you what a typical data science workflow looks like.</p>
+<p>The example is complex on purpose as it introduces topics from almost all upcoming lectures:</p>
+<ul class="simple">
+<li><p>Intro to the environment and tools + Python basics</p></li>
+<li><p>Understanding, extracting, sourcing, and processing data</p></li>
+<li><p>What is AI/ML &amp; Basic concepts in AI/ML &amp; AI project and workflow</p></li>
+<li><p>(Zoo of) ML techniques (algorithms) &amp; Training and improving ML models (ML Pipelines)</p></li>
+<li><p>Evaluating, comparing, and selecting ML models</p></li>
+</ul>
+<p>At the end of the course, you will have a deeper understanding and some practical experience with those topics.</p>
+<section id="the-problem">
+<h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
+<p>We are helping a client to build a mobile app for field researchers that helps them identify and track flower species. With a new app version, the client wants to automate the identification part somewhat.</p>
+<p>At first, the client wants to assess the feasibility of this potential feature by building a POC. Luckily, the client can provide a reasonable <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/iris">dataset</a> consisting of <strong>four measurements</strong> (sepal length, sepal width, petal length, and petal width) and <strong>identity</strong> (Iris-Setosa, Iris-Versicolour, Iris-Virginica) per sample.</p>
+<p><img alt="An example of Iris plant" src="../../_images/petal_sepal.jpeg" /></p>
+<blockquote>
+<div><p>✏️ The example is inspired by <span id="id1">[<a class="reference internal" href="#id13" title="Rhiever. Rhiever/data-analysis-and-machine-learning-projects: repository of teaching materials, code, and data for my data analysis and machine learning projects. URL: https://github.com/rhiever/Data-Analysis-and-Machine-Learning-Projects.">Rhi</a>]</span>. Some sections are reduced or extended compared to the original example.</p>
+</div></blockquote>
+<p>Before diving straight into coding, let’s give several thoughts on the problem we are about to work on and ask some follow-up questions.</p>
+<p>First, let’s identify the use case. We are asked to classify the species (i.e., class) of the flower based on four measurements that we’re provided: sepal length, sepal width, petal length, and petal width. The solution should run in a mobile app, so we should consider it.</p>
+<blockquote>
+<div><p>✏️ Researchers collected data. It might be a good indicator of data quality, and we might be able to create a good solution. However, be aware that it could perform poorly if ordinary users use the solution because researchers are probably more precise in taking measurements.</p>
+</div></blockquote>
+<p>We haven’t received any definition of success from the client yet. So, let’s ask. <strong>The client told us that he wants to be able to classify 90% of flowers correctly.</strong> Well, we do not know the data yet so let’s have a follow-up conversation about the feasibility and reasonability later on.</p>
+<blockquote>
+<div><p>✏️ For education purposes, libraries are imported once they are in use.</p>
+</div></blockquote>
+</section>
+<section id="loading-and-checking-data">
+<h2>Loading and Checking Data<a class="headerlink" href="#loading-and-checking-data" title="Permalink to this headline">#</a></h2>
+<p>The next step is to look at the data we’re working with. Even curated data sets have errors; finding issues early on can save time later on.</p>
+<p>Generally, we’re looking to answer the following questions:</p>
+<ul class="simple">
+<li><p>Is there anything wrong with the data?</p></li>
+<li><p>Do I need to fix or remove any of the data?</p></li>
+</ul>
+<p>Let’s start by downloading the dataset.</p>
+<blockquote>
+<div><p>✏️ To make the exercise reproducible, we use one of the datasets easily accessible with <em>sklearn</em>. Check out the <a class="reference external" href="https://scikit-learn.org/stable/datasets/toy_dataset.html">Toy datasets documentation</a> to find more valuable datasets for initial experiments.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+
+<span class="n">iris_data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iris_data</span><span class="o">.</span><span class="n">DESCR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.. _iris_dataset:
+
+Iris plants dataset
+--------------------
+
+**Data Set Characteristics:**
+
+    :Number of Instances: 150 (50 in each of three classes)
+    :Number of Attributes: 4 numeric, predictive attributes and the class
+    :Attribute Information:
+        - sepal length in cm
+        - sepal width in cm
+        - petal length in cm
+        - petal width in cm
+        - class:
+                - Iris-Setosa
+                - Iris-Versicolour
+                - Iris-Virginica
+                
+    :Summary Statistics:
+
+    ============== ==== ==== ======= ===== ====================
+                    Min  Max   Mean    SD   Class Correlation
+    ============== ==== ==== ======= ===== ====================
+    sepal length:   4.3  7.9   5.84   0.83    0.7826
+    sepal width:    2.0  4.4   3.05   0.43   -0.4194
+    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
+    petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)
+    ============== ==== ==== ======= ===== ====================
+
+    :Missing Attribute Values: None
+    :Class Distribution: 33.3% for each of 3 classes.
+    :Creator: R.A. Fisher
+    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+    :Date: July, 1988
+
+The famous Iris database, first used by Sir R.A. Fisher. The dataset is taken
+from Fisher&#39;s paper. Note that it&#39;s the same as in R, but not as in the UCI
+Machine Learning Repository, which has two wrong data points.
+
+This is perhaps the best known database to be found in the
+pattern recognition literature.  Fisher&#39;s paper is a classic in the field and
+is referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The
+data set contains 3 classes of 50 instances each, where each class refers to a
+type of iris plant.  One class is linearly separable from the other 2; the
+latter are NOT linearly separable from each other.
+
+.. topic:: References
+
+   - Fisher, R.A. &quot;The use of multiple measurements in taxonomic problems&quot;
+     Annual Eugenics, 7, Part II, 179-188 (1936); also in &quot;Contributions to
+     Mathematical Statistics&quot; (John Wiley, NY, 1950).
+   - Duda, R.O., &amp; Hart, P.E. (1973) Pattern Classification and Scene Analysis.
+     (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.
+   - Dasarathy, B.V. (1980) &quot;Nosing Around the Neighborhood: A New System
+     Structure and Classification Rule for Recognition in Partially Exposed
+     Environments&quot;.  IEEE Transactions on Pattern Analysis and Machine
+     Intelligence, Vol. PAMI-2, No. 1, 67-71.
+   - Gates, G.W. (1972) &quot;The Reduced Nearest Neighbor Rule&quot;.  IEEE Transactions
+     on Information Theory, May 1972, 431-433.
+   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al&quot;s AUTOCLASS II
+     conceptual clustering system finds 3 classes in the data.
+   - Many, many more ...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s load the dataset to a pandas data frame with many convenient utilities for the analysis and visualizing several samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris_data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris_data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">iris_data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">iris_data</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The following cell is related to the <a class="reference external" href="#deal-with-a-noisy-feature">exercise</a> described at the end of the notebook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># if you uncomment the following line it will add some noise to data</span>
+<span class="c1"># data_df[&quot;sepal length (cm)&quot;] = data_df[&quot;sepal length (cm)&quot;] + np.random.normal(-2.0, 0.25, size=len(data_df))</span>
+
+<span class="c1"># if you uncomment the following line it will remove some values</span>
+<span class="c1"># data_df[&quot;petal width (cm)&quot;] = data_df[&quot;petal width (cm)&quot;].sample(frac=0.95)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now is the perfect time to do some checks of our data. In general, we want to make sure that:</p>
+<ul class="simple">
+<li><p>Data is encoded correctly.</p></li>
+<li><p>Data falls within the expected range, and use domain knowledge whenever possible to define that expected range.</p></li>
+<li><p>Deal with missing data in one way or another: replace it or drop it.</p></li>
+</ul>
+<p>Pandas can easily compute some summary statistics for us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>150.000000</td>
+      <td>150.000000</td>
+      <td>150.000000</td>
+      <td>150.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.843333</td>
+      <td>3.057333</td>
+      <td>3.758000</td>
+      <td>1.199333</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.828066</td>
+      <td>0.435866</td>
+      <td>1.765298</td>
+      <td>0.762238</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.300000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.100000</td>
+      <td>2.800000</td>
+      <td>1.600000</td>
+      <td>0.300000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>5.800000</td>
+      <td>3.000000</td>
+      <td>4.350000</td>
+      <td>1.300000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.400000</td>
+      <td>3.300000</td>
+      <td>5.100000</td>
+      <td>1.800000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>7.900000</td>
+      <td>4.400000</td>
+      <td>6.900000</td>
+      <td>2.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>By evaluating counts we can see that all values are present in numerical columns. However, we should use code as a record and implement checks as a good practice. For example, check that all data in <em>sepal length</em> are filled with a numerical value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="o">~</span><span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s use some expert domain knowledge (as we asked several researchers) and check that that <em>sepal lengths</em> for <em>Iris-Versicolour</em> should never be below 2.5 cm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">data_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;versicolor&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">2.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s bring some visualization capabilities to our notebook to understand our data better. This brings us to a next tip. Plot everything you can about the data at this stage of the analysis, so you can visually confirm everything looks correct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this line tells the notebook to show plots inside the notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, let’s create a <strong>scatterplot</strong> matrix. Scatterplot matrices plot the distribution of each column along the diagonal, and then plot a scatterplot matrix for the combination of each variable. They make for an efficient tool to look for errors in our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_15_0.png" src="../../_images/motivational_example_15_0.png" />
+</div>
+</div>
+<p>Last but not least, let’s check species distribution in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;species&#39;, ylabel=&#39;count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/motivational_example_17_1.png" src="../../_images/motivational_example_17_1.png" />
+</div>
+</div>
+<p>Nice! Each species is equally represented in the dataset. So the accuracy metric can be a good metric after all.</p>
+</section>
+<section id="exploratory-data-analysis">
+<h2>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h2>
+<p>Exploratory Data Analysis (EDA) aims to analyze data using some visualization techniques. We did some analysis in the previous part, but we will dive deeper in this section. We will look for some trends and patterns in the data.</p>
+<p>At the end of this process, we want a better understanding and sense of data to come up with additional questions, adjust how we treat data, and develop an appropriate approach to solve our problem.</p>
+<blockquote>
+<div><p>✏️ Working on a Data Science project is a very iterative process. For example, a good EDA should help us better treat outliers or missing values.</p>
+</div></blockquote>
+<p>Let’s revisit the scatterplot matrix that we used earlier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_20_0.png" src="../../_images/motivational_example_20_0.png" />
+</div>
+</div>
+<p>We can notice the strange distribution of the petal measurements because of the different species. This is excellent news for our classification task since the petal measurements will make it easy to distinguish between <em>setosa</em> and the other Iris types.</p>
+<p>Maybe this can be clearer from the following visualizations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sepal width (cm)&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;petal length (cm)&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;petal width (cm)&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;petal width (cm)&#39;, ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/motivational_example_22_1.png" src="../../_images/motivational_example_22_1.png" />
+</div>
+</div>
+<p>There are also correlations between petal length and petal width, as well as sepal length and sepal width. We can even measure it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_24_0.png" src="../../_images/motivational_example_24_0.png" />
+</div>
+</div>
+<p>Let’s ask domain experts about this phenomenon. The field biologists assure us that this is to be expected: Longer flower petals also tend to be wider, and the same applies to sepals.</p>
+<p>Let’s compare the measurement distributions of the classes with box plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal width (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal length (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal width (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;species&#39;, ylabel=&#39;petal width (cm)&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/motivational_example_26_1.png" src="../../_images/motivational_example_26_1.png" />
+</div>
+</div>
+<p>We can also use violin plots. Violin plots contain the same information as box plots, but also scale the box according to the density of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal width (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal length (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal width (cm)&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;species&#39;, ylabel=&#39;petal width (cm)&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/motivational_example_28_1.png" src="../../_images/motivational_example_28_1.png" />
+</div>
+</div>
+<p>Those are just several insights from the data. We can go on and on. However, we have a good intuition about the problem at this point, so let’s build a baseline.</p>
+</section>
+<section id="solving-the-problem-with-machine-learning">
+<h2>Solving the problem with Machine Learning<a class="headerlink" href="#solving-the-problem-with-machine-learning" title="Permalink to this headline">#</a></h2>
+<p>Now, when we better understand our data, let’s prototype a solution for the problem. As was mentioned before, we are dealing with a classification problem.</p>
+<p>Let’s start with the <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html">Decision Tree (DT) algorithm</a>, which is easy to interpret and intuitive to understand. The goal is to create a model that predicts the value of a target variable by learning simple decision rules inferred from the data features.</p>
+<p>For example, one of those learned decision rules might be deciding flower classes using petal features. If you remember our EDA, this should not be surprising.</p>
+<p>Another lovely property of DT is that we can easily export the model to a different platform by rewriting learned rules.</p>
+<p>Let’s convert our targets to machine-readable form:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">])</span>
+<span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">])</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>species</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To assess the ability of our model to classify new flowers and report performance, let’s split our dataset into different sets:</p>
+<ul class="simple">
+<li><p>A <strong>training set</strong> is a random subset of the data we use to train our models.</p></li>
+<li><p>A <strong>testing set</strong> is a random subset of the data (mutually exclusive from the training set) that we use to validate our models on unforeseen data.</p></li>
+</ul>
+<p>It is, in most cases, essential to have some reasonable hold-out sample of data used for evaluation. In our case, we call it a test set. This dataset is never used in the creation process as it would introduce bias into the evaluation. The metrics we have to report at the end would probably be too optimistic. For example, high accuracy on the training dataset gives us little confidence in the model’s performance on unseen data. High accuracy on the testing dataset is a different story.</p>
+<blockquote>
+<div><p>✏️ If we do not say so, we split data in a stratified fashion. It keeps the class proportions the same across all datasets, which is vital for maintaining a representative subset of our data set.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">data_df</span><span class="p">[</span><span class="n">iris_data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">],</span> <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># plot distributions</span>
+<span class="n">labels_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="o">*</span><span class="n">y_train</span><span class="p">,</span> <span class="o">*</span><span class="n">y_test</span><span class="p">]),</span>
+        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">))]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;test&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">))]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">labels_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;class&#39;, ylabel=&#39;count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/motivational_example_32_1.png" src="../../_images/motivational_example_32_1.png" />
+</div>
+</div>
+<p>Let’s fit our first model on the train set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;log_loss&quot;</span><span class="p">)</span>
+<span class="n">decision_tree_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier(criterion=&#x27;log_loss&#x27;, max_depth=2, max_features=2,
+                       random_state=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier(criterion=&#x27;log_loss&#x27;, max_depth=2, max_features=2,
+                       random_state=42)</pre></div></div></div></div></div></div></div>
+</div>
+<p>Let’s evaluate the performance of the model on the train set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">classification_report</span><span class="p">(</span>
+        <span class="n">y_train</span><span class="p">,</span> <span class="n">decision_tree_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">classes_</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>38.000000</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>0.923077</td>
+      <td>0.972973</td>
+      <td>0.947368</td>
+      <td>37.000000</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>0.971429</td>
+      <td>0.918919</td>
+      <td>0.944444</td>
+      <td>37.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.964286</td>
+      <td>0.964286</td>
+      <td>0.964286</td>
+      <td>0.964286</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.964835</td>
+      <td>0.963964</td>
+      <td>0.963938</td>
+      <td>112.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.965149</td>
+      <td>0.964286</td>
+      <td>0.964260</td>
+      <td>112.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And do the same on the test set:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">classification_report</span><span class="p">(</span>
+        <span class="n">y_test</span><span class="p">,</span> <span class="n">decision_tree_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">classes_</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>12.000000</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>0.923077</td>
+      <td>0.923077</td>
+      <td>0.923077</td>
+      <td>13.000000</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>0.923077</td>
+      <td>0.923077</td>
+      <td>0.923077</td>
+      <td>13.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.947368</td>
+      <td>0.947368</td>
+      <td>0.947368</td>
+      <td>0.947368</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.948718</td>
+      <td>0.948718</td>
+      <td>0.948718</td>
+      <td>38.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.947368</td>
+      <td>0.947368</td>
+      <td>0.947368</td>
+      <td>38.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There are many classification metrics. Based on the problem/data, we might care about different ones. What we care about during this exercise is accuracy. And we were able to hit our goal with the baseline on the test set! However, notice the difference between test and train score.</p>
+<p>However, there’s a catch: Depending on how our training and testing set was sampled. To make it more obvious, we will not split data in a stratified fashion. As you can see, our model can achieve anywhere from 80% to 100% accuracy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_accuracies</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">repetition</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">splits</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="n">iris_data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">],</span> <span class="n">data_df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;log_loss&quot;</span><span class="p">)</span>
+    <span class="n">decision_tree_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">splits</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">classifier_accuracy</span> <span class="o">=</span> <span class="n">decision_tree_classifier</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">splits</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">model_accuracies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">classifier_accuracy</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">model_accuracies</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_40_0.png" src="../../_images/motivational_example_40_0.png" />
+</div>
+</div>
+<p>Our model performs quite differently depending on the subset of the data it’s trained on. This phenomenon is known as <em>over-fitting</em>: The model is learning to classify the training set so well that it doesn’t generalize and perform well on data it hasn’t seen before. For example, based on the split, it might prefer certain classes.</p>
+<p>This problem is the main reason that most data scientists perform <em>k-fold cross-validation</em> on their models: Split the original data set into k subsets, use one of the subsets as the testing set, and the rest of the subsets are used as the training set. This process is then repeated k times such that each subset is used as the testing set exactly once.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;log_loss&quot;</span><span class="p">)</span>
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">decision_tree_classifier</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Average score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_42_0.png" src="../../_images/motivational_example_42_0.png" />
+</div>
+</div>
+<p>Now we have better confidence in our classifier’s general classification accuracy.</p>
+<p>Almost every algorithm comes with various parameters to tune, which can be vitally important to the performance of our classifier. For example, if we severely limit the depth of our decision tree classifier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;log_loss&quot;</span><span class="p">)</span>
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">decision_tree_classifier</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Average score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_44_0.png" src="../../_images/motivational_example_44_0.png" />
+</div>
+</div>
+<p>Let’s try to find better parameters for our model. We will use a simple technique called Grid Search. The idea behind <em>Grid Search</em> is simple: explore a range of parameters and find the best-performing parameter combination. We will be using cross-validation to evaluate each set of parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+
+<span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;log_loss&quot;</span><span class="p">)</span>
+
+<span class="n">parameter_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">cross_validation</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">decision_tree_classifier</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">parameter_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cross_validation</span>
+<span class="p">)</span>
+
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameters: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best score: 0.9646752015173069
+Best parameters: {&#39;max_depth&#39;: 2, &#39;max_features&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s visualize the grid search to see how the parameters interact:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_visualization</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s2">&quot;mean_test_score&quot;</span><span class="p">]</span>
+<span class="n">grid_visualization</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">grid_visualization</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">param_grid</span><span class="p">[</span><span class="s2">&quot;max_features&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">param_grid</span><span class="p">[</span><span class="s2">&quot;max_depth&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;max_features&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;max_depth&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_48_0.png" src="../../_images/motivational_example_48_0.png" />
+</div>
+</div>
+<p>Let’s adjust the search with additional parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">parameter_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="s2">&quot;entropy&quot;</span><span class="p">,</span> <span class="s2">&quot;log_loss&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;splitter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="s2">&quot;random&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">cross_validation</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">decision_tree_classifier</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">parameter_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cross_validation</span>
+<span class="p">)</span>
+
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameters: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best score: 0.9554291133238503
+Best parameters: {&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;max_features&#39;: 3, &#39;splitter&#39;: &#39;best&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s train the final model with found parameters on the whole train set:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">decision_tree_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">classification_report</span><span class="p">(</span>
+        <span class="n">y_test</span><span class="p">,</span> <span class="n">decision_tree_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">classes_</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>12.000000</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>1.000000</td>
+      <td>0.923077</td>
+      <td>0.960000</td>
+      <td>13.000000</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>0.928571</td>
+      <td>1.000000</td>
+      <td>0.962963</td>
+      <td>13.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.973684</td>
+      <td>0.973684</td>
+      <td>0.973684</td>
+      <td>0.973684</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.976190</td>
+      <td>0.974359</td>
+      <td>0.974321</td>
+      <td>38.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.975564</td>
+      <td>0.973684</td>
+      <td>0.973645</td>
+      <td>38.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Meeting business requirements is one thing. However, it might not be enough for specific problems. We might need a deeper understanding of how the model is working. Let’s visualize our model to see how it’s making the classifications:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graphviz</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span>
+    <span class="n">decision_tree_classifier</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">iris_data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>
+    <span class="n">class_names</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>
+<span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/motivational_example_54_0.svg" src="../../_images/motivational_example_54_0.svg" /></div>
+</div>
+<p>The interpretation is super helpful. We can grab it and consult it with researchers. They know how to classify flowers, at least intuitively, and we can verify the model with them.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="replace-the-decision-tree-algorithm-with-a-random-forest-classifier">
+<h3>Replace the Decision Tree algorithm with a Random Forest classifier<a class="headerlink" href="#replace-the-decision-tree-algorithm-with-a-random-forest-classifier" title="Permalink to this headline">#</a></h3>
+<p>A common problem decision trees face is that they’re prone to over-fitting as they usually classify the training set near-perfectly. Random Forest classifiers work around that limitation by creating a bunch of decision trees (hence “forest”) - each trained on random subsets of training samples and features. A combination of several weak classifiers usually leads to better performance.</p>
+</section>
+<section id="deal-with-a-noisy-feature">
+<h3>Deal with a noisy feature<a class="headerlink" href="#deal-with-a-noisy-feature" title="Permalink to this headline">#</a></h3>
+<p>We have been working with cleaned data in these exercises. One way to make it more challenging is to uncomment one of lines in the <a class="reference external" href="#loading-and-checking-data">Loading and Checking Data</a>.</p>
+<p>You need to develop some strategies to handle the issue. The goal is to get creative. You will learn some valuable techniques in the following lecture.</p>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id2">
+<dl class="citation">
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id1">Rhi</a></span></dt>
+<dd><p>Rhiever. Rhiever/data-analysis-and-machine-learning-projects: repository of teaching materials, code, and data for my data analysis and machine learning projects. URL: <a class="reference external" href="https://github.com/rhiever/Data-Analysis-and-Machine-Learning-Projects">https://github.com/rhiever/Data-Analysis-and-Machine-Learning-Projects</a>.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures/01_lecture"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="python_basics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Python Basics</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By STRV, Data Science Department<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
