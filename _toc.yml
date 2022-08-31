@@ -18,3 +18,9 @@ parts:
       sections:
         - file: lectures/01_lecture/python_basics
         - file: lectures/01_lecture/motivational_example
+- caption: AI/ML Basic Concepts
+  chapters:
+  - file: lectures/03_lecture_intro
+    sections:
+      - file: lectures/03_lecture/lecture03
+      - file: lecture/03_lecture?lecture_3_slides
