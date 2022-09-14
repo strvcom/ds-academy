@@ -10,8 +10,38 @@ limitations are.
 **Hearty thanks to our authors**: [Jan Maly](https://github.com/honzaMaly), [Niek Mereu](https://github.com/niekstrv)
 , [Lukas Koucky](https://github.com/lukoucky) and [Jaroslav Bezdek](https://github.com/jardabezdek)
 
-> ✏️ This is the very first run of our DS Academy. We want to make the Academy tremendous, so we will ask for a lot of
-> feedback. If there is a bug or mistake in the implementation, please create an issue on GitHub.
+> ✏️ This is the very first run of our **DS Academy**. We want to make the Academy tremendous, so we will ask for a lot 
+> of feedback. If there is a bug or mistake in the implementation, please create a 
+> [report on GitHub](https://github.com/strvcom/ds-academy#how-can-i-contribute).
+
+## The Format
+
+The Academy consists of two equally important parts. The first part aims to teach you the necessary practical and
+theoretical skills to complete the second part. In the second part, you will work on your personal project.
+
+### Lectures
+
+There will be [six lectures](#the-plan) (not counting the last one) dedicated to introducing you to crucial basic
+Machine Learning concepts. Each class is divided into two sessions, separated by a break. We will cover a necessary
+theory for you to understand the practical part involving live coding.
+
+The handbook should contain all materials used during lectures. We will extend materials with recordings of each
+session once we capture them.
+
+### End-to-End Machine Learning Projects
+
+Each student is supposed to work on their [personal project](01_lecture/selecting_topics.md) during the Academy. 
+A personal project is a great way to apply and practice knowledge from lessons on some real word problems. 
+It is also an excellent opportunity to explore specific areas more deeply. Students will be supported by 
+[mentors](#mentors). Results of projects will be presented during [Demo Day]().
+
+## Getting Started
+
+Before the start of the Academy, we expect you to finish the [preliminary lecture](00_start/intro.md), so you have
+everything ready for the first lecture. It is also essential to review the
+[initial information for personal projects](01_lecture/selecting_topics.md). In the first lecture, you will be matched
+with a [mentor](#mentors) to help you with the project. It is crucial to have a project in mind, so we can find you
+an appropriate mentor.
 
 ## The Plan
 

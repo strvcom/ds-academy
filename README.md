@@ -34,8 +34,7 @@ smoother.
 
 To get your environment up and running for this course, we prepared
 a [guide](https://strvcom.github.io/ds-academy/lectures/00_start/environment-setup.html) describing all the necessary
-steps to
-replicate our environment.
+steps to replicate our environment.
 
 ## How Can I Contribute?
 
