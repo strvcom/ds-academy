@@ -7,8 +7,7 @@ completing your own End-to-End Machine Learning Projects. You will gain practica
 with applied ML techniques and an intuitive understanding of what can be achieved through ML and what its
 limitations are.
 
-**Hearty thanks to our authors**: [Jan Maly](https://github.com/honzaMaly), [Niek Mereu](https://github.com/niekstrv)
-, [Lukas Koucky](https://github.com/lukoucky) and [Jaroslav Bezdek](https://github.com/jardabezdek)
+**Hearty thanks to our authors**: [Jan Maly](https://github.com/honzaMaly), [Niek Mereu](https://github.com/niekstrv), [Lukas Koucky](https://github.com/lukoucky), and [Jaroslav Bezdek](https://github.com/jardabezdek).
 
 > ✏️ This is the very first run of our **DS Academy**. We want to make the Academy tremendous, so we will ask for a lot 
 > of feedback. If there is a bug or mistake in the implementation, please create a 
