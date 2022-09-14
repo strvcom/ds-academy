@@ -6,9 +6,20 @@ the lecture.
 
 ## The Plan
 
-| Section                                            | Time       |
-|:---------------------------------------------------|:-----------|
-| [Welcome, AI/ML enthusiast](../intro.md)           | 20 minutes |
-| [Python Basics](python_basics.ipynb)               | 35 minutes |
-| Break                                              | 15 minutes |
-| [Motivational Example](motivational_example.ipynb) | 50 minutes |
+| Section                                               | Time       |
+|:------------------------------------------------------|:-----------|
+| [Welcome, AI/ML enthusiast](../intro.md)              | 20 minutes |
+| [Python Basics](python_basics.ipynb)                  | 30 minutes |
+| Break                                                 | 15 minutes |
+| [Motivational Example](motivational_example.ipynb)    | 40 minutes |
+| [Selecting Mentors and Topics](selecting_topics.md)   | 15 minutes |
+
+<!--
+
+TODO: Add video from the lecture
+
+## Recording from the lecture
+
+[![Lecture Recording](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Lecture Recording")
+
+-->
