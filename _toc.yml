@@ -33,3 +33,8 @@ parts:
   - file: lectures/03_lecture/intro
     sections:
       - file: lectures/03_lecture/supervised_unsupervised_learning
+- caption: Data Pipelines
+  chapters:
+  - file: lectures/04_lecture/intro
+    sections:
+      - file: lectures/04_lecture/data_pipelines
