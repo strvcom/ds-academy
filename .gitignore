@@ -134,3 +134,6 @@ out/
 
 # Igonre generated files for the handbook
 _build
+
+# Ignore local data folder
+data
