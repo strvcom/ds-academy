@@ -7,8 +7,8 @@ TODO
 | Section                                               | Time       |
 |:------------------------------------------------------|:-----------|
 | [Introduction to NumPy](numpy_basics.ipynb)           | 20 minutes |
-| [Introduction to Pandas](pandas_basics.ipynb)         | 20 minutes |
-| [Introduction to Matplotlib](matplotlib_basics.ipynb) | 15 minutes |
+| [Introduction to Pandas](pandas_basics.ipynb)         | 25 minutes |
+| [Introduction to Matplotlib](matplotlib_basics.ipynb) | 10 minutes |
 | Break                                                 | 15 minutes |
 | [Acquiring Data]()                                    | 10 minutes |
 | [Doing Exploratory Data Analysis (EDA)]()             | 20 minutes |
