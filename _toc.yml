@@ -24,6 +24,7 @@ parts:
       sections:
         - file: lectures/02_lecture/numpy_basics
         - file: lectures/02_lecture/pandas_basics
+        - file: lectures/02_lecture/matplotlib_basics
 - caption: AI/ML Basic Concepts
   chapters:
   - file: lectures/03_lecture/intro
