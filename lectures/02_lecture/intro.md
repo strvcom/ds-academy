@@ -1,6 +1,8 @@
 # Understanding, Extracting, Sourcing and Processing Data
 
-TODO
+Welcome to our second lecture at STRV Data Science Academy. In the first part of the lecture, you will have a chance to
+play around with three new libraries: numpy, pandas and matplotlib. Those libraries are essential for data wrangling and
+analysis practiced in the second part of the lecture.
 
 ## The Plan
 
