@@ -1,0 +1,3324 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Pandas &#8212; Data Science Academy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://strvcom.github.io/ds-academy/intro.html/lectures/02_lecture/pandas_basics.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visualization with Matplotlib" href="matplotlib_basics.html" />
+    <link rel="prev" title="Introduction to NumPy" href="numpy_basics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Academy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome, AI/ML enthusiast
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../00_start/intro.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/git.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/environment-setup.html">
+     Setup Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/notebooks.html">
+     Getting started with Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/ide-overview.html">
+     Getting more done with IDEs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Your Hands Dirty with Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01_lecture/intro.html">
+   Getting Your Hands Dirty with Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/python_basics.html">
+     Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/motivational_example.html">
+     Motivational Example
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding, Extracting, Sourcing and Processing Data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Understanding, Extracting, Sourcing and Processing Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="numpy_basics.html">
+     Introduction to NumPy
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib_basics.html">
+     Visualization with Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="acquiring_data.html">
+     Acquiring Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="eda.html">
+     Exploratory Data Analysis (EDA) Wine Quality dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_preparation.html">
+     Data Preparation for ML
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AI/ML Basic Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_lecture/intro.html">
+   Let’s learn some ML concepts and do some regression!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_lecture/supervised_unsupervised_learning.html">
+     LECTURE 3: ML MODELS
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/strvcom/ds-academy/master?urlpath=tree/lectures/02_lecture/pandas_basics.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/strvcom/ds-academy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/strvcom/ds-academy/issues/new?title=Issue%20on%20page%20%2Flectures/02_lecture/pandas_basics.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/lectures/02_lecture/pandas_basics.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-series">
+   Pandas Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-series">
+     Creating Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-characteristics">
+     Series Characteristics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-series">
+     Indexing and Slicing Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-operations">
+     Series Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-dataframes">
+   Pandas DataFrames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-dataframes">
+     Creating DataFrames
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing">
+     Indexing and Slicing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-with">
+     Indexing with []
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-with-loc-and-iloc">
+     Indexing with .loc and .iloc
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-writing-data-from-external-sources">
+   Reading/Writing Data From External Sources
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframes-operations">
+     DataFrames Operations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#applying-custom-functions">
+       Applying Custom Functions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grouping">
+       Grouping
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-datasets">
+     Combining Datasets
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simple-concatenation-with-pd-concat">
+       Simple Concatenation with pd.concat
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#merge-and-join">
+       Merge and Join
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#one-to-one-joins">
+         One-to-one joins
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#many-to-one-joins">
+         Many-to-one joins
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#many-to-many-joins">
+         Many-to-many joins
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-maximum-co2-emmission-in-the-dataset-and-which-food-type-and-country-does-it-belong-to">
+     What is the maximum co2_emmission in the dataset and which food type and country does it belong to?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-countries-produce-more-than-1000-kg-co2-person-year-for-at-least-one-food-type">
+     How many countries produce more than 1000 Kg CO2/person/year for at least one food type?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-total-emissions-of-all-other-non-meat-products-in-the-dataset-combined">
+     What is the total emissions of all other (non-meat) products in the dataset combined?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources">
+   Resources
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-series">
+   Pandas Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-series">
+     Creating Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-characteristics">
+     Series Characteristics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-series">
+     Indexing and Slicing Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-operations">
+     Series Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-dataframes">
+   Pandas DataFrames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-dataframes">
+     Creating DataFrames
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing">
+     Indexing and Slicing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-with">
+     Indexing with []
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-with-loc-and-iloc">
+     Indexing with .loc and .iloc
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-writing-data-from-external-sources">
+   Reading/Writing Data From External Sources
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframes-operations">
+     DataFrames Operations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#applying-custom-functions">
+       Applying Custom Functions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grouping">
+       Grouping
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-datasets">
+     Combining Datasets
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simple-concatenation-with-pd-concat">
+       Simple Concatenation with pd.concat
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#merge-and-join">
+       Merge and Join
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#one-to-one-joins">
+         One-to-one joins
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#many-to-one-joins">
+         Many-to-one joins
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#many-to-many-joins">
+         Many-to-many joins
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-maximum-co2-emmission-in-the-dataset-and-which-food-type-and-country-does-it-belong-to">
+     What is the maximum co2_emmission in the dataset and which food type and country does it belong to?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-countries-produce-more-than-1000-kg-co2-person-year-for-at-least-one-food-type">
+     How many countries produce more than 1000 Kg CO2/person/year for at least one food type?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-total-emissions-of-all-other-non-meat-products-in-the-dataset-combined">
+     What is the total emissions of all other (non-meat) products in the dataset combined?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources">
+   Resources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
+<h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h1>
+<p>Pandas is the most popular Python library for tabular data structures. You can think of Pandas as a compelling version of Excel.</p>
+<p>Pandas allows us to work with the less structured data available in many forms. Pandas introduces more flexibility (e.g., attaching labels to data, working with missing data, etc.) and brings additional operations that do not map well to element-wise broadcasting (e.g., groupings, pivots, etc.)</p>
+<p>Pandas Series and DataFrame objects build on the NumPy array structure and provide efficient access to these sorts of “data munging” tasks that occupy much of a data scientist’s time.</p>
+<blockquote>
+<div><p>✏️ The example is inspired by <span id="id1">[<a class="reference internal" href="#id15" title="TomasBeuzen. Tomasbeuzen/python-programming-for-data-science: content from the university of british columbia's master of data science course dsci 511. URL: https://github.com/TomasBeuzen/python-programming-for-data-science.">Tom</a>]</span> and <span id="id2">[<a class="reference internal" href="#id11" title="Jacob T. Vanderplas. Python Data Science Handbook: Essential Tools for working with data. O'Reilly, 2017.">Van17</a>]</span>.</p>
+</div></blockquote>
+<p>Let’s import pandas with the alias pd:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.4.3&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="pandas-series">
+<h2>Pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">#</a></h2>
+<p>A Series is like a NumPy array but with labels. They are strictly 1-dimensional and can contain any data type (integers, strings, floats, objects, etc.), including a mix of them.</p>
+<section id="creating-series">
+<h3>Creating Series<a class="headerlink" href="#creating-series" title="Permalink to this headline">#</a></h3>
+<p>By default, Series are labeled with indices starting from 0. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    -5.0
+1     1.3
+2    21.0
+3     6.0
+4     3.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, you can add a custom index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    -5.0
+b     1.3
+c    21.0
+d     6.0
+e     3.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can create a Series from a dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    10
+b    20
+c    30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or from an ndarray:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.713316
+1   -1.263639
+2   -0.957728
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="series-characteristics">
+<h3>Series Characteristics<a class="headerlink" href="#series-characteristics" title="Permalink to this headline">#</a></h3>
+<p>You can access the index labels of your Series using the <em>.index</em> attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">s</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=3, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can access the underlying data array using .to_numpy():</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.59167066, -0.65659133,  0.03549932])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexing-and-slicing-series">
+<h3>Indexing and Slicing Series<a class="headerlink" href="#indexing-and-slicing-series" title="Permalink to this headline">#</a></h3>
+<p>Series are very much like ndarrays in this regard (in fact, Series can be passed to most NumPy functions):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">])</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0
+B    1
+C    2
+D    3
+A    4
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0
+B    1
+C    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Series are also like dictionaries in that we can access values using index labels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B    1
+D    3
+C    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;A&quot;</span> <span class="ow">in</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Series do allow for non-unique indexing, but be careful because indexing operations won’t return unique values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0
+A    4
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we can also do boolean indexing with Series:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B    1
+C    2
+D    3
+A    4
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="series-operations">
+<h3>Series Operations<a class="headerlink" href="#series-operations" title="Permalink to this headline">#</a></h3>
+<p>Unlike ndarrays, operations between Series (+, -, /, *) align values based on their <strong>LABELS</strong> (not their position in the structure). The resulting index will be the sorted union of the two indexes. This gives you the flexibility to run operations on Series regardless of their labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">])</span>
+<span class="n">s1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0
+B    1
+C    2
+D    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">])</span>
+<span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B    10
+C    11
+D    12
+E    13
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A     NaN
+B    11.0
+C    13.0
+D    15.0
+E     NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also perform standard operations on a series, like multiplying or squaring. NumPy also accepts Series as an argument to most functions because series are built off numpy arrays:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0
+B    1
+C    4
+D    9
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A     1.000000
+B     2.718282
+C     7.389056
+D    20.085537
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, like arrays, Series have many built-in methods for various operations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pandas-dataframes">
+<h2>Pandas DataFrames<a class="headerlink" href="#pandas-dataframes" title="Permalink to this headline">#</a></h2>
+<p>DataFrames are just Series stuck together. Think of a DataFrame as a dictionary of series, with the “keys” being the column labels and the “values” being the series data:</p>
+<section id="creating-dataframes">
+<h3>Creating DataFrames<a class="headerlink" href="#creating-dataframes" title="Permalink to this headline">#</a></h3>
+<p>Dataframes can be created using <em>pd.DataFrame()</em>. Like series, index and column labels of dataframes are labeled starting from 0 by default:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can use the index and columns arguments to give them labels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="s2">&quot;R2&quot;</span><span class="p">,</span> <span class="s2">&quot;R3&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;C3&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C1</th>
+      <th>C2</th>
+      <th>C3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>R1</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>R2</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>R3</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There are so many ways to create dataframes. For example, you can use dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;C1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;C2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="s2">&quot;R2&quot;</span><span class="p">,</span> <span class="s2">&quot;R3&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C1</th>
+      <th>C2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>R1</th>
+      <td>1</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>R2</th>
+      <td>2</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>R3</th>
+      <td>3</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="indexing-and-slicing">
+<h3>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h3>
+<p>There are several main ways to select data from a DataFrame:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Method</p></th>
+<th class="text-align:left head"><p>Syntax</p></th>
+<th class="text-align:left head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Select column</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">df[col_label]</span></code></p></td>
+<td class="text-align:left"><p>Series</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Select row slice</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">df[row_1_int:row_2_int]</span></code></p></td>
+<td class="text-align:left"><p>DataFrame</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Select row/column by label</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">df.loc[row_label(s),</span> <span class="pre">col_label(s)]</span></code></p></td>
+<td class="text-align:left"><p>Object for single selection, Series for one row/column, otherwise DataFrame</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Select row/column by integer</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">df.iloc[row_int(s),</span> <span class="pre">col_int(s)]</span></code></p></td>
+<td class="text-align:left"><p>Object for single selection, Series for one row/column, otherwise DataFrame</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Select by row integer &amp; column label</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">df.loc[df.index[row_int],</span> <span class="pre">col_label]</span></code></p></td>
+<td class="text-align:left"><p>Object for single selection, Series for one row/column, otherwise DataFrame</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Select by row label &amp; column integer</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">df.loc[row_label,</span> <span class="pre">df.columns[col_int]]</span></code></p></td>
+<td class="text-align:left"><p>Object for single selection, Series for one row/column, otherwise DataFrame</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Select by boolean</p></td>
+<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">df[bool_vec]</span></code></p></td>
+<td class="text-align:left"><p>Object for single selection, Series for one row/column, otherwise DataFrame</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="indexing-with">
+<h3>Indexing with []<a class="headerlink" href="#indexing-with" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Mike&quot;</span><span class="p">,</span> <span class="s2">&quot;Tiffany&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Language&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Courses&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tom</td>
+      <td>Python</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mike</td>
+      <td>Python</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Tiffany</td>
+      <td>R</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Select columns by single labels, lists of labels, or slices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        Tom
+1       Mike
+2    Tiffany
+Name: Name, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Language&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tom</td>
+      <td>Python</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mike</td>
+      <td>Python</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Tiffany</td>
+      <td>R</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Courses&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>Tiffany</td>
+      <td>R</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Tom&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tom</td>
+      <td>Python</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Courses&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Language&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Python&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tom</td>
+      <td>Python</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="indexing-with-loc-and-iloc">
+<h3>Indexing with .loc and .iloc<a class="headerlink" href="#indexing-with-loc-and-iloc" title="Permalink to this headline">#</a></h3>
+<p>Pandas created the methods <em>.loc[]</em> and <em>.iloc[]</em> as more flexible alternatives for accessing data from a dataframe. Use <em>df.iloc[]</em> for indexing with integers and <em>df.loc[]</em> for indexing with labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns a series</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name           Tom
+Language    Python
+Courses          5
+Name: 0, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># slicing returns a dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tom</td>
+      <td>Python</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mike</td>
+      <td>Python</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns the indexed object</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;R&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s look at .loc which accepts labels as references to rows/columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        Tom
+1       Mike
+2    Tiffany
+Name: Name, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reading-writing-data-from-external-sources">
+<h2>Reading/Writing Data From External Sources<a class="headerlink" href="#reading-writing-data-from-external-sources" title="Permalink to this headline">#</a></h2>
+<p>Pandas facilitates reading directly from a url - <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> accepts urls as input:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-18/food_consumption.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>food_category</th>
+      <th>consumption</th>
+      <th>co2_emmission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>Pork</td>
+      <td>10.51</td>
+      <td>37.20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Argentina</td>
+      <td>Poultry</td>
+      <td>38.66</td>
+      <td>41.53</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Argentina</td>
+      <td>Beef</td>
+      <td>55.48</td>
+      <td>1712.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Argentina</td>
+      <td>Lamb &amp; Goat</td>
+      <td>1.56</td>
+      <td>54.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Argentina</td>
+      <td>Fish</td>
+      <td>4.36</td>
+      <td>6.96</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Notice that we are using function <em>.head()</em> to visualize just a fraction of rows taken from the top.</p>
+<p>Let’s save data to a .csv file. You will likely be loading local .csv files more often.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_path</span> <span class="o">=</span> <span class="s1">&#39;../../data/food_consumption.csv&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s read it back:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>food_category</th>
+      <th>consumption</th>
+      <th>co2_emmission</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Argentina</th>
+      <td>Pork</td>
+      <td>10.51</td>
+      <td>37.20</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>Poultry</td>
+      <td>38.66</td>
+      <td>41.53</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>Beef</td>
+      <td>55.48</td>
+      <td>1712.00</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>Lamb &amp; Goat</td>
+      <td>1.56</td>
+      <td>54.63</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>Fish</td>
+      <td>4.36</td>
+      <td>6.96</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="dataframes-operations">
+<h3>DataFrames Operations<a class="headerlink" href="#dataframes-operations" title="Permalink to this headline">#</a></h3>
+<p>Similar to Series, DataFrames have built-in functions for performing most common operations, e.g., <em>.max()</em>, <em>.idxmin()</em>, <em>.sort_values()</em>, <em>.value_counts()</em>, etc. They’re all documented in the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas documentation</a>.</p>
+<p>Let’s try a few of them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>food_category    Wheat and Wheat Products
+consumption                        430.76
+co2_emmission                      1712.0
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;co2_emmission&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1712.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;co2_emmission&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Argentina&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;co2_emmission&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>food_category</th>
+      <th>consumption</th>
+      <th>co2_emmission</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Togo</th>
+      <td>Soybeans</td>
+      <td>0.01</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Paraguay</th>
+      <td>Soybeans</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Saudi Arabia</th>
+      <td>Pork</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Cambodia</th>
+      <td>Lamb &amp; Goat</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Croatia</th>
+      <td>Soybeans</td>
+      <td>0.00</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;food_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pork                        130
+Poultry                     130
+Beef                        130
+Lamb &amp; Goat                 130
+Fish                        130
+Eggs                        130
+Milk - inc. cheese          130
+Wheat and Wheat Products    130
+Rice                        130
+Soybeans                    130
+Nuts inc. Peanut Butter     130
+Name: food_category, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="applying-custom-functions">
+<h4>Applying Custom Functions<a class="headerlink" href="#applying-custom-functions" title="Permalink to this headline">#</a></h4>
+<p>There might be cases when you want to apply a function not built-in to Pandas. For this, we also have methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.apply()</span></code>, applies a function column-wise or row-wise across a dataframe (the function must be able to accept/return an array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.applymap()</span></code>, applies a function element-wise (for functions that accept/return single values at a time)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">series.apply()</span></code>/<code class="docutils literal notranslate"><span class="pre">series.map()</span></code>, same as above but for Pandas series</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;consumption&#39;</span><span class="p">,</span> <span class="s1">&#39;co2_emmission&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>consumption</th>
+      <th>co2_emmission</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Argentina</th>
+      <td>3.241913</td>
+      <td>6.099180</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>6.217717</td>
+      <td>6.444377</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>7.448490</td>
+      <td>41.376322</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>1.249000</td>
+      <td>7.391211</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>2.088061</td>
+      <td>2.638181</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>4.680812</td>
+      <td>5.586591</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>4.179713</td>
+      <td>1.824829</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>13.104579</td>
+      <td>14.824304</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>0.781025</td>
+      <td>0.519615</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>0.848528</td>
+      <td>1.126943</td>
+    </tr>
+  </tbody>
+</table>
+<p>1430 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">length_of_category</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;food_category&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">length_of_category</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>food_category</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Argentina</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Argentina</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>Bangladesh</th>
+      <td>23</td>
+    </tr>
+  </tbody>
+</table>
+<p>1430 rows × 1 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="grouping">
+<h4>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">#</a></h4>
+<p>Often we are interested in examining specific groups in our data. <code class="docutils literal notranslate"><span class="pre">df.groupby()</span></code> allows us to group our data based on a variable(s):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;food_category&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <em>groupby</em> object is really just a dictionary of index-mappings, which we could look at if we wanted to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">groups</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Beef&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Eggs&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Fish&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Lamb &amp; Goat&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Milk - inc. cheese&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Nuts inc. Peanut Butter&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Pork&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Poultry&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Rice&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Soybeans&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...], &#39;Wheat and Wheat Products&#39;: [&#39;Argentina&#39;, &#39;Australia&#39;, &#39;Albania&#39;, &#39;Iceland&#39;, &#39;New Zealand&#39;, &#39;USA&#39;, &#39;Uruguay&#39;, &#39;Luxembourg&#39;, &#39;Brazil&#39;, &#39;Kazakhstan&#39;, &#39;Sweden&#39;, &#39;Bermuda&#39;, &#39;Denmark&#39;, &#39;Finland&#39;, &#39;Ireland&#39;, &#39;Greece&#39;, &#39;France&#39;, &#39;Canada&#39;, &#39;Norway&#39;, &#39;Hong Kong SAR. China&#39;, &#39;French Polynesia&#39;, &#39;Israel&#39;, &#39;Switzerland&#39;, &#39;Netherlands&#39;, &#39;Kuwait&#39;, &#39;United Kingdom&#39;, &#39;Austria&#39;, &#39;Oman&#39;, &#39;Italy&#39;, &#39;Bahamas&#39;, &#39;Portugal&#39;, &#39;Malta&#39;, &#39;Armenia&#39;, &#39;Slovenia&#39;, &#39;Chile&#39;, &#39;Venezuela&#39;, &#39;Belgium&#39;, &#39;Germany&#39;, &#39;Russia&#39;, &#39;Croatia&#39;, &#39;Belarus&#39;, &#39;Spain&#39;, &#39;Paraguay&#39;, &#39;New Caledonia&#39;, &#39;South Africa&#39;, &#39;Barbados&#39;, &#39;Lithuania&#39;, &#39;Turkey&#39;, &#39;Estonia&#39;, &#39;Mexico&#39;, &#39;Costa Rica&#39;, &#39;Bolivia&#39;, &#39;Ecuador&#39;, &#39;Panama&#39;, &#39;Czech Republic&#39;, &#39;Romania&#39;, &#39;Colombia&#39;, &#39;Maldives&#39;, &#39;Cyprus&#39;, &#39;Serbia&#39;, &#39;United Arab Emirates&#39;, &#39;Algeria&#39;, &#39;Ukraine&#39;, &#39;Pakistan&#39;, &#39;Swaziland&#39;, &#39;Latvia&#39;, &#39;Bosnia and Herzegovina&#39;, &#39;Fiji&#39;, &#39;South Korea&#39;, &#39;Poland&#39;, &#39;Saudi Arabia&#39;, &#39;Botswana&#39;, &#39;Macedonia&#39;, &#39;Hungary&#39;, &#39;Trinidad and Tobago&#39;, &#39;Tunisia&#39;, &#39;Egypt&#39;, &#39;Mauritius&#39;, &#39;Bulgaria&#39;, &#39;Morocco&#39;, &#39;Slovakia&#39;, &#39;Niger&#39;, &#39;Kenya&#39;, &#39;Jordan&#39;, &#39;Japan&#39;, &#39;Georgia&#39;, &#39;Grenada&#39;, &#39;El Salvador&#39;, &#39;Cuba&#39;, &#39;China&#39;, &#39;Honduras&#39;, &#39;Taiwan. ROC&#39;, &#39;Angola&#39;, &#39;Jamaica&#39;, &#39;Namibia&#39;, &#39;Belize&#39;, &#39;Malaysia&#39;, &#39;Zimbabwe&#39;, &#39;Guatemala&#39;, &#39;Uganda&#39;, ...]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s access a group using the .get_group() method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Beef&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>food_category</th>
+      <th>consumption</th>
+      <th>co2_emmission</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Argentina</th>
+      <td>Beef</td>
+      <td>55.48</td>
+      <td>1712.00</td>
+    </tr>
+    <tr>
+      <th>Australia</th>
+      <td>Beef</td>
+      <td>33.86</td>
+      <td>1044.85</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>Beef</td>
+      <td>22.50</td>
+      <td>694.30</td>
+    </tr>
+    <tr>
+      <th>Iceland</th>
+      <td>Beef</td>
+      <td>13.36</td>
+      <td>412.26</td>
+    </tr>
+    <tr>
+      <th>New Zealand</th>
+      <td>Beef</td>
+      <td>22.49</td>
+      <td>693.99</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The usual thing to do however, is to apply aggregate functions to the <em>groupby</em> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>consumption</th>
+      <th>co2_emmission</th>
+    </tr>
+    <tr>
+      <th>food_category</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Beef</th>
+      <td>12.123385</td>
+      <td>374.102000</td>
+    </tr>
+    <tr>
+      <th>Eggs</th>
+      <td>8.163769</td>
+      <td>7.499615</td>
+    </tr>
+    <tr>
+      <th>Fish</th>
+      <td>17.287077</td>
+      <td>27.601692</td>
+    </tr>
+    <tr>
+      <th>Lamb &amp; Goat</th>
+      <td>2.600154</td>
+      <td>91.056769</td>
+    </tr>
+    <tr>
+      <th>Milk - inc. cheese</th>
+      <td>125.774692</td>
+      <td>179.153846</td>
+    </tr>
+    <tr>
+      <th>Nuts inc. Peanut Butter</th>
+      <td>4.137231</td>
+      <td>7.323000</td>
+    </tr>
+    <tr>
+      <th>Pork</th>
+      <td>16.123692</td>
+      <td>57.070077</td>
+    </tr>
+    <tr>
+      <th>Poultry</th>
+      <td>21.219231</td>
+      <td>22.793538</td>
+    </tr>
+    <tr>
+      <th>Rice</th>
+      <td>29.375154</td>
+      <td>37.591615</td>
+    </tr>
+    <tr>
+      <th>Soybeans</th>
+      <td>0.860538</td>
+      <td>0.387308</td>
+    </tr>
+    <tr>
+      <th>Wheat and Wheat Products</th>
+      <td>71.549538</td>
+      <td>13.644462</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can apply multiple functions using <em>.aggregate()</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">consumption</th>
+      <th colspan="3" halign="left">co2_emmission</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>sum</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>sum</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>food_category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Beef</th>
+      <td>12.123385</td>
+      <td>1576.04</td>
+      <td>130</td>
+      <td>374.102000</td>
+      <td>48633.26</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Eggs</th>
+      <td>8.163769</td>
+      <td>1061.29</td>
+      <td>130</td>
+      <td>7.499615</td>
+      <td>974.95</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Fish</th>
+      <td>17.287077</td>
+      <td>2247.32</td>
+      <td>130</td>
+      <td>27.601692</td>
+      <td>3588.22</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Lamb &amp; Goat</th>
+      <td>2.600154</td>
+      <td>338.02</td>
+      <td>130</td>
+      <td>91.056769</td>
+      <td>11837.38</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Milk - inc. cheese</th>
+      <td>125.774692</td>
+      <td>16350.71</td>
+      <td>130</td>
+      <td>179.153846</td>
+      <td>23290.00</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Nuts inc. Peanut Butter</th>
+      <td>4.137231</td>
+      <td>537.84</td>
+      <td>130</td>
+      <td>7.323000</td>
+      <td>951.99</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Pork</th>
+      <td>16.123692</td>
+      <td>2096.08</td>
+      <td>130</td>
+      <td>57.070077</td>
+      <td>7419.11</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Poultry</th>
+      <td>21.219231</td>
+      <td>2758.50</td>
+      <td>130</td>
+      <td>22.793538</td>
+      <td>2963.16</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Rice</th>
+      <td>29.375154</td>
+      <td>3818.77</td>
+      <td>130</td>
+      <td>37.591615</td>
+      <td>4886.91</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Soybeans</th>
+      <td>0.860538</td>
+      <td>111.87</td>
+      <td>130</td>
+      <td>0.387308</td>
+      <td>50.35</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>Wheat and Wheat Products</th>
+      <td>71.549538</td>
+      <td>9301.44</td>
+      <td>130</td>
+      <td>13.644462</td>
+      <td>1773.78</td>
+      <td>130</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="combining-datasets">
+<h3>Combining Datasets<a class="headerlink" href="#combining-datasets" title="Permalink to this headline">#</a></h3>
+<p>Some of the most exciting analyses come from combining different data sources. These operations can involve a straightforward concatenation of two datasets to more complicated database-style joins and merges that correctly handle any overlaps between the datasets.</p>
+<section id="simple-concatenation-with-pd-concat">
+<h4>Simple Concatenation with pd.concat<a class="headerlink" href="#simple-concatenation-with-pd-concat" title="Permalink to this headline">#</a></h4>
+<p>Pandas has a function, <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code>, which has a similar syntax to <code class="docutils literal notranslate"><span class="pre">np.concatenate</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+<span class="n">ser2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ser1</span><span class="p">,</span> <span class="n">ser2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    A
+1    B
+2    C
+0    D
+1    E
+2    F
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the concatenation takes place row-wise within the DataFrame (i.e., axis=0):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can also concatenate columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="merge-and-join">
+<h4>Merge and Join<a class="headerlink" href="#merge-and-join" title="Permalink to this headline">#</a></h4>
+<p>One essential feature offered by Pandas is its high-performance, in-memory join and merge operations. If you have ever worked with databases, you should be familiar with this type of data interaction. The main interface for this is the <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;employee&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Jake&#39;</span><span class="p">,</span> <span class="s1">&#39;Lisa&#39;</span><span class="p">,</span> <span class="s1">&#39;Sue&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;employee&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Lisa&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Jake&#39;</span><span class="p">,</span> <span class="s1">&#39;Sue&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;hire_date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2004</span><span class="p">,</span> <span class="mi">2008</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2014</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>hire_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lisa</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jake</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="one-to-one-joins">
+<h5>One-to-one joins<a class="headerlink" href="#one-to-one-joins" title="Permalink to this headline">#</a></h5>
+<p>Perhaps the simplest type of merge expression is the one-to-one join, which is in many ways very similar to the column-wise concatenation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>hire_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="many-to-one-joins">
+<h5>Many-to-one joins<a class="headerlink" href="#many-to-one-joins" title="Permalink to this headline">#</a></h5>
+<p>Many-to-one joins are joins in which one of the two key columns contains duplicate entries. For the many-to-one case, the resulting DataFrame will preserve those duplicate entries as appropriate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;supervisor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Carly&#39;</span><span class="p">,</span> <span class="s1">&#39;Guido&#39;</span><span class="p">,</span> <span class="s1">&#39;Steve&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>supervisor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Accounting</td>
+      <td>Carly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Engineering</td>
+      <td>Guido</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>HR</td>
+      <td>Steve</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">df4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>hire_date</th>
+      <th>supervisor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>2008</td>
+      <td>Carly</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>2012</td>
+      <td>Guido</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>2004</td>
+      <td>Guido</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>2014</td>
+      <td>Steve</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="many-to-many-joins">
+<h5>Many-to-many joins<a class="headerlink" href="#many-to-many-joins" title="Permalink to this headline">#</a></h5>
+<p>If the key column in both the left and right array contains duplicates, then the result is a many-to-many merge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;Accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;skills&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;math&#39;</span><span class="p">,</span> <span class="s1">&#39;spreadsheets&#39;</span><span class="p">,</span> <span class="s1">&#39;coding&#39;</span><span class="p">,</span> <span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="s1">&#39;spreadsheets&#39;</span><span class="p">,</span> <span class="s1">&#39;organization&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Accounting</td>
+      <td>math</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Accounting</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Engineering</td>
+      <td>coding</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Engineering</td>
+      <td>linux</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>HR</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>HR</td>
+      <td>organization</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>math</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>coding</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>linux</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>coding</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>linux</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>spreadsheets</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>organization</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<p>In this practice exercise, we’ll investigate different foods’ carbon footprints. We’ll leverage a dataset compiled by <a class="reference external" href="https://r-tastic.co.uk/post/from-messy-to-tidy/">Kasia Kulma</a> and contributed to <a class="reference external" href="https://github.com/rfordatascience/tidytuesday">R’s Tidy Tuesday project</a>.</p>
+<p>Import the dataset as a data frame named df from this URL:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-18/food_consumption.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>food_category</th>
+      <th>consumption</th>
+      <th>co2_emmission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Argentina</td>
+      <td>Pork</td>
+      <td>10.51</td>
+      <td>37.20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Argentina</td>
+      <td>Poultry</td>
+      <td>38.66</td>
+      <td>41.53</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Argentina</td>
+      <td>Beef</td>
+      <td>55.48</td>
+      <td>1712.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Argentina</td>
+      <td>Lamb &amp; Goat</td>
+      <td>1.56</td>
+      <td>54.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Argentina</td>
+      <td>Fish</td>
+      <td>4.36</td>
+      <td>6.96</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="what-is-the-maximum-co2-emmission-in-the-dataset-and-which-food-type-and-country-does-it-belong-to">
+<h3>What is the maximum co2_emmission in the dataset and which food type and country does it belong to?<a class="headerlink" href="#what-is-the-maximum-co2-emmission-in-the-dataset-and-which-food-type-and-country-does-it-belong-to" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-many-countries-produce-more-than-1000-kg-co2-person-year-for-at-least-one-food-type">
+<h3>How many countries produce more than 1000 Kg CO2/person/year for at least one food type?<a class="headerlink" href="#how-many-countries-produce-more-than-1000-kg-co2-person-year-for-at-least-one-food-type" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-the-total-emissions-of-all-other-non-meat-products-in-the-dataset-combined">
+<h3>What is the total emissions of all other (non-meat) products in the dataset combined?<a class="headerlink" href="#what-is-the-total-emissions-of-all-other-non-meat-products-in-the-dataset-combined" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id3">
+<dl class="citation">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id1">Tom</a></span></dt>
+<dd><p>TomasBeuzen. Tomasbeuzen/python-programming-for-data-science: content from the university of british columbia's master of data science course dsci 511. URL: <a class="reference external" href="https://github.com/TomasBeuzen/python-programming-for-data-science">https://github.com/TomasBeuzen/python-programming-for-data-science</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id2">Van17</a></span></dt>
+<dd><p>Jacob T. Vanderplas. <em>Python Data Science Handbook: Essential Tools for working with data</em>. O'Reilly, 2017.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures/02_lecture"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="numpy_basics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to NumPy</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="matplotlib_basics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualization with Matplotlib</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By STRV, Data Science Department<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

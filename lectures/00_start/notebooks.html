@@ -184,6 +184,55 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Understanding, Extracting, Sourcing and Processing Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02_lecture/intro.html">
+   Understanding, Extracting, Sourcing and Processing Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/numpy_basics.html">
+     Introduction to NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/pandas_basics.html">
+     Introduction to Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/matplotlib_basics.html">
+     Visualization with Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/acquiring_data.html">
+     Acquiring Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/eda.html">
+     Exploratory Data Analysis (EDA) Wine Quality dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/data_preparation.html">
+     Data Preparation for ML
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   AI/ML Basic Concepts
  </span>
 </p>
@@ -192,8 +241,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../03_lecture/intro.html">
    Let’s learn some ML concepts and do some regression!
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -562,7 +611,7 @@ title="Print to PDF"
 <h1>Getting started with Jupyter Notebooks<a class="headerlink" href="#getting-started-with-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
 <p>We extensively use <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a> during the course, and we expect you to hand over your project as a notebook presentation. It is a powerful tool for <strong>interactively developing and presenting new Machine Learning concepts and doing exercises</strong>. Therefore, it is vital to get comfortable with the Jupyter Notebook. This chapter will walk you through some basics how to use Jupyter Notebooks.</p>
 <blockquote>
-<div><p>✏️ For additional detail, you can visit the resources used for this tutorial: <span id="id1">[<a class="reference internal" href="#id12" title="Real Python. Jupyter notebook: an introduction. Feb 2021. URL: https://realpython.com/jupyter-notebook-introduction/#further-reading.">Pyt21</a>]</span>, <span id="id2">[<a class="reference internal" href="#id13" title="Benjamin Pryke. How to use jupyter notebook: a beginner's tutorial. Jun 2022. URL: https://www.dataquest.io/blog/jupyter-notebook-tutorial/.">Pry22</a>]</span> and <span id="id3">[<a class="reference internal" href="#id14" title="Jacob T. Vanderplas. Python Data Science Handbook: Essential Tools for working with data. O'Reilly, 2017.">Van17</a>]</span>. We recommend reading <span id="id4">[<a class="reference internal" href="#id15" title="Celeste Grupman. 28 jupyter notebook tips, tricks, and shortcuts. Dec 2021. URL: https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/.">Gru21</a>]</span> and <span id="id5">[<a class="reference internal" href="#id16" title="Benjamin Pryke. Tutorial: advanced jupyter notebooks. Nov 2021. URL: https://www.dataquest.io/blog/advanced-jupyter-notebooks-tutorial/.">Pry21</a>]</span> for more advanced topics.</p>
+<div><p>✏️ For additional detail, you can visit the resources used for this tutorial: <span id="id1">[<a class="reference internal" href="#id12" title="Real Python. Jupyter notebook: an introduction. Feb 2021. URL: https://realpython.com/jupyter-notebook-introduction/#further-reading.">Pyt21</a>]</span>, <span id="id2">[<a class="reference internal" href="#id13" title="Benjamin Pryke. How to use jupyter notebook: a beginner's tutorial. Jun 2022. URL: https://www.dataquest.io/blog/jupyter-notebook-tutorial/.">Pry22</a>]</span> and <span id="id3">[<a class="reference internal" href="../02_lecture/pandas_basics.html#id11" title="Jacob T. Vanderplas. Python Data Science Handbook: Essential Tools for working with data. O'Reilly, 2017.">Van17</a>]</span>. We recommend reading <span id="id4">[<a class="reference internal" href="#id15" title="Celeste Grupman. 28 jupyter notebook tips, tricks, and shortcuts. Dec 2021. URL: https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/.">Gru21</a>]</span> and <span id="id5">[<a class="reference internal" href="#id16" title="Benjamin Pryke. Tutorial: advanced jupyter notebooks. Nov 2021. URL: https://www.dataquest.io/blog/advanced-jupyter-notebooks-tutorial/.">Pry21</a>]</span> for more advanced topics.</p>
 </div></blockquote>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
@@ -722,7 +771,7 @@ And finally, adding images is easy: ![<span class="nt">Alt text</span>](<span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>386 ns ± 7.08 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>383 ns ± 3.71 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>

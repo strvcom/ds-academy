@@ -1,0 +1,1788 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exploratory Data Analysis (EDA) Wine Quality dataset &#8212; Data Science Academy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://strvcom.github.io/ds-academy/intro.html/lectures/02_lecture/eda.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Preparation for ML" href="data_preparation.html" />
+    <link rel="prev" title="Acquiring Data" href="acquiring_data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Academy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome, AI/ML enthusiast
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../00_start/intro.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/git.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/environment-setup.html">
+     Setup Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/notebooks.html">
+     Getting started with Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/ide-overview.html">
+     Getting more done with IDEs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Your Hands Dirty with Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01_lecture/intro.html">
+   Getting Your Hands Dirty with Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/python_basics.html">
+     Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/motivational_example.html">
+     Motivational Example
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding, Extracting, Sourcing and Processing Data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Understanding, Extracting, Sourcing and Processing Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="numpy_basics.html">
+     Introduction to NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pandas_basics.html">
+     Introduction to Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matplotlib_basics.html">
+     Visualization with Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="acquiring_data.html">
+     Acquiring Data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exploratory Data Analysis (EDA) Wine Quality dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_preparation.html">
+     Data Preparation for ML
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AI/ML Basic Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_lecture/intro.html">
+   Let’s learn some ML concepts and do some regression!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_lecture/supervised_unsupervised_learning.html">
+     LECTURE 3: ML MODELS
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/strvcom/ds-academy/master?urlpath=tree/lectures/02_lecture/eda.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/strvcom/ds-academy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/strvcom/ds-academy/issues/new?title=Issue%20on%20page%20%2Flectures/02_lecture/eda.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/lectures/02_lecture/eda.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#red-wine-dataset-analysis">
+   Red Wine Dataset Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#white-wine-dataset-analysis">
+   White Wine Dataset Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-combined-data">
+   Analyze Combined Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-sorts-of-passengers-were-more-likely-to-survive-the-titanic-crash">
+     What sorts of passengers were more likely to survive the Titanic crash?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources">
+   Resources
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exploratory Data Analysis (EDA) Wine Quality dataset</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#red-wine-dataset-analysis">
+   Red Wine Dataset Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#white-wine-dataset-analysis">
+   White Wine Dataset Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-combined-data">
+   Analyze Combined Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-sorts-of-passengers-were-more-likely-to-survive-the-titanic-crash">
+     What sorts of passengers were more likely to survive the Titanic crash?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources">
+   Resources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis-eda-wine-quality-dataset">
+<h1>Exploratory Data Analysis (EDA) Wine Quality dataset<a class="headerlink" href="#exploratory-data-analysis-eda-wine-quality-dataset" title="Permalink to this headline">#</a></h1>
+<p>We will analyze the well-known <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/wine+quality">wine dataset</a> using our newly gained skills in this part. Each wine is described with several attributes obtained by physicochemical tests and by its quality (from 1 to 10). This dataset is perfect for many ML tasks such as:</p>
+<ul class="simple">
+<li><p>Testing Outlier detection algorithms that can detect the few excellent or poor wines</p></li>
+<li><p>Modeling the relationship between wine quality and wine attributes (using regression or classification)</p></li>
+<li><p>Attribute (feature) selection techniques to remove unimportant features</p></li>
+</ul>
+<blockquote>
+<div><p>✏️ The example is inspired by <span id="id1">[<a class="reference internal" href="#id15" title="PacktPublishing. Packtpublishing/hands-on-exploratory-data-analysis-with-python: hands-on exploratory data analysis with python, published by packt. URL: https://github.com/PacktPublishing/Hands-on-Exploratory-Data-Analysis-with-Python.">Pac</a>]</span>.</p>
+</div></blockquote>
+<p>Let’s start by importing packages:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s load our data (there are two datasets for red and white wines):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">red_wine_url</span> <span class="o">=</span> <span class="s2">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv&quot;</span>
+<span class="n">white_wine_url</span> <span class="o">=</span> <span class="s2">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv&quot;</span>
+
+<span class="c1"># load data to DF</span>
+<span class="n">df_red</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">red_wine_url</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+<span class="n">df_white</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">white_wine_url</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check red wine data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_red</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1599 entries, 0 to 1598
+Data columns (total 12 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   fixed acidity         1599 non-null   float64
+ 1   volatile acidity      1599 non-null   float64
+ 2   citric acid           1599 non-null   float64
+ 3   residual sugar        1599 non-null   float64
+ 4   chlorides             1599 non-null   float64
+ 5   free sulfur dioxide   1599 non-null   float64
+ 6   total sulfur dioxide  1599 non-null   float64
+ 7   density               1599 non-null   float64
+ 8   pH                    1599 non-null   float64
+ 9   sulphates             1599 non-null   float64
+ 10  alcohol               1599 non-null   float64
+ 11  quality               1599 non-null   int64  
+dtypes: float64(11), int64(1)
+memory usage: 150.0 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_red</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>8.319637</td>
+      <td>0.527821</td>
+      <td>0.270976</td>
+      <td>2.538806</td>
+      <td>0.087467</td>
+      <td>15.874922</td>
+      <td>46.467792</td>
+      <td>0.996747</td>
+      <td>3.311113</td>
+      <td>0.658149</td>
+      <td>10.422983</td>
+      <td>5.636023</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.741096</td>
+      <td>0.179060</td>
+      <td>0.194801</td>
+      <td>1.409928</td>
+      <td>0.047065</td>
+      <td>10.460157</td>
+      <td>32.895324</td>
+      <td>0.001887</td>
+      <td>0.154386</td>
+      <td>0.169507</td>
+      <td>1.065668</td>
+      <td>0.807569</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.600000</td>
+      <td>0.120000</td>
+      <td>0.000000</td>
+      <td>0.900000</td>
+      <td>0.012000</td>
+      <td>1.000000</td>
+      <td>6.000000</td>
+      <td>0.990070</td>
+      <td>2.740000</td>
+      <td>0.330000</td>
+      <td>8.400000</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>7.100000</td>
+      <td>0.390000</td>
+      <td>0.090000</td>
+      <td>1.900000</td>
+      <td>0.070000</td>
+      <td>7.000000</td>
+      <td>22.000000</td>
+      <td>0.995600</td>
+      <td>3.210000</td>
+      <td>0.550000</td>
+      <td>9.500000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>7.900000</td>
+      <td>0.520000</td>
+      <td>0.260000</td>
+      <td>2.200000</td>
+      <td>0.079000</td>
+      <td>14.000000</td>
+      <td>38.000000</td>
+      <td>0.996750</td>
+      <td>3.310000</td>
+      <td>0.620000</td>
+      <td>10.200000</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>9.200000</td>
+      <td>0.640000</td>
+      <td>0.420000</td>
+      <td>2.600000</td>
+      <td>0.090000</td>
+      <td>21.000000</td>
+      <td>62.000000</td>
+      <td>0.997835</td>
+      <td>3.400000</td>
+      <td>0.730000</td>
+      <td>11.100000</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>15.900000</td>
+      <td>1.580000</td>
+      <td>1.000000</td>
+      <td>15.500000</td>
+      <td>0.611000</td>
+      <td>72.000000</td>
+      <td>289.000000</td>
+      <td>1.003690</td>
+      <td>4.010000</td>
+      <td>2.000000</td>
+      <td>14.900000</td>
+      <td>8.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s check white wine data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_white</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 4898 entries, 0 to 4897
+Data columns (total 12 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   fixed acidity         4898 non-null   float64
+ 1   volatile acidity      4898 non-null   float64
+ 2   citric acid           4898 non-null   float64
+ 3   residual sugar        4898 non-null   float64
+ 4   chlorides             4898 non-null   float64
+ 5   free sulfur dioxide   4898 non-null   float64
+ 6   total sulfur dioxide  4898 non-null   float64
+ 7   density               4898 non-null   float64
+ 8   pH                    4898 non-null   float64
+ 9   sulphates             4898 non-null   float64
+ 10  alcohol               4898 non-null   float64
+ 11  quality               4898 non-null   int64  
+dtypes: float64(11), int64(1)
+memory usage: 459.3 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_white</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+      <td>4898.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>6.854788</td>
+      <td>0.278241</td>
+      <td>0.334192</td>
+      <td>6.391415</td>
+      <td>0.045772</td>
+      <td>35.308085</td>
+      <td>138.360657</td>
+      <td>0.994027</td>
+      <td>3.188267</td>
+      <td>0.489847</td>
+      <td>10.514267</td>
+      <td>5.877909</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.843868</td>
+      <td>0.100795</td>
+      <td>0.121020</td>
+      <td>5.072058</td>
+      <td>0.021848</td>
+      <td>17.007137</td>
+      <td>42.498065</td>
+      <td>0.002991</td>
+      <td>0.151001</td>
+      <td>0.114126</td>
+      <td>1.230621</td>
+      <td>0.885639</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.800000</td>
+      <td>0.080000</td>
+      <td>0.000000</td>
+      <td>0.600000</td>
+      <td>0.009000</td>
+      <td>2.000000</td>
+      <td>9.000000</td>
+      <td>0.987110</td>
+      <td>2.720000</td>
+      <td>0.220000</td>
+      <td>8.000000</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>6.300000</td>
+      <td>0.210000</td>
+      <td>0.270000</td>
+      <td>1.700000</td>
+      <td>0.036000</td>
+      <td>23.000000</td>
+      <td>108.000000</td>
+      <td>0.991723</td>
+      <td>3.090000</td>
+      <td>0.410000</td>
+      <td>9.500000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>6.800000</td>
+      <td>0.260000</td>
+      <td>0.320000</td>
+      <td>5.200000</td>
+      <td>0.043000</td>
+      <td>34.000000</td>
+      <td>134.000000</td>
+      <td>0.993740</td>
+      <td>3.180000</td>
+      <td>0.470000</td>
+      <td>10.400000</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>7.300000</td>
+      <td>0.320000</td>
+      <td>0.390000</td>
+      <td>9.900000</td>
+      <td>0.050000</td>
+      <td>46.000000</td>
+      <td>167.000000</td>
+      <td>0.996100</td>
+      <td>3.280000</td>
+      <td>0.550000</td>
+      <td>11.400000</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>14.200000</td>
+      <td>1.100000</td>
+      <td>1.660000</td>
+      <td>65.800000</td>
+      <td>0.346000</td>
+      <td>289.000000</td>
+      <td>440.000000</td>
+      <td>1.038980</td>
+      <td>3.820000</td>
+      <td>1.080000</td>
+      <td>14.200000</td>
+      <td>9.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As we will later combine our datasets into a single one, let’s add an extra column to indicate <em>category</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_white</span><span class="p">[</span><span class="s1">&#39;wine_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span>
+<span class="n">df_red</span><span class="p">[</span><span class="s1">&#39;wine_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A colleague in our department, a wine expert, gave us a tip that scaling the quality from 1 to 10 might probably be too granular for certain types of analysis, and it might be OK to divide wines into three quality categories - <em>low</em>, <em>medium</em>, <em>high</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_red</span><span class="p">[</span><span class="s1">&#39;quality_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_red</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;low&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="k">else</span> <span class="s1">&#39;high&#39;</span><span class="p">)</span>
+<span class="n">df_red</span><span class="p">[</span><span class="s1">&#39;quality_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">df_red</span><span class="p">[</span><span class="s1">&#39;quality_label&#39;</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">])</span>
+
+<span class="n">df_white</span><span class="p">[</span><span class="s1">&#39;quality_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_white</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;low&#39;</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="k">else</span> <span class="s1">&#39;high&#39;</span><span class="p">)</span>
+<span class="n">df_white</span><span class="p">[</span><span class="s1">&#39;quality_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">df_white</span><span class="p">[</span><span class="s1">&#39;quality_label&#39;</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="red-wine-dataset-analysis">
+<h2>Red Wine Dataset Analysis<a class="headerlink" href="#red-wine-dataset-analysis" title="Permalink to this headline">#</a></h2>
+<p>Let’s get familiar with the red wine dataset with some visualizations that we already know:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_red</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_red</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;quality_label&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_15_0.png" src="../../_images/eda_15_0.png" />
+</div>
+</div>
+<p>Well, the dataset is highly imbalanced when it comes to quality attribute.</p>
+<p>Let’s check some relationships between attributes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_red</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">]),</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;quality_label&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_17_0.png" src="../../_images/eda_17_0.png" />
+</div>
+</div>
+<p>The plot is somehow hard to read. Let’s try to focus on an individual attribute:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_red</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality_label&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_red</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_19_0.png" src="../../_images/eda_19_0.png" />
+</div>
+</div>
+<p>There are no obvious gotchas. Maybe we will be more lucky with the correlation plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_red</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_21_0.png" src="../../_images/eda_21_0.png" />
+</div>
+</div>
+<p>There are definitely some interactions, we can study them, for example, with <em>jointplot</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;alcohol&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;sulphates&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df_red</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_23_0.png" src="../../_images/eda_23_0.png" />
+</div>
+</div>
+<p>Let’s analyze relationship between attributes and the quality:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="s1">&#39;wine_category&#39;</span><span class="p">,</span> <span class="s1">&#39;quality_label&#39;</span><span class="p">},</span> <span class="n">df_red</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+<span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">),</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">columns_names</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_red</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">columns_names</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_25_0.png" src="../../_images/eda_25_0.png" />
+<img alt="../../_images/eda_25_1.png" src="../../_images/eda_25_1.png" />
+</div>
+</div>
+</section>
+<section id="white-wine-dataset-analysis">
+<h2>White Wine Dataset Analysis<a class="headerlink" href="#white-wine-dataset-analysis" title="Permalink to this headline">#</a></h2>
+<p>Let’s run the same analysis for the white vine:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_white</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_white</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;quality_label&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_27_0.png" src="../../_images/eda_27_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_white</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">]),</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;quality_label&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function flush_figures at 0x7fc780a884c0&gt; (for post_execute):
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib_inline/backend_inline.py:121,</span> in <span class="ni">flush_figures</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">if</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">close_figures</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="c1"># ignore the tracking, just draw and close all figures</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">121</span>         <span class="k">return</span> <span class="n">show</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>         <span class="c1"># safely show traceback if in IPython, else raise</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib_inline/backend_inline.py:41,</span> in <span class="ni">show</span><span class="nt">(close, block)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="k">for</span> <span class="n">figure_manager</span> <span class="ow">in</span> <span class="n">Gcf</span><span class="o">.</span><span class="n">get_all_fig_managers</span><span class="p">():</span>
+<span class="ne">---&gt; </span><span class="mi">41</span>         <span class="n">display</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>             <span class="n">figure_manager</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>             <span class="n">metadata</span><span class="o">=</span><span class="n">_fetch_figure_metadata</span><span class="p">(</span><span class="n">figure_manager</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">figure</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>         <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="n">show</span><span class="o">.</span><span class="n">_to_draw</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/IPython/core/display_functions.py:298,</span> in <span class="ni">display</span><span class="nt">(include, exclude, metadata, transient, display_id, raw, clear, *objs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">publish_display_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">298</span>     <span class="n">format_dict</span><span class="p">,</span> <span class="n">md_dict</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">format_dict</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span>         <span class="c1"># nothing to display (e.g. _ipython_display_ took over)</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span>         <span class="k">continue</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/IPython/core/formatters.py:178,</span> in <span class="ni">DisplayFormatter.format</span><span class="nt">(self, obj, include, exclude)</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="n">md</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">178</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span> <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="c1"># FIXME: log the exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="k">raise</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/decorator.py:232,</span> in <span class="ni">decorate.&lt;locals&gt;.fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span> <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/IPython/core/formatters.py:222,</span> in <span class="ni">catch_format_error</span><span class="nt">(method, self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span> <span class="sd">&quot;&quot;&quot;show traceback on failed format call&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">222</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span> <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="c1"># don&#39;t warn on NotImplementedErrors</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_return</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/IPython/core/formatters.py:339,</span> in <span class="ni">BaseFormatter.__call__</span><span class="nt">(self, obj)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="k">pass</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">339</span>     <span class="k">return</span> <span class="n">printer</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span> <span class="c1"># Finally look for special method names</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span> <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/IPython/core/pylabtools.py:151,</span> in <span class="ni">print_figure</span><span class="nt">(fig, fmt, bbox_inches, base64, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="kn">from</span> <span class="nn">matplotlib.backend_bases</span> <span class="kn">import</span> <span class="n">FigureCanvasBase</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span>     <span class="n">FigureCanvasBase</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">151</span> <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">bytes_io</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="n">data</span> <span class="o">=</span> <span class="n">bytes_io</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;svg&#39;</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/backend_bases.py:2319,</span> in <span class="ni">FigureCanvasBase.print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2315</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2316</span>     <span class="c1"># _get_renderer may change the figure dpi (as vector formats</span>
+<span class="g g-Whitespace">   </span><span class="mi">2317</span>     <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2318</span>     <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2319</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2320</span>             <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2321</span>             <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2322</span>             <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2323</span>             <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2324</span>             <span class="n">bbox_inches_restore</span><span class="o">=</span><span class="n">_bbox_inches_restore</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2325</span>             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2326</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2327</span>     <span class="k">if</span> <span class="n">bbox_inches</span> <span class="ow">and</span> <span class="n">restore_bbox</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/backend_bases.py:1648,</span> in <span class="ni">_check_savefig_extra_args.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1640</span>     <span class="n">_api</span><span class="o">.</span><span class="n">warn_deprecated</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1641</span>         <span class="s1">&#39;3.3&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">removal</span><span class="o">=</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1642</span>         <span class="n">message</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(name)s</span><span class="s1">() got unexpected keyword argument &quot;&#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1643</span>                 <span class="o">+</span> <span class="n">arg</span> <span class="o">+</span> <span class="s1">&#39;&quot; which is no longer supported as of &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1644</span>                 <span class="s1">&#39;</span><span class="si">%(since)s</span><span class="s1"> and will become an error &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1645</span>                 <span class="s1">&#39;</span><span class="si">%(removal)s</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1646</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1648</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/_api/deprecation.py:415,</span> in <span class="ni">delete_parameter.&lt;locals&gt;.wrapper</span><span class="nt">(*inner_args, **inner_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="n">deprecation_addendum</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">406</span>         <span class="sa">f</span><span class="s2">&quot;If any parameter follows </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">, they should be passed as &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span>         <span class="sa">f</span><span class="s2">&quot;keyword, not positionally.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="n">warn_deprecated</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span>         <span class="n">since</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>         <span class="n">name</span><span class="o">=</span><span class="nb">repr</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span>                  <span class="k">else</span> <span class="n">deprecation_addendum</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span>         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">415</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inner_args</span><span class="p">,</span> <span class="o">**</span><span class="n">inner_kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py:540,</span> in <span class="ni">FigureCanvasAgg.print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="nd">@_check_savefig_extra_args</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span> <span class="nd">@_api</span><span class="o">.</span><span class="n">delete_parameter</span><span class="p">(</span><span class="s2">&quot;3.5&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="k">def</span> <span class="nf">print_png</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename_or_obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>               <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span><span class="sd">     Write the figure to a PNG file.</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span><span class="sd">         *metadata*, including the default &#39;Software&#39; key.</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">540</span>     <span class="n">FigureCanvasAgg</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span>     <span class="n">mpl</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span>         <span class="n">filename_or_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_rgba</span><span class="p">(),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span>         <span class="n">dpi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="n">pil_kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py:436,</span> in <span class="ni">FigureCanvasAgg.draw</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span> <span class="c1"># Acquire a lock on the shared font cache.</span>
+<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="k">with</span> <span class="n">RendererAgg</span><span class="o">.</span><span class="n">lock</span><span class="p">,</span> \
+<span class="g g-Whitespace">    </span><span class="mi">434</span>      <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">_wait_cursor_for_draw_cm</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbar</span>
+<span class="g g-Whitespace">    </span><span class="mi">435</span>       <span class="k">else</span> <span class="n">nullcontext</span><span class="p">()):</span>
+<span class="ne">--&gt; </span><span class="mi">436</span>     <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="c1"># A GUI class may be need to update a window using this draw, so</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="c1"># don&#39;t forget to call the superclass.</span>
+<span class="g g-Whitespace">    </span><span class="mi">439</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/artist.py:74,</span> in <span class="ni">_finalize_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">draw</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">def</span> <span class="nf">draw_wrapper</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">74</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="k">if</span> <span class="n">renderer</span><span class="o">.</span><span class="n">_rasterizing</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">stop_rasterizing</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/artist.py:51,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/figure.py:2845,</span> in <span class="ni">Figure.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2842</span>         <span class="c1"># ValueError can occur when resizing a window.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2844</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2845</span> <span class="n">mimage</span><span class="o">.</span><span class="n">_draw_list_compositing_images</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2846</span>     <span class="n">renderer</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">artists</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">suppressComposite</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2848</span> <span class="k">for</span> <span class="n">sfig</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subfigs</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2849</span>     <span class="n">sfig</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/image.py:132,</span> in <span class="ni">_draw_list_compositing_images</span><span class="nt">(renderer, parent, artists, suppress_composite)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">if</span> <span class="n">not_composite</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">has_images</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">artists</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">132</span>         <span class="n">a</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="c1"># Composite any adjacent images together</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="n">image_group</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/artist.py:51,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/axes/_base.py:3091,</span> in <span class="ni">_AxesBase.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3088</span>         <span class="n">a</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3089</span>     <span class="n">renderer</span><span class="o">.</span><span class="n">stop_rasterizing</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">3091</span> <span class="n">mimage</span><span class="o">.</span><span class="n">_draw_list_compositing_images</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3092</span>     <span class="n">renderer</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">artists</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">suppressComposite</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3094</span> <span class="n">renderer</span><span class="o">.</span><span class="n">close_group</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3095</span> <span class="bp">self</span><span class="o">.</span><span class="n">stale</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/image.py:132,</span> in <span class="ni">_draw_list_compositing_images</span><span class="nt">(renderer, parent, artists, suppress_composite)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">if</span> <span class="n">not_composite</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">has_images</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">artists</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">132</span>         <span class="n">a</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="c1"># Composite any adjacent images together</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="n">image_group</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/artist.py:51,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/collections.py:990,</span> in <span class="ni">_CollectionWithSizes.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">987</span> <span class="nd">@artist</span><span class="o">.</span><span class="n">allow_rasterization</span>
+<span class="g g-Whitespace">    </span><span class="mi">988</span> <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">989</span>     <span class="bp">self</span><span class="o">.</span><span class="n">set_sizes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sizes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">990</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/artist.py:51,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/collections.py:424,</span> in <span class="ni">Collection.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span>     <span class="n">renderer</span><span class="o">.</span><span class="n">draw_markers</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span>         <span class="n">gc</span><span class="p">,</span> <span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">combined_transform</span><span class="o">.</span><span class="n">frozen</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>         <span class="n">mpath</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">offsets</span><span class="p">),</span> <span class="n">transOffset</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">facecolors</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">424</span>     <span class="n">renderer</span><span class="o">.</span><span class="n">draw_path_collection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span>         <span class="n">gc</span><span class="p">,</span> <span class="n">transform</span><span class="o">.</span><span class="n">frozen</span><span class="p">(),</span> <span class="n">paths</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span>         <span class="bp">self</span><span class="o">.</span><span class="n">get_transforms</span><span class="p">(),</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">transOffset</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span>         <span class="bp">self</span><span class="o">.</span><span class="n">get_facecolor</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_edgecolor</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_linewidths</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linestyles</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_antialiaseds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_urls</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">430</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset_position</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span> <span class="n">gc</span><span class="o">.</span><span class="n">restore</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="n">renderer</span><span class="o">.</span><span class="n">close_group</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/matplotlib/path.py:200,</span> in <span class="ni">Path.vertices</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_simplify_threshold</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;path.simplify_threshold&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_should_simplify</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_simplify_threshold</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>         <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;path.simplify&#39;</span><span class="p">]</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vertices</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">128</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_codes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_codes</span> <span class="o">&lt;=</span> <span class="n">Path</span><span class="o">.</span><span class="n">LINETO</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">200</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="k">def</span> <span class="nf">vertices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="sd">     The list of vertices in the `Path` as an Nx2 numpy array.</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vertices</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_white</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality_label&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_white</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_29_0.png" src="../../_images/eda_29_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_white</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_30_0.png" src="../../_images/eda_30_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;alcohol&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;sulphates&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df_white</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_31_0.png" src="../../_images/eda_31_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="s1">&#39;wine_category&#39;</span><span class="p">,</span> <span class="s1">&#39;quality_label&#39;</span><span class="p">},</span> <span class="n">df_white</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+<span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">),</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">columns_names</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_white</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">columns_names</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_32_0.png" src="../../_images/eda_32_0.png" />
+<img alt="../../_images/eda_32_1.png" src="../../_images/eda_32_1.png" />
+</div>
+</div>
+<p>Not surprisingly enough, white wine has a bit of different properties. Let’s combine datasets for additional analysis.</p>
+</section>
+<section id="analyze-combined-data">
+<h2>Analyze Combined Data<a class="headerlink" href="#analyze-combined-data" title="Permalink to this headline">#</a></h2>
+<p>Let’s concatenate datasets together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_wines</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_red</span><span class="p">,</span> <span class="n">df_white</span><span class="p">])</span>
+
+<span class="c1"># re-shuffle records just to randomize data points</span>
+<span class="n">df_wines</span> <span class="o">=</span> <span class="n">df_wines</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_wines</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+      <th>wine_category</th>
+      <th>quality_label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.0</td>
+      <td>0.17</td>
+      <td>0.74</td>
+      <td>12.8</td>
+      <td>0.045</td>
+      <td>24.0</td>
+      <td>126.0</td>
+      <td>0.99420</td>
+      <td>3.26</td>
+      <td>0.38</td>
+      <td>12.2</td>
+      <td>8</td>
+      <td>white</td>
+      <td>high</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.7</td>
+      <td>0.64</td>
+      <td>0.21</td>
+      <td>2.2</td>
+      <td>0.077</td>
+      <td>32.0</td>
+      <td>133.0</td>
+      <td>0.99560</td>
+      <td>3.27</td>
+      <td>0.45</td>
+      <td>9.9</td>
+      <td>5</td>
+      <td>red</td>
+      <td>low</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6.8</td>
+      <td>0.39</td>
+      <td>0.34</td>
+      <td>7.4</td>
+      <td>0.020</td>
+      <td>38.0</td>
+      <td>133.0</td>
+      <td>0.99212</td>
+      <td>3.18</td>
+      <td>0.44</td>
+      <td>12.0</td>
+      <td>7</td>
+      <td>white</td>
+      <td>medium</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6.3</td>
+      <td>0.28</td>
+      <td>0.47</td>
+      <td>11.2</td>
+      <td>0.040</td>
+      <td>61.0</td>
+      <td>183.0</td>
+      <td>0.99592</td>
+      <td>3.12</td>
+      <td>0.51</td>
+      <td>9.5</td>
+      <td>6</td>
+      <td>white</td>
+      <td>medium</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.35</td>
+      <td>0.20</td>
+      <td>13.9</td>
+      <td>0.054</td>
+      <td>63.0</td>
+      <td>229.0</td>
+      <td>0.99888</td>
+      <td>3.11</td>
+      <td>0.50</td>
+      <td>8.9</td>
+      <td>6</td>
+      <td>white</td>
+      <td>medium</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7.2</td>
+      <td>0.53</td>
+      <td>0.14</td>
+      <td>2.1</td>
+      <td>0.064</td>
+      <td>15.0</td>
+      <td>29.0</td>
+      <td>0.99323</td>
+      <td>3.35</td>
+      <td>0.61</td>
+      <td>12.1</td>
+      <td>6</td>
+      <td>red</td>
+      <td>medium</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7.5</td>
+      <td>0.27</td>
+      <td>0.31</td>
+      <td>17.7</td>
+      <td>0.051</td>
+      <td>33.0</td>
+      <td>173.0</td>
+      <td>0.99900</td>
+      <td>3.09</td>
+      <td>0.64</td>
+      <td>10.2</td>
+      <td>5</td>
+      <td>white</td>
+      <td>low</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6.8</td>
+      <td>0.11</td>
+      <td>0.27</td>
+      <td>8.6</td>
+      <td>0.044</td>
+      <td>45.0</td>
+      <td>104.0</td>
+      <td>0.99454</td>
+      <td>3.20</td>
+      <td>0.37</td>
+      <td>9.9</td>
+      <td>6</td>
+      <td>white</td>
+      <td>medium</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9.0</td>
+      <td>0.44</td>
+      <td>0.49</td>
+      <td>2.4</td>
+      <td>0.078</td>
+      <td>26.0</td>
+      <td>121.0</td>
+      <td>0.99780</td>
+      <td>3.23</td>
+      <td>0.58</td>
+      <td>9.2</td>
+      <td>5</td>
+      <td>red</td>
+      <td>low</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7.1</td>
+      <td>0.23</td>
+      <td>0.30</td>
+      <td>2.6</td>
+      <td>0.034</td>
+      <td>62.0</td>
+      <td>148.0</td>
+      <td>0.99121</td>
+      <td>3.03</td>
+      <td>0.56</td>
+      <td>11.3</td>
+      <td>7</td>
+      <td>white</td>
+      <td>medium</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Just by comparing the quality, you can notice a different distributions. For example, the proportion of 5 and 6 is very different for red and white:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_wines</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;wine_category&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_wines</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality_label&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;wine_category&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_36_0.png" src="../../_images/eda_36_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_wines</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">]),</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;wine_category&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_37_0.png" src="../../_images/eda_37_0.png" />
+</div>
+</div>
+<p>It seems that separating type of wines might be an easy task to do. Let’s check some interactions of combined dataset vs. quality:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_wines</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">]),</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;quality_label&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_39_0.png" src="../../_images/eda_39_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_wines</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality_label&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;wine_category&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_wines</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;quality&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;wine_category&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_40_0.png" src="../../_images/eda_40_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_wines</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_41_0.png" src="../../_images/eda_41_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="s1">&#39;wine_category&#39;</span><span class="p">,</span> <span class="s1">&#39;quality_label&#39;</span><span class="p">},</span> <span class="n">df_wines</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+<span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">),</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">columns_names</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_wines</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">columns_names</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;quality&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eda_42_0.png" src="../../_images/eda_42_0.png" />
+<img alt="../../_images/eda_42_1.png" src="../../_images/eda_42_1.png" />
+</div>
+</div>
+<p>To revisit ML tasks mentioned earlier - it is tough to tell if it is better to solve those tasks using individual datasets or the combined one based on the analysis. My bet would be to do it on individual ones, but it depends on what you want to solve and which approach you take. As always, you need to experiment. I can imagine a scenario where, for example, the smaller white wines dataset can benefit from additional data from the red wines.</p>
+<blockquote>
+<div><p>✏️ Several libraries aim to automate EDA to some extent if you want to get some results as quickly as possible. One of them is <a class="reference external" href="https://github.com/ydataai/pandas-profiling">pandas-profiling</a>. An example of automated analysis is <a class="reference external" href="https://pandas-profiling.ydata.ai/examples/master/census/census_report.html">Census Dataset EDA</a>.</p>
+</div></blockquote>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="what-sorts-of-passengers-were-more-likely-to-survive-the-titanic-crash">
+<h3>What sorts of passengers were more likely to survive the Titanic crash?<a class="headerlink" href="#what-sorts-of-passengers-were-more-likely-to-survive-the-titanic-crash" title="Permalink to this headline">#</a></h3>
+<p>For the exercise, you will use the famous <a class="reference external" href="https://www.kaggle.com/c/titanic">Titanic dataset</a>. The sinking of the Titanic is one of the most infamous shipwrecks in history.</p>
+<p>Unfortunately, there weren’t enough lifeboats for everyone onboard on Titanic, resulting in 1502 out of 2224 passengers and crew deaths. While some elements of luck were involved in surviving, some groups of people seemed more likely to survive than others.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the dataset</span>
+<span class="n">titanic_url</span> <span class="o">=</span> <span class="s1">&#39;https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/titanic.csv&#39;</span>
+<span class="n">titanic_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">titanic_url</span><span class="p">)</span>
+
+<span class="c1"># TODO: your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id2">
+<dl class="citation">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id1">Pac</a></span></dt>
+<dd><p>PacktPublishing. Packtpublishing/hands-on-exploratory-data-analysis-with-python: hands-on exploratory data analysis with python, published by packt. URL: <a class="reference external" href="https://github.com/PacktPublishing/Hands-on-Exploratory-Data-Analysis-with-Python">https://github.com/PacktPublishing/Hands-on-Exploratory-Data-Analysis-with-Python</a>.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures/02_lecture"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="acquiring_data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Acquiring Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="data_preparation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Preparation for ML</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By STRV, Data Science Department<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
