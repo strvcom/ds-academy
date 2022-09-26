@@ -12,7 +12,7 @@ analysis practiced in the second part of the lecture.
 | [Introduction to Pandas](pandas_basics.ipynb)         | 25 minutes |
 | [Introduction to Matplotlib](matplotlib_basics.ipynb) | 10 minutes |
 | Break                                                 | 15 minutes |
-| [Acquiring Data]()                                    | 10 minutes |
+| [Acquiring Data](acquiring_data.ipynb)                | 10 minutes |
 | [Doing Exploratory Data Analysis (EDA)](eda.ipynb)    | 20 minutes |
 | [Data Preparation for ML](data_preparation.ipynb)     | 20 minutes |
 

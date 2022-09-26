@@ -25,6 +25,7 @@ parts:
         - file: lectures/02_lecture/numpy_basics
         - file: lectures/02_lecture/pandas_basics
         - file: lectures/02_lecture/matplotlib_basics
+        - file: lectures/02_lecture/acquiring_data
         - file: lectures/02_lecture/eda
         - file: lectures/02_lecture/data_preparation
 - caption: AI/ML Basic Concepts
