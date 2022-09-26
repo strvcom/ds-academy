@@ -14,5 +14,5 @@ analysis practiced in the second part of the lecture.
 | Break                                                 | 15 minutes |
 | [Acquiring Data]()                                    | 10 minutes |
 | [Doing Exploratory Data Analysis (EDA)](eda.ipynb)    | 20 minutes |
-| [Data Preparation for ML]()                           | 20 minutes |
+| [Data Preparation for ML](data_preparation.ipynb)     | 20 minutes |
 
