@@ -1,4 +1,4 @@
-# Let's learn some ML concepts and do some regression!
+# Let's build our first datat pipeline!
 
 Welcome to the fourth lecture of the Data Science Academy! In this lecture we will combine data preprocessing and ML models. We will showcase the use of data pipelines and some model improvements over last week's models. In addition, we will use our data pipelines in two practical examples. The first one is the wine dataset, which is tabluar. The second one is the famous MNIST dataset, which contains hand-written digits and is non-tabular.
 
