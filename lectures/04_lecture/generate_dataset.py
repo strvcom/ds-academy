@@ -38,7 +38,7 @@ def generate_dataset(n_samples: int=1000, n_features: int=6, flip_y: float=0.2):
 
     # convert column names to indicate whether numerical/categorical
     cat_rename_mapper = {
-        column: 'categorical_' + str(index) for index, column in enumerate(cat_cols)
+        column: f'categorical_{index}' for index, column in enumerate(cat_cols)
         }
     num_rename_mapper = {
         column: 'numerical_' + str(index) for index, column in enumerate(
