@@ -15,7 +15,7 @@ def generate_dataset(n_samples: int=1000, n_features: int=6, flip_y: float=0.2):
     X, y = make_classification(
         n_samples=n_samples, n_features=n_features-1,
         n_classes=3, n_informative=3, flip_y=flip_y
-        )
+    )
 
     # convert from numpy to pandas
     X = pd.DataFrame(X)
@@ -38,10 +38,10 @@ def generate_dataset(n_samples: int=1000, n_features: int=6, flip_y: float=0.2):
 
     # convert column names to indicate whether numerical/categorical
     cat_rename_mapper = {
-        column: 'categorical_' + str(index) for index, column in enumerate(cat_cols)
+        column: f'categorical_{index}' for index, column in enumerate(cat_cols)
         }
     num_rename_mapper = {
-        column: 'numerical_' + str(index) for index, column in enumerate(
+        column: f'numerical_{index}' for index, column in enumerate(
             X.columns.symmetric_difference(cat_cols))
         }
     rename_maper = {**cat_rename_mapper, **num_rename_mapper}
