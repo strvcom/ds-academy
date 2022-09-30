@@ -41,7 +41,7 @@ def generate_dataset(n_samples: int=1000, n_features: int=6, flip_y: float=0.2):
         column: f'categorical_{index}' for index, column in enumerate(cat_cols)
         }
     num_rename_mapper = {
-        column: 'numerical_' + str(index) for index, column in enumerate(
+        column: f'numerical_{index}' for index, column in enumerate(
             X.columns.symmetric_difference(cat_cols))
         }
     rename_maper = {**cat_rename_mapper, **num_rename_mapper}
