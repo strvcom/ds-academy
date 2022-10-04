@@ -13,3 +13,9 @@ and clustering (unsupervised ML).
 | [Linear Regression](supervised_unsupervised_learning.ipynb)                   | 40 minutes |
 | Break                                                                         | 15 minutes |
 | [Logistic Regression and Clustering](supervised_unsupervised_learning.ipynb)  | 50 minutes |
+
+## Recording from the lecture
+
+If missed the class, or you want to revisit some content, download
+{part 1}`lecture recording <https://drive.google.com/file/d/1Gm1xXf85dI5ukR7JDL7ePYO9RSqpLMIu/view?usp=sharing>`.
+{part 2}`lecture recording <https://drive.google.com/file/d/1Gm1xXf85dI5ukR7JDL7ePYO9RSqpLMIu/view?usp=sharing>`.
