@@ -17,5 +17,5 @@ and clustering (unsupervised ML).
 ## Recording from the lecture
 
 If missed the class, or you want to revisit some content, download
-{part 1}`lecture recording <https://drive.google.com/file/d/1Gm1xXf85dI5ukR7JDL7ePYO9RSqpLMIu/view?usp=sharing>`.
-{part 2}`lecture recording <https://drive.google.com/file/d/1Gm1xXf85dI5ukR7JDL7ePYO9RSqpLMIu/view?usp=sharing>`.
+[part 1](https://drive.google.com/file/d/1Gm1xXf85dI5ukR7JDL7ePYO9RSqpLMIu/view?usp=sharing)
+[part 2](lecture recording <https://drive.google.com/file/d/1Gm1xXf85dI5ukR7JDL7ePYO9RSqpLMIu/view?usp=sharing>)
