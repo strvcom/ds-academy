@@ -18,4 +18,4 @@ and clustering (unsupervised ML).
 
 If missed the class, or you want to revisit some content, download
 [part 1](https://drive.google.com/file/d/1Gm1xXf85dI5ukR7JDL7ePYO9RSqpLMIu/view?usp=sharing)
-[part 2](https://drive.google.com/drive/folders/0APNDNQUK8SJkUk9PVA/view?usp=sharing)
+[part 2](https://drive.google.com/file/d/1Pkx_uyMmtSbtTLWXQUvUzYIzaP3MNT2U/view?usp=sharing)
