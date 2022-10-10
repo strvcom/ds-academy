@@ -11,3 +11,8 @@ Welcome to the fourth lecture of the Data Science Academy! In this lecture we wi
 | [Wine Dataset](data_pipelines.ipynb)                                          | 30 minutes |
 | Break                                                                         | 15 minutes |
 | [MNIST dataset](data_pipelines.ipynb)                                         | 40 minutes |
+
+
+If missed the class, or you want to revisit some content, download
+[part 1](https://drive.google.com/file/d/1-boPzqAPdO_TE9bBRRNJNNQNdBFyJuaw/view?usp=sharing)
+[part 2](https://drive.google.com/file/d/1SF6KJUak-1V_-cNPc-y63zsgc-F4e4W3/view?usp=sharing)
