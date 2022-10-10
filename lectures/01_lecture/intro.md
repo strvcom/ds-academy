@@ -14,12 +14,8 @@ the lecture.
 | [Motivational Example](motivational_example.ipynb)    | 40 minutes |
 | [Selecting Mentors and Topics](selecting_topics.md)   | 15 minutes |
 
-<!--
-
-TODO: Add video from the lecture
-
 ## Recording from the lecture
 
-[![Lecture Recording](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Lecture Recording")
+If missed the class, or you want to revisit some content, download
+{Download}`lecture recording <https://drive.google.com/file/d/1YbsBwOZL0p1PPjDb0at6pic3BJDJBXeJ/view>`.
 
--->
