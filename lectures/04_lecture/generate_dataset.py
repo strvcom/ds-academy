@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 # for pipeline demonstration purposes, we will use the function below to generate 
 # classification data
-=======
->>>>>>> 4c39d6676afc6ea78a14cf6ae87fd4e5760491d0
 import numpy as np
 import pandas as pd
 import random
@@ -14,12 +11,9 @@ from sklearn.model_selection import train_test_split
 def generate_dataset(n_samples: int=1000, n_features: int=6, flip_y: float=0.2):
     """
     Function to generate data
-<<<<<<< HEAD
     :n_samples: number of sample to generate
     :n_features: number of features to generate
     :flip_y: fraction of labels to be assigned randomly
-=======
->>>>>>> 4c39d6676afc6ea78a14cf6ae87fd4e5760491d0
     """
     random.seed(123)
     
