@@ -7,11 +7,10 @@ Welcome to the fifth lecture of the STRV Data Science Academy. After the previou
 | Section                                               | Time       |
 |:------------------------------------------------------|:-----------|
 | [Introduction](intro.md)                              | 10 minutes |
-| [Motivational Example](motivational_example.ipynb)    | 30 minutes |
+| [Model evaluation](model_evaluation.ipynb)            | 50 minutes |
 | Break                                                 | 10 minutes |
-| [Model evaluation](model_evaluation.ipynb)            | 40 minutes |
-| [Model selection](model_selection.ipynb)              | 20 minutes |
+| [Model selection](model_selection.ipynb)              | 50 minutes |
 
 ## Recording from the lecture
 
-If missed the class, or you want to revisit some content, download `lecture recording`.
+If you missed the class, or you want to revisit some content, download `lecture recording`.
