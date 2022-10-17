@@ -249,7 +249,60 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../03_lecture/supervised_unsupervised_learning.html">
-     LECTURE 3: ML MODELS
+     Lecture 3: ML Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Pipelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04_lecture/intro.html">
+   Let’s build our first data pipeline!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04_lecture/data_pipelines.html">
+     Lecture 4: Model Improvements and  Pipelines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Evaluating, comparing, and selecting ML models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05_lecture/intro.html">
+   Evaluating, comparing, and selecting ML models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_evaluation.html">
+     Model evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_selection.html">
+     Model selection
     </a>
    </li>
   </ul>
@@ -771,7 +824,7 @@ And finally, adding images is easy: ![<span class="nt">Alt text</span>](<span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>383 ns ± 3.71 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90.2 ns ± 1.17 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -795,12 +848,12 @@ And finally, adding images is easy: ![<span class="nt">Alt text</span>](<span cl
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="mi">0</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># run the function</span>
 <span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">func1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nn">Input In [5],</span> in <span class="ni">func1</span><span class="nt">(a)</span>
+<span class="nn">Cell In [5], line 3,</span> in <span class="ni">func1</span><span class="nt">(a)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="mi">0</span>
 

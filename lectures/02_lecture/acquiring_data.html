@@ -249,7 +249,60 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../03_lecture/supervised_unsupervised_learning.html">
-     LECTURE 3: ML MODELS
+     Lecture 3: ML Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Pipelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04_lecture/intro.html">
+   Let’s build our first data pipeline!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04_lecture/data_pipelines.html">
+     Lecture 4: Model Improvements and  Pipelines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Evaluating, comparing, and selecting ML models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05_lecture/intro.html">
+   Evaluating, comparing, and selecting ML models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_evaluation.html">
+     Model evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_selection.html">
+     Model selection
     </a>
    </li>
   </ul>
@@ -529,20 +582,28 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-09-26 16:13:31--  https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
-Resolving github.com (github.com)... 140.82.121.4
-Connecting to github.com (github.com)|140.82.121.4|:443... connected.
-HTTP request sent, awaiting response... 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-17 17:26:03--  https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
+Resolving github.com (github.com)... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140.82.121.3
+Connecting to github.com (github.com)|140.82.121.3|:443... connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
 Location: https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite [following]
---2022-09-26 16:13:31--  https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.111.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+--2022-10-17 17:26:05--  https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.110.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 200 OK
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
 Length: 1067008 (1,0M) [application/octet-stream]
 Saving to: ‘../../data/Chinook_Sqlite.sqlite’
 
@@ -550,9 +611,9 @@ Saving to: ‘../../data/Chinook_Sqlite.sqlite’
           ../../dat   0%[                    ]       0  --.-KB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../../data/Chinook_ 100%[===================&gt;]   1,02M  --.-KB/s    in 0,07s   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>../../data/Chinook_ 100%[===================&gt;]   1,02M  5,97MB/s    in 0,2s    
 
-2022-09-26 16:13:31 (13,8 MB/s) - ‘../../data/Chinook_Sqlite.sqlite’ saved [1067008/1067008]
+2022-10-17 17:26:05 (5,97 MB/s) - ‘../../data/Chinook_Sqlite.sqlite’ saved [1067008/1067008]
 </pre></div>
 </div>
 </div>
@@ -672,7 +733,7 @@ Saving to: ‘../../data/Chinook_Sqlite.sqlite’
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;message&#39;: &#39;success&#39;, &#39;people&#39;: [{&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Oleg Artemyev&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Denis Matveev&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Sergey Korsakov&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Kjell Lindgren&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Bob Hines&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Samantha Cristoforetti&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Jessica Watkins&#39;}, {&#39;craft&#39;: &#39;Tiangong&#39;, &#39;name&#39;: &#39;Cai Xuzhe&#39;}, {&#39;craft&#39;: &#39;Tiangong&#39;, &#39;name&#39;: &#39;Chen Dong&#39;}, {&#39;craft&#39;: &#39;Tiangong&#39;, &#39;name&#39;: &#39;Liu Yang&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Sergey Prokopyev&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Dmitry Petelin&#39;}, {&#39;craft&#39;: &#39;ISS&#39;, &#39;name&#39;: &#39;Frank Rubio&#39;}], &#39;number&#39;: 13}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;message&#39;: &#39;success&#39;, &#39;people&#39;: [{&#39;name&#39;: &#39;Cai Xuzhe&#39;, &#39;craft&#39;: &#39;Tiangong&#39;}, {&#39;name&#39;: &#39;Chen Dong&#39;, &#39;craft&#39;: &#39;Tiangong&#39;}, {&#39;name&#39;: &#39;Liu Yang&#39;, &#39;craft&#39;: &#39;Tiangong&#39;}, {&#39;name&#39;: &#39;Sergey Prokopyev&#39;, &#39;craft&#39;: &#39;ISS&#39;}, {&#39;name&#39;: &#39;Dmitry Petelin&#39;, &#39;craft&#39;: &#39;ISS&#39;}, {&#39;name&#39;: &#39;Frank Rubio&#39;, &#39;craft&#39;: &#39;ISS&#39;}, {&#39;name&#39;: &#39;Nicole Mann&#39;, &#39;craft&#39;: &#39;ISS&#39;}, {&#39;name&#39;: &#39;Josh Cassada&#39;, &#39;craft&#39;: &#39;ISS&#39;}, {&#39;name&#39;: &#39;Koichi Wakata&#39;, &#39;craft&#39;: &#39;ISS&#39;}, {&#39;name&#39;: &#39;Anna Kikina&#39;, &#39;craft&#39;: &#39;ISS&#39;}], &#39;number&#39;: 10}
 </pre></div>
 </div>
 </div>
@@ -703,35 +764,35 @@ Saving to: ‘../../data/Chinook_Sqlite.sqlite’
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>craft</th>
       <th>name</th>
+      <th>craft</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>ISS</td>
-      <td>Oleg Artemyev</td>
+      <td>Cai Xuzhe</td>
+      <td>Tiangong</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>ISS</td>
-      <td>Denis Matveev</td>
+      <td>Chen Dong</td>
+      <td>Tiangong</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>ISS</td>
-      <td>Sergey Korsakov</td>
+      <td>Liu Yang</td>
+      <td>Tiangong</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>Sergey Prokopyev</td>
       <td>ISS</td>
-      <td>Kjell Lindgren</td>
     </tr>
     <tr>
       <th>4</th>
+      <td>Dmitry Petelin</td>
       <td>ISS</td>
-      <td>Bob Hines</td>
     </tr>
   </tbody>
 </table>

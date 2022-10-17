@@ -1,0 +1,204 @@
+Traceback (most recent call last):
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+results = {}
+for model in models_to_run:
+    # create instance of the class, feed the model to be tested
+    clf = make_pipeline_mnist(model)
+    clf.fit(X_digits_train, y_digits_train)
+
+    # store results in a dictionary 
+    results[str(model)] = clf.score(X_digits_test, y_digits_test)
+pd.DataFrame.from_dict(results, orient='index', columns=['score'])
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn [31], line 5[0m
+[1;32m      2[0m [38;5;28;01mfor[39;00m model [38;5;129;01min[39;00m models_to_run:
+[1;32m      3[0m     [38;5;66;03m# create instance of the class, feed the model to be tested[39;00m
+[1;32m      4[0m     clf [38;5;241m=[39m make_pipeline_mnist(model)
+[0;32m----> 5[0m     [43mclf[49m[38;5;241;43m.[39;49m[43mfit[49m[43m([49m[43mX_digits_train[49m[43m,[49m[43m [49m[43my_digits_train[49m[43m)[49m
+[1;32m      7[0m     [38;5;66;03m# store results in a dictionary [39;00m
+[1;32m      8[0m     results[[38;5;28mstr[39m(model)] [38;5;241m=[39m clf[38;5;241m.[39mscore(X_digits_test, y_digits_test)
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/sklearn/pipeline.py:382[0m, in [0;36mPipeline.fit[0;34m(self, X, y, **fit_params)[0m
+[1;32m    380[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_final_estimator [38;5;241m!=[39m [38;5;124m"[39m[38;5;124mpassthrough[39m[38;5;124m"[39m:
+[1;32m    381[0m         fit_params_last_step [38;5;241m=[39m fit_params_steps[[38;5;28mself[39m[38;5;241m.[39msteps[[38;5;241m-[39m[38;5;241m1[39m][[38;5;241m0[39m]]
+[0;32m--> 382[0m         [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_final_estimator[49m[38;5;241;43m.[39;49m[43mfit[49m[43m([49m[43mXt[49m[43m,[49m[43m [49m[43my[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mfit_params_last_step[49m[43m)[49m
+[1;32m    384[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/wrappers/scikit_learn.py:223[0m, in [0;36mKerasClassifier.fit[0;34m(self, x, y, **kwargs)[0m
+[1;32m    221[0m   [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m'[39m[38;5;124mInvalid shape for y: [39m[38;5;124m'[39m [38;5;241m+[39m [38;5;28mstr[39m(y[38;5;241m.[39mshape))
+[1;32m    222[0m [38;5;28mself[39m[38;5;241m.[39mn_classes_ [38;5;241m=[39m [38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mclasses_)
+[0;32m--> 223[0m [38;5;28;01mreturn[39;00m [38;5;28;43msuper[39;49m[43m([49m[43mKerasClassifier[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m)[49m[38;5;241;43m.[39;49m[43mfit[49m[43m([49m[43mx[49m[43m,[49m[43m [49m[43my[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/wrappers/scikit_learn.py:166[0m, in [0;36mBaseWrapper.fit[0;34m(self, x, y, **kwargs)[0m
+[1;32m    163[0m fit_args [38;5;241m=[39m copy[38;5;241m.[39mdeepcopy([38;5;28mself[39m[38;5;241m.[39mfilter_sk_params(Sequential[38;5;241m.[39mfit))
+[1;32m    164[0m fit_args[38;5;241m.[39mupdate(kwargs)
+[0;32m--> 166[0m history [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmodel[49m[38;5;241;43m.[39;49m[43mfit[49m[43m([49m[43mx[49m[43m,[49m[43m [49m[43my[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mfit_args[49m[43m)[49m
+[1;32m    168[0m [38;5;28;01mreturn[39;00m history
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:1095[0m, in [0;36mModel.fit[0;34m(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq, max_queue_size, workers, use_multiprocessing)[0m
+[1;32m   1088[0m [38;5;28;01mwith[39;00m trace[38;5;241m.[39mTrace(
+[1;32m   1089[0m     [38;5;124m'[39m[38;5;124mtrain[39m[38;5;124m'[39m,
+[1;32m   1090[0m     epoch_num[38;5;241m=[39mepoch,
+[1;32m   1091[0m     step_num[38;5;241m=[39mstep,
+[1;32m   1092[0m     batch_size[38;5;241m=[39mbatch_size,
+[1;32m   1093[0m     _r[38;5;241m=[39m[38;5;241m1[39m):
+[1;32m   1094[0m   callbacks[38;5;241m.[39mon_train_batch_begin(step)
+[0;32m-> 1095[0m   tmp_logs [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mtrain_function[49m[43m([49m[43miterator[49m[43m)[49m
+[1;32m   1096[0m   [38;5;28;01mif[39;00m data_handler[38;5;241m.[39mshould_sync:
+[1;32m   1097[0m     context[38;5;241m.[39masync_wait()
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py:828[0m, in [0;36mFunction.__call__[0;34m(self, *args, **kwds)[0m
+[1;32m    826[0m tracing_count [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mexperimental_get_tracing_count()
+[1;32m    827[0m [38;5;28;01mwith[39;00m trace[38;5;241m.[39mTrace([38;5;28mself[39m[38;5;241m.[39m_name) [38;5;28;01mas[39;00m tm:
+[0;32m--> 828[0m   result [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+[1;32m    829[0m   compiler [38;5;241m=[39m [38;5;124m"[39m[38;5;124mxla[39m[38;5;124m"[39m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_experimental_compile [38;5;28;01melse[39;00m [38;5;124m"[39m[38;5;124mnonXla[39m[38;5;124m"[39m
+[1;32m    830[0m   new_tracing_count [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mexperimental_get_tracing_count()
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py:871[0m, in [0;36mFunction._call[0;34m(self, *args, **kwds)[0m
+[1;32m    868[0m [38;5;28;01mtry[39;00m:
+[1;32m    869[0m   [38;5;66;03m# This is the first call of __call__, so we have to initialize.[39;00m
+[1;32m    870[0m   initializers [38;5;241m=[39m []
+[0;32m--> 871[0m   [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_initialize[49m[43m([49m[43margs[49m[43m,[49m[43m [49m[43mkwds[49m[43m,[49m[43m [49m[43madd_initializers_to[49m[38;5;241;43m=[39;49m[43minitializers[49m[43m)[49m
+[1;32m    872[0m [38;5;28;01mfinally[39;00m:
+[1;32m    873[0m   [38;5;66;03m# At this point we know that the initialization is complete (or less[39;00m
+[1;32m    874[0m   [38;5;66;03m# interestingly an exception was raised) so we no longer need a lock.[39;00m
+[1;32m    875[0m   [38;5;28mself[39m[38;5;241m.[39m_lock[38;5;241m.[39mrelease()
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py:725[0m, in [0;36mFunction._initialize[0;34m(self, args, kwds, add_initializers_to)[0m
+[1;32m    722[0m [38;5;28mself[39m[38;5;241m.[39m_lifted_initializer_graph [38;5;241m=[39m lifted_initializer_graph
+[1;32m    723[0m [38;5;28mself[39m[38;5;241m.[39m_graph_deleter [38;5;241m=[39m FunctionDeleter([38;5;28mself[39m[38;5;241m.[39m_lifted_initializer_graph)
+[1;32m    724[0m [38;5;28mself[39m[38;5;241m.[39m_concrete_stateful_fn [38;5;241m=[39m (
+[0;32m--> 725[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_stateful_fn[49m[38;5;241;43m.[39;49m[43m_get_concrete_function_internal_garbage_collected[49m[43m([49m[43m  [49m[38;5;66;43;03m# pylint: disable=protected-access[39;49;00m
+[1;32m    726[0m [43m        [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m)
+[1;32m    728[0m [38;5;28;01mdef[39;00m [38;5;21minvalid_creator_scope[39m([38;5;241m*[39munused_args, [38;5;241m*[39m[38;5;241m*[39munused_kwds):
+[1;32m    729[0m   [38;5;124;03m"""Disables variable creation."""[39;00m
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/eager/function.py:2969[0m, in [0;36mFunction._get_concrete_function_internal_garbage_collected[0;34m(self, *args, **kwargs)[0m
+[1;32m   2967[0m   args, kwargs [38;5;241m=[39m [38;5;28;01mNone[39;00m, [38;5;28;01mNone[39;00m
+[1;32m   2968[0m [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_lock:
+[0;32m-> 2969[0m   graph_function, _ [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_maybe_define_function[49m[43m([49m[43margs[49m[43m,[49m[43m [49m[43mkwargs[49m[43m)[49m
+[1;32m   2970[0m [38;5;28;01mreturn[39;00m graph_function
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/eager/function.py:3361[0m, in [0;36mFunction._maybe_define_function[0;34m(self, args, kwargs)[0m
+[1;32m   3357[0m   [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_define_function_with_shape_relaxation(
+[1;32m   3358[0m       args, kwargs, flat_args, filtered_flat_args, cache_key_context)
+[1;32m   3360[0m [38;5;28mself[39m[38;5;241m.[39m_function_cache[38;5;241m.[39mmissed[38;5;241m.[39madd(call_context_key)
+[0;32m-> 3361[0m graph_function [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_create_graph_function[49m[43m([49m[43margs[49m[43m,[49m[43m [49m[43mkwargs[49m[43m)[49m
+[1;32m   3362[0m [38;5;28mself[39m[38;5;241m.[39m_function_cache[38;5;241m.[39mprimary[cache_key] [38;5;241m=[39m graph_function
+[1;32m   3364[0m [38;5;28;01mreturn[39;00m graph_function, filtered_flat_args
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/eager/function.py:3196[0m, in [0;36mFunction._create_graph_function[0;34m(self, args, kwargs, override_flat_arg_shapes)[0m
+[1;32m   3191[0m missing_arg_names [38;5;241m=[39m [
+[1;32m   3192[0m     [38;5;124m"[39m[38;5;132;01m%s[39;00m[38;5;124m_[39m[38;5;132;01m%d[39;00m[38;5;124m"[39m [38;5;241m%[39m (arg, i) [38;5;28;01mfor[39;00m i, arg [38;5;129;01min[39;00m [38;5;28menumerate[39m(missing_arg_names)
+[1;32m   3193[0m ]
+[1;32m   3194[0m arg_names [38;5;241m=[39m base_arg_names [38;5;241m+[39m missing_arg_names
+[1;32m   3195[0m graph_function [38;5;241m=[39m ConcreteFunction(
+[0;32m-> 3196[0m     [43mfunc_graph_module[49m[38;5;241;43m.[39;49m[43mfunc_graph_from_py_func[49m[43m([49m
+[1;32m   3197[0m [43m        [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_name[49m[43m,[49m
+[1;32m   3198[0m [43m        [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_python_function[49m[43m,[49m
+[1;32m   3199[0m [43m        [49m[43margs[49m[43m,[49m
+[1;32m   3200[0m [43m        [49m[43mkwargs[49m[43m,[49m
+[1;32m   3201[0m [43m        [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43minput_signature[49m[43m,[49m
+[1;32m   3202[0m [43m        [49m[43mautograph[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_autograph[49m[43m,[49m
+[1;32m   3203[0m [43m        [49m[43mautograph_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_autograph_options[49m[43m,[49m
+[1;32m   3204[0m [43m        [49m[43marg_names[49m[38;5;241;43m=[39;49m[43marg_names[49m[43m,[49m
+[1;32m   3205[0m [43m        [49m[43moverride_flat_arg_shapes[49m[38;5;241;43m=[39;49m[43moverride_flat_arg_shapes[49m[43m,[49m
+[1;32m   3206[0m [43m        [49m[43mcapture_by_value[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_capture_by_value[49m[43m)[49m,
+[1;32m   3207[0m     [38;5;28mself[39m[38;5;241m.[39m_function_attributes,
+[1;32m   3208[0m     function_spec[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mfunction_spec,
+[1;32m   3209[0m     [38;5;66;03m# Tell the ConcreteFunction to clean up its graph once it goes out of[39;00m
+[1;32m   3210[0m     [38;5;66;03m# scope. This is not the default behavior since it gets used in some[39;00m
+[1;32m   3211[0m     [38;5;66;03m# places (like Keras) where the FuncGraph lives longer than the[39;00m
+[1;32m   3212[0m     [38;5;66;03m# ConcreteFunction.[39;00m
+[1;32m   3213[0m     shared_func_graph[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[1;32m   3214[0m [38;5;28;01mreturn[39;00m graph_function
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py:990[0m, in [0;36mfunc_graph_from_py_func[0;34m(name, python_func, args, kwargs, signature, func_graph, autograph, autograph_options, add_control_dependencies, arg_names, op_return_value, collections, capture_by_value, override_flat_arg_shapes)[0m
+[1;32m    987[0m [38;5;28;01melse[39;00m:
+[1;32m    988[0m   _, original_func [38;5;241m=[39m tf_decorator[38;5;241m.[39munwrap(python_func)
+[0;32m--> 990[0m func_outputs [38;5;241m=[39m [43mpython_func[49m[43m([49m[38;5;241;43m*[39;49m[43mfunc_args[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mfunc_kwargs[49m[43m)[49m
+[1;32m    992[0m [38;5;66;03m# invariant: `func_outputs` contains only Tensors, CompositeTensors,[39;00m
+[1;32m    993[0m [38;5;66;03m# TensorArrays and `None`s.[39;00m
+[1;32m    994[0m func_outputs [38;5;241m=[39m nest[38;5;241m.[39mmap_structure(convert, func_outputs,
+[1;32m    995[0m                                   expand_composites[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py:634[0m, in [0;36mFunction._defun_with_scope.<locals>.wrapped_fn[0;34m(*args, **kwds)[0m
+[1;32m    632[0m     xla_context[38;5;241m.[39mExit()
+[1;32m    633[0m [38;5;28;01melse[39;00m:
+[0;32m--> 634[0m   out [38;5;241m=[39m [43mweak_wrapped_fn[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43m__wrapped__[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+[1;32m    635[0m [38;5;28;01mreturn[39;00m out
+
+File [0;32m~/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py:977[0m, in [0;36mfunc_graph_from_py_func.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    975[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:  [38;5;66;03m# pylint:disable=broad-except[39;00m
+[1;32m    976[0m   [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(e, [38;5;124m"[39m[38;5;124mag_error_metadata[39m[38;5;124m"[39m):
+[0;32m--> 977[0m     [38;5;28;01mraise[39;00m e[38;5;241m.[39mag_error_metadata[38;5;241m.[39mto_exception(e)
+[1;32m    978[0m   [38;5;28;01melse[39;00m:
+[1;32m    979[0m     [38;5;28;01mraise[39;00m
+
+[0;31mValueError[0m: in user code:
+
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:800 train_function  *
+        return step_function(self, iterator)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:790 step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:1259 run
+        return self._extended.call_for_each_replica(fn, args=args, kwargs=kwargs)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:2730 call_for_each_replica
+        return self._call_for_each_replica(fn, args, kwargs)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:3417 _call_for_each_replica
+        return fn(*args, **kwargs)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:783 run_step  **
+        outputs = model.train_step(data)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:749 train_step
+        y_pred = self(x, training=True)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py:998 __call__
+        input_spec.assert_input_compatibility(self.input_spec, inputs, self.name)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/input_spec.py:234 assert_input_compatibility
+        raise ValueError('Input ' + str(input_index) + ' of layer ' +
+
+    ValueError: Input 0 of layer sequential is incompatible with the layer: : expected min_ndim=4, found ndim=3. Full shape received: (32, 28, 28)
+
+ValueError: in user code:
+
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:800 train_function  *
+        return step_function(self, iterator)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:790 step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:1259 run
+        return self._extended.call_for_each_replica(fn, args=args, kwargs=kwargs)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:2730 call_for_each_replica
+        return self._call_for_each_replica(fn, args, kwargs)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:3417 _call_for_each_replica
+        return fn(*args, **kwargs)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:783 run_step  **
+        outputs = model.train_step(data)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:749 train_step
+        y_pred = self(x, training=True)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer.py:998 __call__
+        input_spec.assert_input_compatibility(self.input_spec, inputs, self.name)
+    /home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/tensorflow/python/keras/engine/input_spec.py:234 assert_input_compatibility
+        raise ValueError('Input ' + str(input_index) + ' of layer ' +
+
+    ValueError: Input 0 of layer sequential is incompatible with the layer: : expected min_ndim=4, found ndim=3. Full shape received: (32, 28, 28)
+
+

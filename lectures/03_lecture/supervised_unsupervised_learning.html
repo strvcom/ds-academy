@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>LECTURE 3: ML MODELS &#8212; Data Science Academy</title>
+    <title>Lecture 3: ML Models &#8212; Data Science Academy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,6 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://strvcom.github.io/ds-academy/intro.html/lectures/03_lecture/supervised_unsupervised_learning.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Let’s build our first data pipeline!" href="../04_lecture/intro.html" />
     <link rel="prev" title="Let’s learn some ML concepts and do some regression!" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -250,7 +251,60 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     LECTURE 3: ML MODELS
+     Lecture 3: ML Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Pipelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04_lecture/intro.html">
+   Let’s build our first data pipeline!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04_lecture/data_pipelines.html">
+     Lecture 4: Model Improvements and  Pipelines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Evaluating, comparing, and selecting ML models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05_lecture/intro.html">
+   Evaluating, comparing, and selecting ML models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_evaluation.html">
+     Model evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_selection.html">
+     Model selection
     </a>
    </li>
   </ul>
@@ -463,37 +517,37 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   LECTURE 3: ML MODELS
+   Lecture 3: ML Models
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-regression">
-   LINEAR REGRESSION
+   Linear Regression
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistic-regression">
-   LOGISTIC REGRESSION
+   Logistic Regression
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#clustering">
-   CLUSTERING
+  <a class="reference internal nav-link" href="#clustering-unspervised-ml">
+   Clustering (Unspervised ML)
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   EXERCISES
+   Exercises
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1">
-   EXERCISE 1
+   Exercise 1
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2">
-   EXERCISE 2
+   Exercise 2
   </a>
  </li>
 </ul>
@@ -505,7 +559,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>LECTURE 3: ML MODELS</h1>
+                <h1>Lecture 3: ML Models</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -517,37 +571,37 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   LECTURE 3: ML MODELS
+   Lecture 3: ML Models
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-regression">
-   LINEAR REGRESSION
+   Linear Regression
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistic-regression">
-   LOGISTIC REGRESSION
+   Logistic Regression
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#clustering">
-   CLUSTERING
+  <a class="reference internal nav-link" href="#clustering-unspervised-ml">
+   Clustering (Unspervised ML)
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   EXERCISES
+   Exercises
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1">
-   EXERCISE 1
+   Exercise 1
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2">
-   EXERCISE 2
+   Exercise 2
   </a>
  </li>
 </ul>
@@ -561,7 +615,7 @@ title="Print to PDF"
               <div>
                 
   <section id="lecture-3-ml-models">
-<h1>LECTURE 3: ML MODELS<a class="headerlink" href="#lecture-3-ml-models" title="Permalink to this headline">#</a></h1>
+<h1>Lecture 3: ML Models<a class="headerlink" href="#lecture-3-ml-models" title="Permalink to this headline">#</a></h1>
 <p>In this lecture we are going to build upon the knowledge of last week. In addition to this notebook there are a few slides that explain the various ML models slighly deeper.</p>
 <p>This week you will learn:</p>
 <ul class="simple">
@@ -581,7 +635,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="linear-regression">
-<h1>LINEAR REGRESSION<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h1>
+<h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h1>
 <p><img alt="alt text" src="../../_images/0004.jpg" /></p>
 <p><img alt="alt text" src="../../_images/0005.jpg" /></p>
 <p><img alt="alt text" src="../../_images/0006.jpg" /></p>
@@ -609,7 +663,7 @@ title="Print to PDF"
 <p>Using the function above you can generate data (you can modify the parameters!).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_linear</span><span class="p">,</span> <span class="n">y_linear</span> <span class="o">=</span> <span class="n">generate_dataset</span><span class="p">(</span><span class="n">beta</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">std_dev</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_linear</span><span class="p">,</span> <span class="n">y_linear</span> <span class="o">=</span> <span class="n">generate_dataset</span><span class="p">(</span><span class="n">beta</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">std_dev</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -671,7 +725,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The trained model gives us a value of: -0.5221163591580069 for alpha and a value of: -1.2722502587897906 for beta.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The trained model gives us a value of: -0.22617597061196282 for alpha and a value of: -1.4747575222292983 for beta.
 </pre></div>
 </div>
 </div>
@@ -720,7 +774,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>119.62725550587597
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>112.11885230669334
 </pre></div>
 </div>
 </div>
@@ -734,14 +788,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>101.405217222011
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>138.60601090720044
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="logistic-regression">
-<h1>LOGISTIC REGRESSION<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h1>
+<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h1>
 <p><img alt="alt text" src="../../_images/0007.jpg" /></p>
 <p><img alt="alt text" src="../../_images/0008.jpg" /></p>
 <p>For logistic regression we sort of stick with the linear data <span class="math notranslate nohighlight">\(z = \alpha +\beta X + \epsilon\)</span>. On top of it we use another function to map the data to probabilities and then to classes, but the details of it are outside the scope of this lecture.</p>
@@ -833,7 +887,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
   warnings.warn(
 </pre></div>
 </div>
@@ -851,7 +905,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jan/miniconda3/envs/ds-academy-development/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
   warnings.warn(
 </pre></div>
 </div>
@@ -889,10 +943,11 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="clustering">
-<h1>CLUSTERING<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h1>
+<section id="clustering-unspervised-ml">
+<h1>Clustering (Unspervised ML)<a class="headerlink" href="#clustering-unspervised-ml" title="Permalink to this headline">#</a></h1>
 <p><img alt="alt text" src="../../_images/0010.jpg" /></p>
 <p><img alt="alt text" src="../../_images/0011.jpg" /></p>
+<p>Visualization: <a class="reference external" href="https://www.youtube.com/watch?v=5I3Ei69I40s">https://www.youtube.com/watch?v=5I3Ei69I40s</a></p>
 <p>For Clustering we will not create our own function to generate the data. Instead we will rely on the make_blobs function that is part of sklearn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -904,7 +959,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span><span class="p">,</span> <span class="n">clusters</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span><span class="p">,</span> <span class="n">clusters</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span>
+                  <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span>
                   <span class="n">n_features</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> 
                   <span class="n">centers</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
                   <span class="n">cluster_std</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
@@ -924,7 +980,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/supervised_unsupervised_learning_53_0.png" src="../../_images/supervised_unsupervised_learning_53_0.png" />
+<img alt="../../_images/supervised_unsupervised_learning_54_0.png" src="../../_images/supervised_unsupervised_learning_54_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -949,7 +1005,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/supervised_unsupervised_learning_55_0.png" src="../../_images/supervised_unsupervised_learning_55_0.png" />
+<img alt="../../_images/supervised_unsupervised_learning_56_0.png" src="../../_images/supervised_unsupervised_learning_56_0.png" />
 </div>
 </div>
 <p>Evaluation for clustering is a bit different. In contrast with the supervised methods of regression and classification, we do not have ground-true data. To determine whether our cluster algorithm did a good job, we need to take two things into account:</p>
@@ -973,7 +1029,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="exercises">
-<h1>EXERCISES<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
 <p>We will fetch the Titanic dataset from sklearn. X contains some features regarding passenger characteristics of the Titanic. y contains their binary survival (0 for drown, 1 for survival).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1205,20 +1261,148 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1223478/2615056977.py:1: FutureWarning: In a future version of pandas all arguments of DataFrame.any and Series.any will be keyword-only.
+  mask = ~pd.isnull(X[[&#39;fare&#39;, &#39;embarked&#39;]]).any(1)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercise-1">
-<h1>EXERCISE 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h1>
+<h1>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h1>
 <p>A new Titanic is leaving Southamption, so for obvious purposes data from the first edition has to be re-examined.</p>
 <p>A researcher is tasked to analyse data from the Titanic 1.0 and to come up with a model for survival probabilities. The tasks are the following:</p>
 <p>1a) Use sklearn’s one-hot-encoder to encode the ‘sex’ and the ‘embarked’ features in the dataset.</p>
 <p>1b) Use sklearn’s linear regression model on the non-zero elements of the ‘age’ feature to predict the zero-elements of the ‘age’ feature.</p>
 <p>1c) Use sklearns logistic regression model to predict the survival rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1a</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">enc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="s1">&#39;sex&#39;</span><span class="p">]])</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;embarked&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">enc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="s1">&#39;embarked&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1b</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># subselect data without age column, and where age is not null</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="s1">&#39;age&#39;</span><span class="p">][</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">][</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># fill in where age is null</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">][</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="s1">&#39;age&#39;</span><span class="p">][</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1c </span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;1&#39;, &#39;0&#39;, &#39;1&#39;, ..., &#39;0&#39;, &#39;0&#39;, &#39;0&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercise-2">
-<h1>EXERCISE 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h1>
+<h1>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h1>
 <p>We also want to marketeer our new Titanic and therefor we want to address specific groups of people. To setup a marketing campaign we want to lump Titanic passengers together in a smart way. After some discussion, a cluster analysis is agreed upon.</p>
 <p>Apply a cluster analysis on the features ‘fare’ and ‘age’. Determine which number of clusters (k) is the best. Plot your results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reload the data to ensure that there are no hidden references</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;titanic&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="s1">&#39;home.dest&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;cabin&#39;</span><span class="p">,</span> <span class="s1">&#39;ticket&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="s1">&#39;embarked&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1223478/2134460839.py:9: FutureWarning: In a future version of pandas all arguments of DataFrame.any and Series.any will be keyword-only.
+  mask = ~pd.isnull(X[[&#39;fare&#39;, &#39;embarked&#39;]]).any(1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_fare_age</span> <span class="o">=</span> <span class="n">X</span><span class="p">[[</span><span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+     <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fare_age</span><span class="p">)</span>
+     <span class="n">predictions</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_fare_age</span><span class="p">)</span>
+     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X_fare_age</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.7931545554874647,
+ 0.6170463417394,
+ 0.6131359802756283,
+ 0.4680636249354134,
+ 0.47855871010142054,
+ 0.4716804411067284,
+ 0.4767865970722949,
+ 0.4840815923051364]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># #Initialize the class object</span>
+<span class="n">kmeans_optimal</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+ 
+<span class="c1"># #predict the labels of clusters.</span>
+<span class="n">predictions_optimal</span> <span class="o">=</span> <span class="n">kmeans_optimal</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_fare_age</span><span class="p">)</span>
+
+<span class="c1"># # #filter rows of original data</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">colour</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]):</span>
+     <span class="n">filtered_label</span> <span class="o">=</span> <span class="n">X_fare_age</span><span class="p">[</span><span class="n">predictions_optimal</span> <span class="o">==</span> <span class="n">label</span><span class="p">]</span>
+     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">filtered_label</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">filtered_label</span><span class="p">[</span><span class="s1">&#39;fare&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/supervised_unsupervised_learning_78_0.png" src="../../_images/supervised_unsupervised_learning_78_0.png" />
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1254,6 +1438,13 @@ dtype: float64
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Let’s learn some ML concepts and do some regression!</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../04_lecture/intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Let’s build our first data pipeline!</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

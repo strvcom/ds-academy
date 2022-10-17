@@ -249,7 +249,60 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../03_lecture/supervised_unsupervised_learning.html">
-     LECTURE 3: ML MODELS
+     Lecture 3: ML Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Pipelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04_lecture/intro.html">
+   Let’s build our first data pipeline!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04_lecture/data_pipelines.html">
+     Lecture 4: Model Improvements and  Pipelines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Evaluating, comparing, and selecting ML models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05_lecture/intro.html">
+   Evaluating, comparing, and selecting ML models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_evaluation.html">
+     Model evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_selection.html">
+     Model selection
     </a>
    </li>
   </ul>
@@ -664,7 +717,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.23.1&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.23.3&#39;
 </pre></div>
 </div>
 </div>
@@ -806,11 +859,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.68065447, 0.17689332],
-       [0.60296996, 0.74940031],
-       [0.98289993, 0.30023925],
-       [0.62094755, 0.43250684],
-       [0.10043257, 0.48572224]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.37454716, 0.09971145],
+       [0.39464342, 0.30889773],
+       [0.92436602, 0.58073597],
+       [0.66677646, 0.6565236 ],
+       [0.27520396, 0.44699546]])
 </pre></div>
 </div>
 </div>
@@ -891,10 +944,10 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 9, 5, 7, 9, 9],
-       [5, 7, 2, 5, 4, 1],
-       [5, 2, 1, 5, 4, 7],
-       [0, 9, 0, 6, 7, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 1, 8, 5, 3],
+       [5, 7, 9, 8, 1, 0],
+       [8, 1, 9, 4, 0, 6],
+       [6, 6, 0, 7, 2, 8]])
 </pre></div>
 </div>
 </div>
@@ -906,7 +959,7 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -918,7 +971,7 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 9, 0, 6, 7, 7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6, 6, 0, 7, 2, 8])
 </pre></div>
 </div>
 </div>
@@ -932,8 +985,8 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.83040123, 0.11788966, 0.25880981, 0.2747958 , 0.8826023 ,
-       0.46308345, 0.78507025, 0.31101621, 0.10320644, 0.6800529 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.46453453, 0.35035946, 0.38850619, 0.04851282, 0.84105097,
+       0.14857567, 0.99784626, 0.95581682, 0.57821734, 0.48498955])
 </pre></div>
 </div>
 </div>
@@ -946,8 +999,8 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False, False, False,  True, False,  True, False, False,
-        True])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False, False, False,  True, False,  True,  True,  True,
+       False])
 </pre></div>
 </div>
 </div>
@@ -960,8 +1013,8 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.11788966, 0.25880981, 0.2747958 , 0.5       ,
-       0.46308345, 0.5       , 0.31101621, 0.10320644, 0.5       ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.46453453, 0.35035946, 0.38850619, 0.04851282, 0.5       ,
+       0.14857567, 0.5       , 0.5       , 0.5       , 0.48498955])
 </pre></div>
 </div>
 </div>
@@ -1117,7 +1170,7 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 2.71x faster than looping here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 3.59x faster than looping here.
 </pre></div>
 </div>
 </div>
@@ -1285,16 +1338,16 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.55818185, 0.52700683, 0.78794446],
-       [0.12097807, 0.95116491, 0.19736897],
-       [0.23001253, 0.12812669, 0.27975751],
-       [0.6235692 , 0.61627639, 0.34452033],
-       [0.77555686, 0.95830716, 0.72341582],
-       [0.43742786, 0.94989571, 0.37409603],
-       [0.399595  , 0.89550097, 0.46564535],
-       [0.81524029, 0.04422027, 0.74291988],
-       [0.78841169, 0.02909603, 0.6045267 ],
-       [0.91807934, 0.55318004, 0.7455751 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.18543311, 0.83278917, 0.93178435],
+       [0.28653492, 0.77619592, 0.97842598],
+       [0.95083591, 0.07112364, 0.56429002],
+       [0.64405152, 0.15480005, 0.17809471],
+       [0.95942383, 0.97225338, 0.75489742],
+       [0.24790185, 0.37375084, 0.42029712],
+       [0.41110105, 0.58753309, 0.31924252],
+       [0.36412751, 0.19536604, 0.43759425],
+       [0.83516857, 0.73856657, 0.00502806],
+       [0.32221009, 0.59000884, 0.31531488]])
 </pre></div>
 </div>
 </div>
@@ -1308,7 +1361,7 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.56670527, 0.5652775 , 0.52657701])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.52067884, 0.52923875, 0.49049693])
 </pre></div>
 </div>
 </div>
@@ -1321,16 +1374,16 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.00852342, -0.03827067,  0.26136744],
-       [-0.4457272 ,  0.38588741, -0.32920804],
-       [-0.33669274, -0.43715081, -0.24681951],
-       [ 0.05686393,  0.05099889, -0.18205668],
-       [ 0.20885159,  0.39302966,  0.1968388 ],
-       [-0.12927741,  0.38461821, -0.15248098],
-       [-0.16711027,  0.33022347, -0.06093166],
-       [ 0.24853502, -0.52105723,  0.21634287],
-       [ 0.22170642, -0.53618147,  0.07794968],
-       [ 0.35137407, -0.01209746,  0.21899809]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.33524573,  0.30355041,  0.44128742],
+       [-0.23414392,  0.24695717,  0.48792905],
+       [ 0.43015708, -0.45811512,  0.07379309],
+       [ 0.12337268, -0.3744387 , -0.31240222],
+       [ 0.438745  ,  0.44301463,  0.26440049],
+       [-0.27277698, -0.15548792, -0.07019981],
+       [-0.10957778,  0.05829434, -0.17125441],
+       [-0.15655133, -0.33387271, -0.05290268],
+       [ 0.31448973,  0.20932782, -0.48546887],
+       [-0.19846875,  0.06077008, -0.17518205]])
 </pre></div>
 </div>
 </div>
@@ -1343,7 +1396,7 @@ Size: 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.22044605e-17, -2.22044605e-17, -2.22044605e-17])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.22044605e-17,  3.33066907e-17, -2.22044605e-17])
 </pre></div>
 </div>
 </div>
