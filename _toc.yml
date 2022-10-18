@@ -38,3 +38,9 @@ parts:
   - file: lectures/04_lecture/intro
     sections:
       - file: lectures/04_lecture/data_pipelines
+- caption: Evaluating, comparing, and selecting ML models
+  chapters:
+    - file: lectures/05_lecture/intro
+      sections:
+        - file: lectures/05_lecture/model_evaluation
+        - file: lectures/05_lecture/model_selection
