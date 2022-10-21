@@ -16,3 +16,4 @@ dependencies:
   - requests
   - tensorflow
   - scikit-optimize
+  - streamlit
