@@ -137,3 +137,6 @@ _build
 
 # Ignore local data folder
 data
+
+# MacOS related files
+*.DS_Store
