@@ -14,6 +14,9 @@ MODEL_PATH = os.path.join(
     "../titanic/model.pickle"
 )
 
+# set page title
+st.set_page_config(page_title="Titanic survival model")
+
 def load_model(model_path: str):
     with open(model_path, "rb") as input_file:
         model = pickle.load(input_file)
@@ -62,12 +65,12 @@ def main():
     # get input data frame
     passenger_to_predict = pd.DataFrame([
         {
-            'class': pass_class,
-            'age': pass_age,
-            'sib_sp_cnt': pass_sib_sp_cnt,
-            'par_child_cnt': pass_par_child_cnt,
-            'fare': pass_fare,
-            'is_male': int(pass_gender == "Male"),
+            "class": pass_class,
+            "age": pass_age,
+            "sib_sp_cnt": pass_sib_sp_cnt,
+            "par_child_cnt": pass_par_child_cnt,
+            "fare": pass_fare,
+            "is_male": int(pass_gender == "Male"),
         },
     ])
 
@@ -78,5 +81,5 @@ def main():
     ##### Survival probability of passanger is: {survival_proba:,.2f} %
     """)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
