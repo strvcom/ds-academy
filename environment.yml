@@ -17,3 +17,5 @@ dependencies:
   - tensorflow
   - scikit-optimize
   - streamlit
+  - fastapi
+  - uvicorn
