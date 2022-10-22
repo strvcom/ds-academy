@@ -6,16 +6,16 @@ API service for STRV DS Academy purpose; written in FastAPI.
 
 To run the API locally, follow these steps:
 
-1. Start API by the following command: unicorn api:app --reload
+1. Start API by the following command: uvicorn api:app --reload
 2. Check the Titanic survival model endpoint here: http://127.0.0.1:8000/survival_proba
 3. Check documentation here: http://127.0.0.1:8000/docs
 """
 
-from enum import Enum
 import os
 import pickle
 import time
 
+from enum import Enum
 import pandas as pd
 from fastapi import FastAPI, Query
 
