@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Web application for STRV DS Academy purpose; written in streamlit."""
+"""
+Web application for STRV DS Academy purpose; written in streamlit.
+
+Run by calling the following comand from your terminal: streamlit run path/to/web_app.py
+"""
 
 import os
 import pickle
@@ -34,30 +38,37 @@ def main():
 
     # define inputs
     pass_class = st.selectbox(
-        "Select passanger's class.",
+        "Passanger's class.",
         (1, 2, 3)
     )
     pass_gender = st.selectbox(
-        "Select passanger's gender.",
-        ("Male", "Female", "Non-binary", "Transgender", "Intersex", "Preferred not to say")
+        "Passanger's gender.",
+        (
+            "Male",
+            "Female",
+            "Non-binary",
+            "Transgender",
+            "Intersex",
+            "Preferred not to say",
+        )
     )
     pass_age = st.number_input(
-        "Select passanger's age.",
+        "Passanger's age.",
         min_value=0,
         max_value=100
     )
     pass_sib_sp_cnt = st.number_input(
-        "Select number of passanger's siblings/spouses.",
+        "Number of passanger's siblings/spouses.",
         min_value=0,
         max_value=10
     )
     pass_par_child_cnt = st.number_input(
-        "Select number of passanger's children/parents.",
+        "Number of passanger's children/parents.",
         min_value=0,
         max_value=10
     )
     pass_fare = st.number_input(
-        "Select passanger's fare.",
+        "Passanger's fare.",
         min_value=0,
         max_value=600,
     )
