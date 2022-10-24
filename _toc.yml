@@ -44,3 +44,9 @@ parts:
       sections:
         - file: lectures/05_lecture/model_evaluation
         - file: lectures/05_lecture/model_selection
+- caption: Deploying & Managing an AI solution in production
+  chapters:
+    - file: lectures/06_lecture/intro
+      sections:
+        - file: lectures/06_lecture/app
+        - file: lectures/06_lecture/deployment
