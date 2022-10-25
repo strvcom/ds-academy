@@ -16,6 +16,5 @@ the lecture.
 
 ## Recording from the lecture
 
-If missed the class, or you want to revisit some content, download
-{Download}`lecture recording <https://drive.google.com/file/d/1YbsBwOZL0p1PPjDb0at6pic3BJDJBXeJ/view>`.
-
+If you missed the class, or you want to revisit some content, download
+[the lecture recording](https://drive.google.com/file/d/1YbsBwOZL0p1PPjDb0at6pic3BJDJBXeJ).

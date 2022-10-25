@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Deployment into Cloud &#8212; Data Science Academy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://strvcom.github.io/ds-academy/intro.html/lectures/06_lecture/deployment.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Embedding Model Into App" href="app.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Academy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome, AI/ML enthusiast
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../00_start/intro.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/git.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/environment-setup.html">
+     Setup Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/notebooks.html">
+     Getting started with Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/ide-overview.html">
+     Getting more done with IDEs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Your Hands Dirty with Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01_lecture/intro.html">
+   Getting Your Hands Dirty with Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/python_basics.html">
+     Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/motivational_example.html">
+     Motivational Example
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding, Extracting, Sourcing and Processing Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02_lecture/intro.html">
+   Understanding, Extracting, Sourcing and Processing Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/numpy_basics.html">
+     Introduction to NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/pandas_basics.html">
+     Introduction to Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/matplotlib_basics.html">
+     Visualization with Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/acquiring_data.html">
+     Acquiring Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/eda.html">
+     Exploratory Data Analysis (EDA) Wine Quality dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/data_preparation.html">
+     Data Preparation for ML
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AI/ML Basic Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_lecture/intro.html">
+   Let’s learn some ML concepts and do some regression!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_lecture/supervised_unsupervised_learning.html">
+     Lecture 3: ML Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Pipelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04_lecture/intro.html">
+   Let’s build our first data pipeline!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04_lecture/data_pipelines.html">
+     Lecture 4: Model Improvements and  Pipelines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Evaluating, comparing, and selecting ML models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05_lecture/intro.html">
+   Evaluating, comparing, and selecting ML models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_evaluation.html">
+     Model evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_selection.html">
+     Model selection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deploying &amp; Managing an AI solution in production
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Deploying &amp; Managing an AI solution in production
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="app.html">
+     Embedding Model Into App
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Deployment into Cloud
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/strvcom/ds-academy/master?urlpath=tree/lectures/06_lecture/deployment.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/strvcom/ds-academy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/strvcom/ds-academy/issues/new?title=Issue%20on%20page%20%2Flectures/06_lecture/deployment.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/lectures/06_lecture/deployment.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#containerizing-the-app">
+   Containerizing the App
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deployment-into-cloud-service">
+   Deployment into Cloud Service
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup-github-repository">
+     Setup GitHub repository
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup-heroku-account-app">
+     Setup Heroku account &amp; app
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Deployment into Cloud</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#containerizing-the-app">
+   Containerizing the App
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deployment-into-cloud-service">
+   Deployment into Cloud Service
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup-github-repository">
+     Setup GitHub repository
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup-heroku-account-app">
+     Setup Heroku account &amp; app
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="deployment-into-cloud">
+<h1>Deployment into Cloud<a class="headerlink" href="#deployment-into-cloud" title="Permalink to this headline">#</a></h1>
+<p>In the previous section, we have seen the examples how to create a simple web application, and even simpler API
+service. However, both of these examples were only running locally. They weren’t exposed to the world, resp. to our client. Let’s deep dive into the deployment process then!</p>
+<section id="containerizing-the-app">
+<h2>Containerizing the App<a class="headerlink" href="#containerizing-the-app" title="Permalink to this headline">#</a></h2>
+<p>Imagine a situation in which we create a script, written in python and dependent on a few libraries, for
+exmaple our favorite ones: <a class="reference external" href="https://pandas.pydata.org/">pandas</a>, and <a class="reference external" href="https://numpy.org/">numpy</a>. Because we did
+a good job, our colleague asks us to share the script with him, so we send the code via the Slack. But, the
+the colleague starts complaining that the code isn’t working.</p>
+<p>In this example we can basically say that our script is an application that we want to deploy on our colleague’s
+local machine. And the reason why it isn’t working is simple. We have different environments. The colleague didn’t
+say that he uses Python 2 only, and he hasn’t installed pandas package yet. Because we are in theory, he could
+even use a different OS, and definetely, he has got a different file system, so none of the absolute paths used
+in our script wouldn’t work.</p>
+<p>But what can we do to prevent this from happening again? As the simplest solution, we can define the python
+environment using <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file for conda environment configuration, so our colleague can create brand
+new environment based on our specifications. Or we can share <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file with list of all the python
+dependencies that can be installed via pip/conda in the similar way. But more sophisticated method would be to
+containerize the app which means to create an isolated environment with:</p>
+<ul class="simple">
+<li><p>its own OS,</p></li>
+<li><p>its own file system,</p></li>
+<li><p>the only one (and correct) version of Python,</p></li>
+<li><p>minimum necessary requirements.</p></li>
+</ul>
+<p>And this is something we can create using <a class="reference external" href="https://www.docker.com/">docker</a>. Docker uses its own nomenclature, so
+let’s describe the whole process a little bit.</p>
+<p>The isolated environment is defined in script called <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>. It contains specification about OS, file
+system, dependencies and applications to be ran. When the environment is built based on specs in <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>,
+docker image is created. Docker image is a logical entity that can be shared between users. The running
+instance of docker image is called docker container. Docker container is environment where our apps are
+actually running.</p>
+<p>As stated before, <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> is a script using docker conventions in order to define docker image. For
+<code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>, there are commonly used commands.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code> - indicates which base image to use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARG</span></code> - defines variables that users pass in at build-time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USER</span></code> - sets username or user group when running docker image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COPY</span></code> - copies files and directories into environment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORKDIR</span></code> - sets the working directory inside container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENV</span></code> - sets environment variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RUN</span></code> - runs shell command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPOSE</span></code> - informs docker that the container listens on the specified network ports at runtime,
+used for testing docker applications locally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMD</span></code> - is used only once at the end of <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> and contains the final command to run
+when executing the container.</p></li>
+</ul>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p>For example purposes from now on, we will use
+<a class="reference external" href="https://github.com/strvcom/ds-academy-api-titanic">“ds-academy-api-titanic” repository</a>.
+There is defined an API for titanic survival model. As you can see the following Dockerfile is used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># as base image, we will use python:3.9.15-slim-buster that contains Linux OS and Python 3.9 
+FROM python:3.9.15-slim-buster
+
+# we set our working directory to /app
+WORKDIR /app
+
+# we copy the requirements.txt file into our working directory inside the container
+COPY requirements.txt .
+
+# we install all the python dependecies
+RUN pip install --no-cache-dir wheel
+RUN pip install --no-cache-dir -r requirements.txt
+
+# we copy the all files into our working directory inside the container
+COPY . .
+
+# we run the API server insede the docker container according to the documentation
+# https://fastapi.tiangolo.com/deployment/server-workers/
+CMD gunicorn api:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
+</pre></div>
+</div>
+<p>When the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> is ready, we can try to build the docker image with <code class="docutils literal notranslate"><span class="pre">api-titanic-survival-model:latest</span></code>
+tag. We have to run the following command from the project root directory where the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> is present.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">api</span><span class="o">-</span><span class="n">titanic</span><span class="o">-</span><span class="n">survival</span><span class="o">-</span><span class="n">model</span><span class="p">:</span><span class="n">latest</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>If docker image is built successfully, we can try to run the docker container. In the command, we define
+environment variable <code class="docutils literal notranslate"><span class="pre">PORT</span></code> that is used inside the docker container for running the web server on the
+specific port. Also, we will use <code class="docutils literal notranslate"><span class="pre">-p</span></code> argument that lets us to publish a container’s port to the host.
+With <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">8000:8000</span></code> we are basically saying docker to expose container port 8000 and map it to port 8000 of our
+local machine. Lastly, we need to define which image we would like to run. For that purpose we use the tag from
+previous build phase.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;PORT=8000&quot;</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8000</span><span class="p">:</span><span class="mi">8000</span> <span class="n">api</span><span class="o">-</span><span class="n">titanic</span><span class="o">-</span><span class="n">survival</span><span class="o">-</span><span class="n">model</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+<p>If there is no problem, we should be able to check the following endpoints of our API:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://0.0.0.0:8000/survival_proba">http://0.0.0.0:8000/survival_proba</a> - endpoint with Titanic survival model
+prediction,</p></li>
+<li><p><a class="reference external" href="http://0.0.0.0:8000/docs">http://0.0.0.0:8000/docs</a> - endpoint with Titanic survival model docs.</p></li>
+</ul>
+</section>
+</section>
+<section id="deployment-into-cloud-service">
+<h2>Deployment into Cloud Service<a class="headerlink" href="#deployment-into-cloud-service" title="Permalink to this headline">#</a></h2>
+<p>Now, when we know what docker is and we have our environment prepared, nothing holds us back from deployment.</p>
+<p>Again, there is a lot of services we can use to deploy our code, and expose it to the whole world. In the following example, we will deploy our app to <a class="reference external" href="https://www.heroku.com">Heroku</a>.
+It is a cloud platform as a service (PaaS) that allows applications to be hosted on the cloud.
+With a few limitations, Heroku has been offering free tier for smaller applications. Their pricing plan will
+change at the end of the November 2022, so for purposes of the DS Academy 2022, we can still benefit from the
+current pricing plan. Within the free plan, we are able to connect Heroku directly to our GitHub repository,
+and deploy code from there.</p>
+<p>The following manual describes what needs to be done for deploying the <strong>API service</strong>, not web app.</p>
+<section id="setup-github-repository">
+<h3>Setup GitHub repository<a class="headerlink" href="#setup-github-repository" title="Permalink to this headline">#</a></h3>
+<p>At the beginning, we need to set up the public GitHub repository, and push our application scripts into it.</p>
+<ol>
+<li><p>Create public GitHub repository.</p></li>
+<li><p>Based on <a class="reference external" href="https://github.com/strvcom/ds-academy-api-titanic">the example repository</a>,
+create the following files needed for the deployment.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">api.py</span></code></p></li>
+</ol>
+<p>The file with the API logic - model loading, parameters definition, user input checks, and logic
+of returning the results. It is not necessary to stick to the file name, but it is used on other spots, so
+if changed, it needs to be changed accordingly elsewhere.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code></p></li>
+</ol>
+<p>As stated before, this is the file used for defining docker image. It is necessary for deployment to Heroku.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
+</ol>
+<p>File with python dependencies list. These dependencies are installed into docker image that is deployed
+to Heroku. Be aware of listing everything you need! On the other hand, there is a memory limit of 512 MB
+per application, so list only the necessary libraries!</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">heroku.yml</span></code></p></li>
+</ol>
+<p>Heroku specific file which is used for deployment using docker.</p>
+</li>
+</ol>
+</section>
+<section id="setup-heroku-account-app">
+<h3>Setup Heroku account &amp; app<a class="headerlink" href="#setup-heroku-account-app" title="Permalink to this headline">#</a></h3>
+<p>In the second phase, we can go to Heroku web UI, and set up the deployment process for our appliaction.</p>
+<ol class="simple">
+<li><p>Go to <a class="reference external" href="https://www.heroku.com">Heroku website</a>, and create an account for free.</p></li>
+<li><p><a class="reference external" href="https://devcenter.heroku.com/articles/heroku-cli">Install Heroku CLI</a> and log in to your Heroku account:
+<code class="docutils literal notranslate"><span class="pre">heroku</span> <span class="pre">login</span></code>.</p></li>
+<li><p>In the Heroku web UI, create an app.</p>
+<ol class="simple">
+<li><p>Choose the unique name.</p></li>
+<li><p>Add your app into Europe region.</p></li>
+</ol>
+</li>
+<li><p>In the Heroku web UI, <a class="reference external" href="https://devcenter.heroku.com/articles/github-integration">integrate the app with GitHub repository</a>.</p></li>
+<li><p>In the Heroku CLI, set stack for the project to container: <code class="docutils literal notranslate"><span class="pre">heroku</span> <span class="pre">stack:set</span> <span class="pre">container</span> <span class="pre">-a=&lt;name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">app&gt;</span></code>.</p></li>
+<li><p>In the Heroku web UI, ror the first time, manually deploy your <code class="docutils literal notranslate"><span class="pre">master</span></code> branch by clicking on “Deploy”
+button in according application section.</p></li>
+<li><p>In the Heroku web UI, click “View” button to open the new tab with your app running.</p></li>
+</ol>
+<p>Now, we should be ready for the final presentation!</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures/06_lecture"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="app.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Embedding Model Into App</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By STRV, Data Science Department<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

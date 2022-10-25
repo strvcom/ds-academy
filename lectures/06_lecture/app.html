@@ -1,0 +1,940 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Embedding Model Into App &#8212; Data Science Academy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://strvcom.github.io/ds-academy/intro.html/lectures/06_lecture/app.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deployment into Cloud" href="deployment.html" />
+    <link rel="prev" title="Deploying &amp; Managing an AI solution in production" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Academy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome, AI/ML enthusiast
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../00_start/intro.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/git.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/environment-setup.html">
+     Setup Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/notebooks.html">
+     Getting started with Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00_start/ide-overview.html">
+     Getting more done with IDEs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Your Hands Dirty with Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01_lecture/intro.html">
+   Getting Your Hands Dirty with Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/python_basics.html">
+     Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01_lecture/motivational_example.html">
+     Motivational Example
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding, Extracting, Sourcing and Processing Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02_lecture/intro.html">
+   Understanding, Extracting, Sourcing and Processing Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/numpy_basics.html">
+     Introduction to NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/pandas_basics.html">
+     Introduction to Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/matplotlib_basics.html">
+     Visualization with Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/acquiring_data.html">
+     Acquiring Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/eda.html">
+     Exploratory Data Analysis (EDA) Wine Quality dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02_lecture/data_preparation.html">
+     Data Preparation for ML
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AI/ML Basic Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_lecture/intro.html">
+   Let’s learn some ML concepts and do some regression!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_lecture/supervised_unsupervised_learning.html">
+     Lecture 3: ML Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Pipelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04_lecture/intro.html">
+   Let’s build our first data pipeline!
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04_lecture/data_pipelines.html">
+     Lecture 4: Model Improvements and  Pipelines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Evaluating, comparing, and selecting ML models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05_lecture/intro.html">
+   Evaluating, comparing, and selecting ML models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_evaluation.html">
+     Model evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_lecture/model_selection.html">
+     Model selection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deploying &amp; Managing an AI solution in production
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Deploying &amp; Managing an AI solution in production
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Embedding Model Into App
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deployment.html">
+     Deployment into Cloud
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/strvcom/ds-academy/master?urlpath=tree/lectures/06_lecture/app.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/strvcom/ds-academy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/strvcom/ds-academy/issues/new?title=Issue%20on%20page%20%2Flectures/06_lecture/app.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/lectures/06_lecture/app.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#context">
+   Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#so-how-can-i-deploy">
+   So… how can I deploy?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#web-application">
+     Web application
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#api-service">
+     API service
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#edge-ai">
+     Edge AI
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Embedding Model Into App</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#context">
+   Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#so-how-can-i-deploy">
+   So… how can I deploy?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#web-application">
+     Web application
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#api-service">
+     API service
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#edge-ai">
+     Edge AI
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="embedding-model-into-app">
+<h1>Embedding Model Into App<a class="headerlink" href="#embedding-model-into-app" title="Permalink to this headline">#</a></h1>
+<section id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">#</a></h2>
+<p>Before we deep dive into the deployment, let’s put it into context.</p>
+<p>Deployment of an AI solution is a crucial part of every ML project. According to
+<a class="reference external" href="https://www.datascience-pm.com/crisp-dm-2/">CRISP-DM</a> (CRoss Industry Standard Process for Data Mining), every
+ML project starts with a meeting with business people and trying to understand the problem. When we - ML
+Engineers - know what our main goal is, we collect the data. After that we look into them, clean them, process
+them, and we are trying to find valueable insights. When we are done with this phase, which some of us call
+“EDA” (explanatory data analysis), we try to build and test our ML models. And when something doesn’t go according
+to the plan, often because we aren’t the domain experts, we go back to our business people, and try to understand
+the problem better, so we can make our models better. And when we spend some time on testing, and convincing
+ourselves, that the model we have just came up with is the masterpiece that can change the world, we are supposed
+to really deploy the model… and, in some cases, really change the world.</p>
+<p><img alt="CRISP-DM" src="../../_images/crisp_dm.png" /></p>
+<p>In other words, without deployment, we wouldn’t be able to provide the model to our clients, we wouldn’t be able
+to help business automate, save time, save money, or whatever other reason there is! Simply, we wouldn’t be able
+to add the value that is expected from us in the first place. And that is the reason why the deployment is
+so crucial.</p>
+</section>
+<section id="so-how-can-i-deploy">
+<h2>So… how can I deploy?<a class="headerlink" href="#so-how-can-i-deploy" title="Permalink to this headline">#</a></h2>
+<p>OK. Now, we know that the ML model deployment process is important, and we know why. But, how can we do that?
+How can we provide the model to our users? As <a class="reference external" href="https://www.linkedin.com/in/niek-mereu-55864a6b/">one clever man</a>
+once said during the third lecture of STRV DS Academy 2022: “It depends.”</p>
+<section id="web-application">
+<h3>Web application<a class="headerlink" href="#web-application" title="Permalink to this headline">#</a></h3>
+<p>Let’s imagine the following situation. Our client wants us to create a model that would be able to predict
+the weather in New York. After a month of hard work, we would be satisfied with our model, so we would export it
+into a binary file and send it to our client by email. Is this the deployment type that is expected from us?
+I don’t think so.</p>
+<p>Much better solution would be to show to our client how the model works, and ask about their opinion.
+Also, it would be fine to provide a tool that could be used by our client for testing. This tool cannot be
+difficult to use, because our clients are business people, not programmers. So, for the purpose of showcasing our
+model, it would be a good idea to prepare a simple web application that would show our models predictions based
+on client’s input.</p>
+<p>Following our previous example, we could prepare an application that would show predcitions, let’s say,
+for the next month with decresing model certainty. Also, there could be a chart of previous month, showing
+model predictions compared to the actual weather. Based on that chart, client could imagine how the weather
+prediction model is reliable. In other words, it could bring a value to the client.</p>
+<p>So, if we sum up the previous ideas, we can say that we can deploy our ML model in form of simple web
+service when:</p>
+<ul class="simple">
+<li><p>we want to show the model predictions to our clients in a user friendly way,</p></li>
+<li><p>our users are supposed to use model rather for testing than for extensive work,</p></li>
+<li><p>there is not many data inputs into our model (we do not want users to fill in thousands of features).</p></li>
+</ul>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h4>
+<p>To build a web application in Python, we can use various frameworks. In STRV, we primarily use Python library
+called <a class="reference external" href="https://streamlit.io/">streamlit</a>. Let’s look how easy it is to create the first application using
+streamlit!</p>
+<p>We start with an installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">streamlit</span>
+</pre></div>
+</div>
+<p>When streamlit is installed, we can start scripting our web in the file called <code class="docutils literal notranslate"><span class="pre">web_app.py</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+
+<span class="c1"># add title</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2"># 📈 Random numbers app</span>
+
+<span class="s2">This is my first streamlit app showing 10 random numbers in a line chart! 🙀</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># plot data</span>
+<span class="n">random_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="n">st</span><span class="o">.</span><span class="n">line_chart</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Random numbers&quot;</span><span class="p">:</span> <span class="n">random_numbers</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, text can be added easily in <a class="reference external" href="https://www.markdownguide.org/basic-syntax/">markdown</a>. And other
+components of the web, such as charts, input fields, or buttons, can be defined using streamlit objects.</p>
+<p>If we want to check the application, we can start it from terminal by the following command that should
+automatically open the new tab of your browser with the running app.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">web_app</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If we are successful, on the following link: <a class="reference external" href="http://localhost:8501">http://localhost:8501</a>, we should see
+app like this.</p>
+<p><img alt="streamlit app screenshot" src="../../_images/streamlit_example_app_screenshot.png" /></p>
+<p>The main adavantages of streamlit are following:</p>
+<ul class="simple">
+<li><p>it can be easily installed via pip/conda,</p></li>
+<li><p>it is very easy to use for prototyping web application, because it offers a lot of components
+in form of Python objects,</p></li>
+<li><p>the default template looks good, so no styling in HTML/CSS/Javascript is needed.</p></li>
+</ul>
+</section>
+</section>
+<section id="api-service">
+<h3>API service<a class="headerlink" href="#api-service" title="Permalink to this headline">#</a></h3>
+<p>Let’s move on. Imagine our clients have tested the model using web service we have prepared for them, and
+they are more than happy with the results. Now, they want to start using the model in their system. In this case,
+there is a very simple solution. We can prepare an API service that can be deployed on cloud, and called directly
+from the client’s system.</p>
+<p>This deployment  method is really the production one. And, frequently, it is much more demanding than
+the previous one in terms of software desing and DevOps (versioning, deployment automation, testing).</p>
+<p>Considering the software desing, API service is not just a code that accepts the inputs and returns the
+prediction. Basically, it is, but there is a need to handle much more than that. What if an optional
+paramter is not filled by user? Can it be sent into model as missing value? And what if someone fills age
+as negative number? All these question should be asked and answered before we start. As every other
+software, an API service needs to be properly designed. Every input should be checked for accepted values,
+and service should also be able to handle both required and optional parameters.</p>
+<p>The other important part is testing. Unit tests for all of our funcions should are a must. And if we have
+luxury of employing human testers, we should use them. They have an awesome ability to ask the questions
+that no one else asked before, so they can find problems before it is too late.</p>
+<p>And last but not least is documentation. API services are frequently used by another technical people.
+But if they do not know how to use it, they simply won’t. Also, when we imagine ourselves in one year from now,
+we would be really grateful for documentation, too. That is why documenting the API service and its endpoints is
+also very important, and, if we use the right tools, it doesn’t have to be so time consuming, as we could have
+thought.</p>
+<p>Summing up the ideas above, we deploy ML models in form of API service when:</p>
+<ul class="simple">
+<li><p>we want to provide the predictions to more technical audience for their own implementation
+(client’s in-house system, internal BE department, public open source),</p></li>
+<li><p>our users plan using the inference frequently,</p></li>
+<li><p>we are ready for software engineering task.</p></li>
+</ul>
+<section id="id1">
+<h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>Python programming language offers a lot of packages that can be used when creating APIs. From the most famous
+ones, we can name these:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://flask.palletsprojects.com/en/2.2.x/">Flask</a>,</p></li>
+<li><p><a class="reference external" href="https://www.djangoproject.com/">Django</a>,</p></li>
+<li><p><a class="reference external" href="https://www.tornadoweb.org/en/stable/">Tornado</a>.</p></li>
+</ul>
+<p>At the begging of an API development, we should invest some time in choosing the right framework for our project.
+All the frameworks have their own pros and cons that needs to be considered. However, on the majority of our
+projects, we use library called <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>. As name can suggest, FastAPI main
+advantage is that it is fast, both performance-wise and development-wise.</p>
+<p>For example, if we strictly type all the functions using FastAPI built-in objects, we can very easily implement
+logic of checking parameters, and create foundation for the documentation that is generated automatically by the
+framework itself. On a lot of projects, writing a documentation is very frenquently neglected, because there is
+simply no time left for that. So, automatic generation of documentation can save a lot of time and, honestly,
+future troubles, too.</p>
+<p>Let’s have a look, how simple API can be created.</p>
+<p>We start with installation of framework itself and <a class="reference external" href="https://www.uvicorn.org/">uvicorn</a>, a web server
+implementation for Python.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">fastapi</span> <span class="s2">&quot;uvicorn[standard]&quot;</span>
+</pre></div>
+</div>
+<p>After that, we can create a script called <code class="docutils literal notranslate"><span class="pre">api.py</span></code>, and put very simple code into it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="c1"># define app object</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="c1"># define the first endpoint (root)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Hello&quot;</span><span class="p">:</span> <span class="s2">&quot;World&quot;</span><span class="p">}</span>
+
+<span class="c1"># define the second endpoint (items)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/items/</span><span class="si">{item_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">read_item</span><span class="p">(</span><span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;item_id&quot;</span><span class="p">:</span> <span class="n">item_id</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">q</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>We can run our API by the following command in the terminal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uvicorn</span> <span class="n">api</span><span class="p">:</span><span class="n">app</span> <span class="o">--</span><span class="n">reload</span>
+</pre></div>
+</div>
+<p>If everything goes according to the plan, we should be able to visit three endpoints.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> - root endpoint with “Hello world” example data.</p></li>
+<li><p><a class="reference external" href="http://127.0.0.1:8000/items/1?q=hello_again">http://127.0.0.1:8000/items/1?q=hello_again</a> - endpoint with example of using both path and query parameters.</p></li>
+<li><p><a class="reference external" href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> - automatically generated documentation.</p></li>
+</ul>
+<p>The main adavantages of FastAPI framework are following:</p>
+<ul class="simple">
+<li><p>high performance,</p></li>
+<li><p>development time reduction due to intuitive API,</p></li>
+<li><p>automatically generated documentation.</p></li>
+</ul>
+</section>
+</section>
+<section id="edge-ai">
+<h3>Edge AI<a class="headerlink" href="#edge-ai" title="Permalink to this headline">#</a></h3>
+<p>Let’s get back to our example and remind ourselves how the project has evolved so far. In the first phase, client
+has recieved the web application for testing purposes. When client was happy with the results, we have created an
+API enpoint with the model that returns model predictions, based on the input. The client implemented the solution
+to their internal system.</p>
+<p>However, imagine the following situation. The client wants to use the inference also on mobile devices in their
+own mobile app. Basically, there are two options.</p>
+<ol class="simple">
+<li><p>Mobile device can send the requests to the internal system (backend) where the solution is already prepared.</p></li>
+<li><p>There can be model installed with the app, and it can be saved into the mobile device itself.</p></li>
+</ol>
+<p>The first option is almost ready. The mobile developers will only implement the inference part to their code.
+However, from the user perspective, the second option is much more convenient. If model sits in the device, it
+can improve an inference latency a lot, the user doesn’t have to rely on the internet connection, so the
+predictions can be used in offline mode, and, last but not least, it is much safer to keep the data on the device
+instead of sending it somewhere else.</p>
+<p>However, implementing models on the mobile devices is not for free for us, ML Engineers. We have to create a
+model that is small and preferably platform agnostic, which, in some cases, is not so easy. Also, wee need
+to accept the fact that by reducing model size, we probbaly loose some of the model accuracy. And at the end, we
+need to cooperate closely with mobile developers to make sure that model is used and interpreted correctly.</p>
+<p>As we can see, the deployment of ML model on mobile devices, resp. edge AI, is much different from the previous
+use cases. But it is not impossible. Big players on market, such as <a class="reference external" href="https://www.tensorflow.org/">Tensorflow</a>
+or <a class="reference external" href="https://pytorch.org/">Pytorch</a>, have prepared converters that can be used for model size reduction and for
+unification of model format for both platforms. In fact the whole training pipeline is not changed, we still
+use Tensorflow/Pytorch for model training, but in the end, we just convert a model to
+<a class="reference external" href="https://www.tensorflow.org/lite">TFLite</a> or <a class="reference external" href="https://pytorch.org/mobile/home/">PyTorch mobile</a>.
+And we use an interpreter for selected format on iOS or Android platform.</p>
+<p>Another alternative is library called <a class="reference external" href="https://onnx.ai/">onnx</a>. Their converters can process models from
+almost any ML library you can think of. And their runtime can be used not only on mobile devices, but also
+anywhere you want your model inference to run faster! Basically, it is one of the best options you can choose!</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures/06_lecture"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Deploying &amp; Managing an AI solution in production</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="deployment.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deployment into Cloud</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By STRV, Data Science Department<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -53,6 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://strvcom.github.io/ds-academy/intro.html/lectures/05_lecture/model_selection.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deploying &amp; Managing an AI solution in production" href="../06_lecture/intro.html" />
     <link rel="prev" title="Model evaluation" href="model_evaluation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -302,6 +303,35 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Model selection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deploying &amp; Managing an AI solution in production
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06_lecture/intro.html">
+   Deploying &amp; Managing an AI solution in production
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_lecture/app.html">
+     Embedding Model Into App
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_lecture/deployment.html">
+     Deployment into Cloud
     </a>
    </li>
   </ul>
@@ -967,9 +997,9 @@ Test accuracy: 0.9684
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation score: 0.9851521900519673
-Test score: 0.9822222222222222
-Best params: OrderedDict([(&#39;model&#39;, SVC(C=1.7464276168578028, degree=4, gamma=5.399819081613917, kernel=&#39;poly&#39;)), (&#39;model__C&#39;, 1.7464276168578028), (&#39;model__degree&#39;, 4), (&#39;model__gamma&#39;, 5.399819081613917), (&#39;model__kernel&#39;, &#39;poly&#39;)])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation score: 0.9873793615441722
+Test score: 0.9888888888888889
+Best params: OrderedDict([(&#39;model&#39;, SVC(C=34.063960609677316, degree=1, gamma=0.00021391887220250264)), (&#39;model__C&#39;, 34.063960609677316), (&#39;model__degree&#39;, 1), (&#39;model__gamma&#39;, 0.00021391887220250264), (&#39;model__kernel&#39;, &#39;rbf&#39;)])
 </pre></div>
 </div>
 </div>
@@ -1060,6 +1090,13 @@ Best params: OrderedDict([(&#39;model&#39;, SVC(C=1.7464276168578028, degree=4, 
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Model evaluation</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../06_lecture/intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deploying &amp; Managing an AI solution in production</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

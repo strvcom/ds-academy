@@ -32,6 +32,6 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-sns.pairplot(df_wines.drop(columns=['quality']), hue="wine_category", height=3);
+sns.pairplot(df_wines.drop(columns=['quality']), hue="quality_label", height=3);
 -------------------
 

@@ -16,3 +16,6 @@ analysis practiced in the second part of the lecture.
 | [Doing Exploratory Data Analysis (EDA)](eda.ipynb)    | 20 minutes |
 | [Data Preparation for ML](data_preparation.ipynb)     | 20 minutes |
 
+If you missed the class, or you want to revisit some content, download the lecture recording
+[part 1](https://drive.google.com/file/d/10Wp0nTDrfvnn73hxqu_ruXeAZhdZqrVe) and
+[part 2](https://drive.google.com/file/d/1hZ-pstjhDX7tro7LC9XRHFmiTiYZD3s_).

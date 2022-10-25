@@ -308,6 +308,35 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deploying &amp; Managing an AI solution in production
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06_lecture/intro.html">
+   Deploying &amp; Managing an AI solution in production
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_lecture/app.html">
+     Embedding Model Into App
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06_lecture/deployment.html">
+     Deployment into Cloud
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -755,12 +784,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.patches.Wedge at 0x7f6844214cd0&gt;,
-  &lt;matplotlib.patches.Wedge at 0x7f684422a190&gt;,
-  &lt;matplotlib.patches.Wedge at 0x7f684422a610&gt;],
- [Text(0.5460048198287359, 0.9549234192980031, &#39;0&#39;),
-  Text(-1.0999131482721833, 0.013822671882601915, &#39;1&#39;),
-  Text(0.5339620793196749, -0.9617091544997424, &#39;2&#39;)])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.patches.Wedge at 0x7f0f8a5742e0&gt;,
+  &lt;matplotlib.patches.Wedge at 0x7f0f8a574760&gt;,
+  &lt;matplotlib.patches.Wedge at 0x7f0f8a574be0&gt;],
+ [Text(0.5258866840431149, 0.9661486405031771, &#39;0&#39;),
+  Text(-1.0986106518112515, -0.055268759049369474, &#39;1&#39;),
+  Text(0.5737659537757365, -0.9385055302382718, &#39;2&#39;)])
 </pre></div>
 </div>
 <img alt="../../_images/data_pipelines_25_1.png" src="../../_images/data_pipelines_25_1.png" />
@@ -821,47 +850,47 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>LogisticRegression(multi_class='multinomial')</th>
-      <td>0.668</td>
+      <td>0.488</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=2)</th>
-      <td>0.708</td>
+      <td>0.588</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=5)</th>
-      <td>0.824</td>
+      <td>0.776</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=10)</th>
-      <td>0.844</td>
+      <td>0.780</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=20)</th>
-      <td>0.828</td>
+      <td>0.768</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=80)</th>
-      <td>0.848</td>
+      <td>0.768</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=2)</th>
-      <td>0.296</td>
+      <td>0.468</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=6)</th>
-      <td>0.772</td>
+      <td>0.624</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=10)</th>
-      <td>0.820</td>
+      <td>0.668</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=20)</th>
-      <td>0.832</td>
+      <td>0.712</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=40)</th>
-      <td>0.840</td>
+      <td>0.728</td>
     </tr>
   </tbody>
 </table>
@@ -1157,43 +1186,43 @@ dtype: int64
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=2)</th>
-      <td>0.813091</td>
+      <td>0.822008</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=5)</th>
-      <td>0.881106</td>
+      <td>0.875235</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=10)</th>
-      <td>0.893475</td>
+      <td>0.897810</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=20)</th>
-      <td>0.898869</td>
+      <td>0.906959</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(max_depth=80)</th>
-      <td>0.902636</td>
+      <td>0.905877</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=2)</th>
-      <td>0.813091</td>
+      <td>0.826647</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=6)</th>
-      <td>0.861932</td>
+      <td>0.866706</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=10)</th>
-      <td>0.864113</td>
+      <td>0.874667</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=20)</th>
-      <td>0.868115</td>
+      <td>0.869089</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=40)</th>
-      <td>0.875574</td>
+      <td>0.874326</td>
     </tr>
   </tbody>
 </table>
@@ -1290,43 +1319,43 @@ dtype: int64
     </tr>
     <tr>
       <th>RandomForestClassifier(class_weight='balanced', max_depth=2)</th>
-      <td>0.827921</td>
+      <td>0.825516</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(class_weight='balanced', max_depth=5)</th>
-      <td>0.861615</td>
+      <td>0.862949</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(class_weight='balanced', max_depth=10)</th>
-      <td>0.895271</td>
+      <td>0.896311</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(class_weight='balanced', max_depth=20)</th>
-      <td>0.897075</td>
+      <td>0.895385</td>
     </tr>
     <tr>
       <th>RandomForestClassifier(class_weight='balanced', max_depth=80)</th>
-      <td>0.898138</td>
+      <td>0.900999</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=2)</th>
-      <td>0.841751</td>
+      <td>0.850417</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=6)</th>
-      <td>0.847798</td>
+      <td>0.863810</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=10)</th>
-      <td>0.867442</td>
+      <td>0.855434</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=20)</th>
-      <td>0.872352</td>
+      <td>0.861475</td>
     </tr>
     <tr>
       <th>MLPClassifier(hidden_layer_sizes=40)</th>
-      <td>0.882180</td>
+      <td>0.875574</td>
     </tr>
   </tbody>
 </table>
@@ -1365,93 +1394,6 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X_digits_train</span><span class="p">,</span> <span class="n">y_digits_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_digits_test</span><span class="p">,</span> <span class="n">y_digits_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
-
-    8192/11490434 [..............................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-  491520/11490434 [&gt;.............................] - ETA: 1s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 1064960/11490434 [=&gt;............................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 1654784/11490434 [===&gt;..........................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 2244608/11490434 [====&gt;.........................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 2834432/11490434 [======&gt;.......................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 3424256/11490434 [=======&gt;......................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 4014080/11490434 [=========&gt;....................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 4603904/11490434 [===========&gt;..................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 5193728/11490434 [============&gt;.................] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 5783552/11490434 [==============&gt;...............] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 6373376/11490434 [===============&gt;..............] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 6963200/11490434 [=================&gt;............] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 7553024/11490434 [==================&gt;...........] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 8142848/11490434 [====================&gt;.........] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 8732672/11490434 [=====================&gt;........] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 9322496/11490434 [=======================&gt;......] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
- 9912320/11490434 [========================&gt;.....] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-10502144/11490434 [==========================&gt;...] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-11091968/11490434 [===========================&gt;..] - ETA: 0s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-11493376/11490434 [==============================] - 1s 0us/step
 </pre></div>
 </div>
 </div>
@@ -1649,10 +1591,10 @@ Please also refer to the documentation for alternative solver options:
   n_iter_i = _check_optimize_result(
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-10-17 17:28:19.645414: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-10-25 17:29:35.653981: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-10-17 17:28:19.710545: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
-2022-10-17 17:28:19.728630: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 3609600000 Hz
+2022-10-25 17:29:35.725709: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2022-10-25 17:29:35.742910: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 3609600000 Hz
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
