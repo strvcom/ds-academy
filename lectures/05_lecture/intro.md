@@ -13,4 +13,6 @@ Welcome to the fifth lecture of the STRV Data Science Academy. After the previou
 
 ## Recording from the lecture
 
-If you missed the class, or you want to revisit some content here is the recording: [Part 1](https://drive.google.com/file/d/1_Htk5K-b1Ms4eTemIITumYGLbh2Tslaj), [Part 2](https://drive.google.com/file/d/1k3F2U9_pZ1AM-a4jcuLXmuLYNSAPnTWC)
+If you missed the class, or you want to revisit some content, download the lecture recording
+[part 1](https://drive.google.com/file/d/1_Htk5K-b1Ms4eTemIITumYGLbh2Tslaj) and
+[part 2](https://drive.google.com/file/d/1k3F2U9_pZ1AM-a4jcuLXmuLYNSAPnTWC).
